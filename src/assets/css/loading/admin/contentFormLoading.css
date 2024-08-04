@@ -1,0 +1,35 @@
+.main-content-form-loading{
+    height: 100vh;
+}
+.main-content-form-loading .card-header{
+    height: 45px;
+    padding: 0.7rem 1rem;
+}
+.main-content-form {
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+}
+.main-content-form-loading .card-header .card-header-loading{
+    height: 100%;
+    width: 20%;
+    border-radius: 10px;
+    background-color: var(--font-icon-dark);
+}
+/* .main-content-form-loading .card-body-loading{
+    display: flex;
+    flex-direction: column;
+} */
+/* .main-content-form-loading .card-body-loading .card-body-loading-label{
+    height: 20px;
+    background-color: var(--font-icon-dark);
+    margin: 5px 0;
+    border-radius: 10px;
+    width: 15%;
+}
+.main-content-form-loading .card-body-loading .card-body-loading-item{
+    height: 30px;
+    border: none;
+    background-color: var(--font-icon-dark);
+    border-radius: 10px;
+} */

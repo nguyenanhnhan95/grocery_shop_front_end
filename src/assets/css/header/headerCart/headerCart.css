@@ -1,0 +1,200 @@
+.header-cart {
+    position: relative;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-cart .fa-cart-shopping {
+    font-size: 2em;
+}
+
+.header-cart .header-cart-numbers {
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: -15px;
+    left: 63px;
+    font-size: 0.9em;
+    font-weight: 500;
+    background-color: #EA5455;
+    padding: 0px 3px;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid white;
+}
+
+
+
+.header-cart:hover {
+    cursor: pointer;
+}
+
+.header-cart .header-cart-modal {
+    display: none;
+    width: 400px;
+    height: auto;
+    position: absolute;
+    box-shadow: -5px 0 5px -5px #78909C,
+        /* Bóng đổ bên trái */
+        5px 0 5px -5px #78909C,
+        /* Bóng đổ bên phải */
+        0 5px 5px -5px #78909C;
+    top: 62px;
+    right: 1vw;
+    border-radius: 5px;
+    background-color: white;
+    z-index: 1;
+    cursor: default;
+    box-sizing: border-box;
+    border: 1px solid #78909C;
+    transform-origin: 99% top;
+    animation: headerNotifyGrowth ease-in 0.25s;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.header-cart .header-cart-modal-head {
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.header-cart hr {
+    margin: 0;
+    border: none;
+    /* Loại bỏ viền mặc định */
+    height: 0;
+    /* Đặt chiều cao để không làm ảnh hưởng đến phần tử */
+    box-shadow: 0 0 0 1px #78909C;
+}
+
+.header-cart .card-cart {
+    border-radius: unset;
+}
+
+.header-cart .card-cart .card-cart-item {
+    margin: 10px 5px;
+    padding: 5px 5px;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.header-cart .card-cart .card-cart-item:hover {
+    background-color: rgba(0, 0, 0, .03);
+    cursor: pointer;
+}
+
+.dark .header-cart .card-cart .card-cart-item:hover {
+    background-color: #3E3E3E;
+    cursor: pointer;
+}
+
+.header-cart .card-cart .card-cart-item:first-child img {
+    width: 90px;
+    height: 60px;
+}
+
+.header-cart .header-cart-modal-total-money {
+    margin: 0;
+}
+
+.header-cart .header-cart-modal .card-cart-seen-all {
+    margin: 10px 18px;
+    border-radius: 5px;
+    color: #78909C;
+}
+
+.header-cart .header-cart-modal .card-cart-seen-all:hover {
+    background-color: #78909C;
+    cursor: pointer;
+    color: white;
+    font-weight: 400;
+}
+
+.dark .header-cart .header-cart-modal,
+.dark .header-cart .header-cart-modal .card {
+    background-color: #282828;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header-cart {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-cart .fa-cart-shopping {
+        font-size: 1.3em;
+    }
+
+    .header-cart .header-cart-numbers {
+        font-size: 0.6em;
+        padding: 0 2px;
+        top: -5px;
+        left: 6vw;
+    }
+
+    .header-cart .header-cart-modal {
+        width: 250px;
+        font-size: 0.5em;
+        top: 47px;
+        right: -5px;
+    }
+
+    .header-cart .card-cart .card-cart-item:first-child img {
+        width: 40px;
+        height: 35px;
+    }
+
+    .header-cart .card-cart .card-cart-item {
+        margin: 5px;
+        padding: 5px 0px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .header-cart .header-cart-modal {
+        top: 52px;
+    }
+
+    .header-cart .header-cart-numbers {
+        font-size: 0.9em;
+        left: 33px;
+        top: -12px;
+        padding: 0 3px;
+    }
+    .header-cart .fa-cart-shopping {
+        font-size: 2em;
+    }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1280px){
+    .header-cart .header-cart-numbers {
+        left: 42px;
+        top: -10px;
+    }
+    .header-cart .header-cart-modal {
+        top: 52px;
+        right: -10px;
+    }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1366px) {
+    .header-cart i {
+        margin-right: 10px;
+    }
+}

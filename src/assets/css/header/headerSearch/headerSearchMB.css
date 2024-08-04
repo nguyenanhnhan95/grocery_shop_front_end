@@ -1,0 +1,91 @@
+.header-search-mob {
+    display: none;
+    width: 59vw;
+}
+
+.header-search-mob .header-search-input .header-search-input-enter {
+    border-radius: 10px;
+    height: 30px;
+    margin: 0 3%;
+}
+.header-search-mob .header-search-input {
+    position: relative;
+}
+.dark .header-search-mob .header-search-input .header-search-input-enter {
+    border: none;
+}
+.dark .header-search-mob .header-search-input .header-search-input-enter:focus{
+    box-shadow:none;
+}
+.dark .header-search-mob .header-search-input .header-search-input-press {
+    color: #0F0F0F;
+}
+
+@media only screen and (max-width: 768px) {
+    .header-search-mob {
+        display: block;
+    }
+
+    .header-search-mob .header-search-input {
+        width: 57vw;
+        margin: 0 2vw;
+    }
+
+    .header-search-mob .header-search-input .header-search-input-press {
+        position: absolute;
+        right: 5%;
+        top: 10%;
+        font-size: 1em;
+    }
+
+    .header-search-mob .header-search-input .header-search-input-enter {
+        height: 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .header-search-mob {
+        display: block;
+        width: 68vw;
+    }
+
+    .header-search-mob .header-search-input {
+        width: 65vw;
+        margin: 0 2vw;
+    }
+
+
+    .dark .header-search-mob .header-search-input .header-search-input-enter {
+        border: none;
+    }
+
+    .header-search-mob .header-search-input .header-search-input-press {
+        position: absolute;
+        right: 5%;
+        top: 10%;
+        font-size: 1.4em;
+    }
+
+    .dark .header-search-mob .header-search-input .header-search-input-press {
+        color: #0F0F0F;
+    }
+
+    .header-search-mob .header-search-input .header-search-input-press i:hover {
+        color: #78909C;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {}
+
+@media only screen and (min-width: 1280px) and (max-width: 1366px) {
+    .header-search-mob {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .header-search-mob {
+        display: none;
+    }
+}

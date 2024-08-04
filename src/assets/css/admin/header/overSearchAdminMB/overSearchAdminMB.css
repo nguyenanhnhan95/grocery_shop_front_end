@@ -1,0 +1,67 @@
+
+.header-search-admin-over-mb {
+    width: 100%;
+}
+.header-search-admin-over-mb input{
+    border-radius: 6px;
+    width: 100%;
+    padding-left: 5%;
+    height: 100%;
+    color: #78909C;
+}
+.dark .header-search-admin-over-mb input{
+    background-color: #3A3B3C;
+    color: #f1f1f1;
+    border: none;
+}
+.dark .header-search-admin-over-mb input:focus{
+    box-shadow: none;
+}
+.header-search-admin-over-mb .handle-input{
+    width: 70%;
+}
+.header-search-admin-over-mb .handle-icon{
+    width: 15%;
+}
+.header-search-admin-over-mb input:focus{
+    outline: none;
+}
+.header-search-admin-over-mb input::placeholder{
+    margin-left: 15px;
+}
+.header-search-admin-over-mb .handle-icon:hover{
+    cursor: pointer;
+}
+.header-search-admin-over-mb .handle-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+.header-search-admin-over-mb .handle-icon .fa-magnifying-glass{
+    padding-top: 6%;
+}
+.header-search-admin-over-mb .navbar-collapse .navbar-nav,.header-search-admin-over-mb .navbar-collapse{
+    width: 100%;
+}
+@media only screen and (max-width: 768px){
+    .header-search-admin-over-mb .handle-input{
+        width: 70%;
+    }
+    .header-search-admin-over-mb .handle-icon{
+        width: 15%;
+        font-size: 1.3em;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .header-search-admin-over-mb .handle-input{
+        width: 70%;
+    }
+    .header-search-admin-over-mb .handle-icon{
+        width: 15%;
+        font-size: 1.8em;
+    }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+    
+}

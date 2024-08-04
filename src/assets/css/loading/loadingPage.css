@@ -1,0 +1,21 @@
+.loading-page{
+    position: fixed;
+    background-color: #F5F5F5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25;
+}
+.dark .loading-page{
+    background-color:#0F0F0F ;
+}
+.loading-page .spinner-border{
+    height: 3vw;
+    width: 3vw;
+    color: #0693e3;
+}

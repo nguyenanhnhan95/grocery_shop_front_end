@@ -1,0 +1,10 @@
+.notification-modal .modal-content .modal-header{
+    padding: 0.5rem 1rem;
+    justify-content: center;
+}
+.notification-modal .modal-content .modal-header .modal-title{
+    font-weight: 700 ;
+}
+.notification-modal .modal-content .modal-body{
+    padding: 0.5rem 1rem 1rem 1rem;
+}

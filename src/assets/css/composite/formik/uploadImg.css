@@ -1,0 +1,66 @@
+.card-upload-images .card-upload-tile {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-upload-images .card-upload-tile .card-upload-button {
+    border-radius: 5px;
+    outline: none;
+    border-color: #0693e3;
+    color: #0693e3;
+    font-size: 1em;
+    text-align: left;
+    border: 1px solid var(--bg-trade);
+    width: 170px;
+    height: 40px;
+    text-align: center;
+
+}
+
+.dark .card-upload-images .card-upload-tile .card-upload-button{
+    background-color: var(--bg-input-dark);
+}
+.dark .card-upload-images .card-upload-tile .card-upload-button:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+.main-content-form-product .card-upload-tile .card-upload-button i {
+    margin-right: 5px;
+}
+.card-upload-img .card-images{
+    display: flex;
+    
+}
+.card-upload-images .card-show-images{
+    display: flex;
+    padding: 15px 0;
+}
+.card-upload-images .card-show-images .card-show-images-item{
+    height: 130px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 10px;
+}
+.card-upload-images .card-show-images .card-show-images-item img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.card-upload-images .card-show-images .card-show-images-item img:hover{
+    cursor: pointer;
+}
+.card-upload-images .card-show-images .card-show-images-item .delete-images-item{
+    z-index: 2;
+    padding: 0 6px;
+    border: none;
+    font-size: 0.8em;
+    background-color: var(--font-color-light);
+    position: absolute;
+    right: 0;
+    color: var(--font-color-dark);
+    border-radius: 50%;
+}
+.card-upload-images .card-show-images .card-show-images-item .delete-images-item:hover{
+    background-color: var(--font-icon-dark);
+    cursor: pointer;
+}

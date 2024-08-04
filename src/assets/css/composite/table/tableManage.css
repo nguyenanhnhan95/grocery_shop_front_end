@@ -1,0 +1,89 @@
+.main-content-data {
+    background-color: white;
+    margin: 15px;
+    /*border-radius: 0 5px;*/
+    overflow: hidden;
+}
+
+.main-content-data .container-content-data {
+    overflow: auto;
+}
+
+.dark .main-content-data {
+    background-color: var(--bg-box-dark);
+}
+
+.main-content-data .container-content-data {
+    padding-bottom: 25px !important;
+
+}
+
+.main-content-data .container-content-data tbody .table-action i:hover {
+    cursor: pointer;
+}
+
+.main-content-data .container-content-data {
+    padding: 0;
+    overflow: auto;
+}
+
+.main-content-data .container-content-data .table .table-thead {
+    background-color: #0693e3;
+    color: white;
+}
+
+.main-content-data .container-content-data .table {
+    /* overflow: hidden; */
+    --bs-table-bg: none;
+    --bs-table-color: none;
+    --bs-table-hover-color: none;
+    
+}
+.main-content-data .tscrolls{
+    width: 100%;
+    table-layout: fixed;
+}
+.main-content-data .sticky-header {
+    z-index: 3;
+    position: sticky;
+    top: 0; /* Stick to the top of the container */
+    background-color: #fff; /* Ensure the background color */
+}
+.main-content-data .tscrolls th:nth-child(1),
+.main-content-data .tscrolls td:nth-child(1) {
+    position: sticky;
+    left:0;
+    z-index:1;
+}
+.main-content-data .tscrolls th:nth-child(1){
+    background-color: var(--bg-trade);
+}
+.main-content-data .tscrolls td:nth-child(1){
+    background-color: var(--bg-box-dark);
+}
+.main-content-data .container-content-data .table tbody tr td:last-child {
+    text-align: center;
+}
+
+.main-content-data .container-content-data .table tbody tr {
+    height: 40px;
+}
+
+.dark .main-content-data .container-content-data .table tbody {
+    color: var(--font-color-dark);
+}
+
+.dark .main-content-data .container-content-data .table>:not(caption)>*>* {
+    border-bottom-width: 0;
+
+}
+
+.dark .table-hover>tbody>tr:hover {
+    color: var(--bg-trade);
+}
+
+@media only screen and (max-width: 1024px) {
+    .main-content-data .container-content-data .table {
+        font-size: 0.7em;
+    }
+}

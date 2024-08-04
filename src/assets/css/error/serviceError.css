@@ -1,0 +1,95 @@
+.service-error{
+    padding: 0;
+    margin: 0;
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.service-error .service-error-background{
+    width: 100vw;
+    height: 100vh;
+}
+.service-error .service-error-background img{
+    width: 100%;
+    height: 100%;
+}
+.service-error .service-error-content{
+    position: absolute;
+    top: 20vh;
+    right: 60vw;
+    /* width: 40vw; */
+}
+.service-error .service-error-content .service-error-title{
+    font-size: 2em;
+    font-weight: 500;
+    color: white;
+    display: inline;
+}
+.service-error .service-error-content .service-error-redirect{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3vw;
+}
+.service-error .service-error-content .service-error-redirect button{
+    border-radius: 5px;
+    border: none;
+    background-color: #F0F0F0;
+    padding: 10px 25px;
+    font-size: 1em;
+    color: #242526;
+    font-weight: 600;
+}
+.service-error .service-error-content .service-error-redirect button:focus{
+    outline: none;
+}
+.service-error .service-error-content .service-error-redirect button i{
+    margin-right: 15px;
+}
+.service-error .service-error-content .service-error-redirect button:hover{
+    background-color: #0693e3;
+    color: #F0F0F0;
+}
+@media only screen and (max-width: 768px) {
+    .service-error .service-error-content .service-error-title {
+        font-size: 0.7em;
+    }
+    .service-error .service-error-content {
+        top: 35vh;
+        right: 40vw;
+    }
+    .service-error .service-error-content .service-error-redirect button {
+        border-radius: 5px;
+        border: none;
+        background-color: #F0F0F0;
+        padding: 3px 6px;
+        font-size: 0.8em;
+    }
+    .service-error .service-error-content .service-error-redirect button i {
+        margin-right: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .service-error .service-error-content .service-error-title {
+        font-size: 1.2em;
+    }
+    .service-error .service-error-content .service-error-redirect button {
+        padding: 5px 10px;
+
+    }
+    .service-error .service-error-content .service-error-redirect button i {
+        margin-right: 10px;
+    }
+    .service-error .service-error-content {
+        position: absolute;
+        top: 36vh;
+        right: 46vw;
+    }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+    .service-error .service-error-content {
+        top: 27vh;
+        right: 41vw;
+    }
+}
+

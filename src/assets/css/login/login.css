@@ -1,0 +1,250 @@
+.login {
+    position: relative;
+    padding: 0;
+}
+.dark .login,.dark .login .card-login,.dark .login .login-form .card-login .card-header{
+    background-color: #0F0F0F;
+    color:var(--font-color-dark) ;
+}
+
+.login .login-logo {
+    position: absolute;
+    z-index: 1;
+    top: 1vw;
+    left: 2vw;
+}
+
+.login .login-content {
+    width: 100vw;
+    display: flex;
+}
+
+.login .loin-img {
+    padding: 0;
+    width: 70vw;
+}
+
+.login .loin-img img {
+    height: 100vh;
+    width: 100%;
+}
+
+.login .login-form {
+    height: 100vh;
+    width: 30vw;
+    display: flex;
+
+}
+
+.login .login-form .card-login {
+    border: none;
+    width: 80%;
+}
+
+.login .login-form .form-control:focus {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    -webkit-user-select: text;
+}
+
+.login .login-form .card-login .card-header {
+    background-color: white;
+    border: none;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.login .login-form .card-login .card-body form .form-label {
+    font-size: 0.9em;
+}
+
+.login .login-form .card-login .card-body form .form-password {
+    position: relative;
+}
+
+.login .login-form .card-login .card-body form .form-password i {
+    position: absolute;
+    top: 43px;
+    right: 13px;
+}
+
+.login .login-form .card-login .card-body form .form-check-input {
+    margin-bottom: 3px;
+}
+
+.login .login-form .card-login .card-body form .form-password i:hover {
+    color: #78909C;
+    cursor: pointer;
+}
+.login .login-form .card-login .card-body form .form-text{
+    margin-top: 0;
+}
+.login .login-form .card-login .card-body form .form-error {
+    font-size: 0.9em;
+    padding-left: 5px;
+    color: red;
+}
+.login .login-form .card-login .card-body form .form-check{
+    margin-top: 10px;
+}
+.login .login-form .card-login .card-body form .form-check-label {
+    font-size: 0.8em;
+}
+
+.login .login-form .card-login .card-body form .form-submit {
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    height: 35px;
+    font-size: 1.1em;
+    outline-style: none;
+    background-color: var(--font-icon-dark);
+}
+.login .login-form .card-login .card-body form .form-submit .d-flex{
+    color:#0693e3;
+    font-size: 1.2em;
+    align-items: center;
+}
+.login .login-form .card-login .card-body form .form-submit .d-flex .spinner-border {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 5px;
+    vertical-align: text-bottom;
+    border: .15em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border .75s linear infinite;
+    animation: spinner-border .75s linear infinite;
+}
+.login .login-form .card-login .card-body form .form-submit .d-flex:hover{
+    color: white;
+}
+.login .login-form .card-login .card-body form .form-submit:hover {
+    background-color: #0693e3;
+    color: white;
+    font-weight: 500;
+    
+}
+
+.login .login-form .card-login .card-body .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.login .login-form .card-login .card-body .separator::before,
+.login .login-form .card-login .card-body .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #78909C;
+}
+
+.login .login-form .card-login .card-body .separator:not(:empty)::before {
+    margin-right: .5em;
+}
+
+.login .login-form .card-login .card-body .separator:not(:empty)::after {
+    margin-left: .5em;
+}
+
+.login .login-form .card-login .card-body .submit-social img {
+    height: 50px;
+    width: 50px;
+}
+
+.login .login-form .card-login .card-body .submit-social img:hover {
+    cursor: pointer;
+}
+.login .login-content .form-login .form-login-input{
+    height: 75px;
+    margin-bottom: 0; 
+}
+.dark .login .login-content .form-login .form-login-input input{
+    background-color: var(--bg-input-dark);
+    color: var(--font-color-dark);
+}
+@media only screen and (max-width: 768px) {
+    .login .loin-img {
+        display: none;
+    }
+
+    .login .login-logo img {
+        width: 210px;
+        height: 75px;
+    }
+
+    .login .login-form {
+        width: 100vw;
+        margin-top: 15vh;
+    }
+
+    .login .login-form .card-login {
+        border: none;
+        width: 95%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .login .loin-img {
+        display: none;
+    }
+
+    .login .login-form {
+        width: 100vw;
+        margin-top: 15vh;
+    }
+
+    .login .login-form .card-login {
+        width: 85%;
+    }
+
+    .login .login-logo {
+        position: absolute;
+        z-index: 1;
+        top: 3vw;
+        left: 5vw;
+    }
+
+    .login .login-logo {
+        position: absolute;
+        z-index: 1;
+        top: 3vw;
+        left: 5vw;
+    }
+    .login .login-logo img {
+        width: 260px;
+        height: 90px;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+    .login .loin-img{
+        display: block;
+    }
+    .login .loin-img {
+        padding: 0;
+        width: 70vw;
+    }
+    .login .login-form{
+        width: 30vw;
+    }
+    .login .login-form .card-login {
+        width: 100%;
+    }
+    /* .login .login-form .card-login .card-body form .form-control{
+        height: 30px;
+    } */
+}
+@media only screen and (min-width: 1280px) and (max-width: 1366px){
+    .login .login-form{
+        align-items: center;
+    }
+}
+@media only screen and (min-width: 1366px){
+.login .login-form{
+        align-items: center;
+    }
+}

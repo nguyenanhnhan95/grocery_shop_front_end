@@ -1,0 +1,270 @@
+.header .loading-header {
+    border-bottom: 1px solid #78909C;
+    box-shadow: inset 0 -5px 5px -5px #78909C;
+    margin: 0;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    color: #6B6B6B;
+}
+
+.dark .header .loading-header {
+    background-color: #242526;
+    color: #f1f1f1;
+    background-image: #f1f1f1 !important;
+}
+
+
+.loading-header .header-logo {
+    display: flex;
+    margin-left: 20px;
+    justify-content: center;
+    /* Center the logo horizontally */
+    align-items: center;
+    /* Center the logo vertically */
+}
+
+.loading-header .header-logo img {
+    height: 50px;
+    width: 210px;
+}
+
+.header .loading-header .container-header {
+    height: 90px;
+}
+.header .loading-header .container-header .header-mb-container{
+    height: 100%;
+}
+.header .loading-header .container-header .header-menu-pc {
+    display: flex;
+    width: 80vw;
+}
+.header .loading-header .container-header .navbar-collapse .navbar-nav {
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: end;
+    width: 20vw;
+    padding-right: 1vw;
+}
+
+.header .loading-header .container-header .navbar-collapse .navbar-nav .nav-item {
+    margin-left: 2vw;
+}
+
+.header .loading-header .container-header .header-item {
+    display: flex;
+    height: 90px;
+}
+
+.loading-header .header-item-mob .fa-bars {
+    font-size: 2em;
+    padding-left: 1vw;
+}
+
+.loading-header .header-item-mob {
+    display: none;
+}
+
+.loading-header .header-search-mob .header-search-input {
+    position: relative;
+}
+
+.loading-header .header-item-mob .nav .nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.loading-header .header-search-mob {
+    display: none;
+    width: 80vw;
+}
+
+.loading-header .header-search-mob .header-search-input .header-search-input-enter {
+    border-radius: 10px;
+    height: 30px;
+    margin: 0 3%;
+    border-color: #6E6B7B;
+}
+.loading-header .header-search-mob .header-search-input .header-search-input-enter:focus{
+    border-color: #80bdff;
+}
+.dark .loading-header .header-search-mob .header-search-input .header-search-input-enter:focus{
+    border: none;
+    box-shadow:none;
+}
+.dark .loading-header .header-search-mob .header-search-input .header-search-input-press{
+    color: #0F0F0F;
+}
+.dark .loading-header .header-search-mob .header-search-input .header-search-input-enter {
+    border: none;
+}
+
+.dark .loading-header .header-search-mob .header-search-input .header-search-input-press {
+    color: #0F0F0F;
+}
+
+
+.loading-header .header-user {
+    width: 10vw;
+    position: relative;
+    color: #6E6B7B;
+    display: flex;
+    justify-content: end;
+}
+
+.dark .loading-header .header-user {
+    color: #f1f1f1;
+}
+
+.loading-header .header-user  .header-user-login-default {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #CFD1D6;
+}
+
+.loading-header .header-user .header-user-item {
+    display: flex;
+    align-items: center;
+}
+
+
+.loading-header .header-user .header-user-login {
+    width: 100%;
+    font-size: 1em ;
+    font-weight: 500;
+    text-align: end;
+}
+
+@media only screen and (max-width: 768px) {
+    .header .loading-header .container-header {
+        padding: 0;
+        height: 60px;
+    }
+
+    .header .loading-header .container-header .header-menu-pc {
+        display: none;
+    }
+    
+    .header .loading-header .container-header .navbar-collapse .navbar-nav .nav-item {
+        margin-left: 1.5vw;
+    }
+
+    .loading-header .header-item-mob {
+        display: block;
+    }
+
+    .loading-header .header-item-mob .fa-bars {
+        font-size: 1.4em;
+    }
+
+    .loading-header .header-search-mob {
+        display: block;
+        width: 70vw;
+    }
+
+    .loading-header .header-search-mob .header-search-input {
+        width: 100%;
+        margin: 0 2vw;
+    }
+
+    .loading-header .header-search-mob .header-search-input .header-search-input-press {
+        position: absolute;
+        right: 5%;
+        top: 0;
+        font-size: 1em;
+    }
+
+    .loading-header .header-search-mob .header-search-input .header-search-input-enter {
+        height: 30px;
+    }
+    .loading-header .header-search-mob .header-search-input .header-search-input-press {
+        position: absolute;
+        right: 5%;
+        top: 10%;
+        font-size: 1em;
+    }
+    .loading-header .header-user {
+        width: 18vw;
+    }
+    .loading-header .header-user .header-user-login{
+        font-size: 0.7em;
+    }
+    .loading-header .header-user  .header-user-login-default {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .header .loading-header .container-header .header-menu-pc {
+        display: none;
+    }
+    .loading-header .header-search-mob .header-search-input .header-search-input-press {
+        position: absolute;
+        right: 5%;
+        top: 5%;
+        font-size: 1.4em;
+    }
+    .loading-header .header-user  .header-user-login-default {
+        width: 40px;
+        height: 40px;
+    }
+    .header .loading-header .container-header {
+        /* Horizontally centers the content */
+        /* Vertically centers the content */
+        height: 70px;
+        /* Ensure the container takes the full height */
+    }
+
+    .header .loading-header .container-header .justify-content-between {
+        height: 100%;
+    }
+
+    .header .loading-header .fa-2x {
+        font-size: 3em;
+    }
+
+    .header .loading-header {
+        font-size: 1em;
+    }
+
+    .loading-header .header-item-mob {
+        display: block;
+    }
+
+    .header .loading-header .container-header .header-mb-container {
+        height: 70px;
+    }
+    .loading-header .header-search-mob {
+        display: block;
+        width: 75vw;
+    }
+    .loading-header .header-item-mob .fa-bars {
+        font-size: 2em;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1366px) {
+    .loading-header .header-logo img {
+        width: 165px;
+    }
+
+    .header .loading-header .container-header .header-search .header-search-show {
+        margin-right: 10px;
+    }
+
+}

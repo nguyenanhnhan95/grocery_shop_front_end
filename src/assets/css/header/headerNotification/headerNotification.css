@@ -1,0 +1,269 @@
+.header-notification {
+    position: relative;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-notification .fa-bell {
+    font-size: 2em;
+}
+
+.header-notification .header-notification-numbers {
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: -14px;
+    left: 53px;
+    font-size: 0.9em;
+    font-weight: 500;
+    background-color: #EA5455;
+    padding: 0px 3px;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid white;
+}
+
+.header-notification:hover {
+    cursor: pointer;
+}
+
+.header-notification .header-notification-modal {
+    display: none;
+    width: 400px;
+    height: auto;
+    position: absolute;
+    box-shadow: -5px 0 5px -5px #78909C,
+        /* Bóng đổ bên trái */
+        5px 0 5px -5px #78909C,
+        /* Bóng đổ bên phải */
+        0 5px 5px -5px #78909C;
+    top: 62px;
+    background-color: white;
+    right: 0vw;
+    border-radius: 5px;
+    z-index: 1;
+    cursor: default;
+    box-sizing: border-box;
+    border: 1px solid #78909C;
+    transform-origin: 99% top;
+    font-size: 1em;
+    font-weight: 500;
+    animation: headerNotifyGrowth ease-in 0.25s;
+}
+
+@keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.header-notification-modal hr {
+    margin: 0;
+    border: none;
+    /* Loại bỏ viền mặc định */
+    height: 0;
+    /* Đặt chiều cao để không làm ảnh hưởng đến phần tử */
+    box-shadow: 0 0 0 1px #78909C;
+}
+
+.header-notification .header-notification-modal-header {
+    font-family: "Roboto", "Arial", sans-serif;
+    line-height: 2.8rem;
+    flex: 1;
+}
+
+.card-notification {
+    border: none;
+    border-radius: unset;
+}
+
+.header-notification-modal .card .card-header {
+    background-color: white;
+    height: 20px;
+    border: none;
+    padding: 0 1.25rem;
+}
+
+.header-notification-modal .card .card-header .card-title {
+    font-size: 1em;
+    font-weight: 500;
+    margin: 0;
+}
+
+.header-notification-modal-header .header-notification-modal-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.header-notification-modal-header .header-notification-modal-read {
+    font-size: 0.9em;
+    font-weight: 400;
+    padding-right: 10px;
+}
+
+.header-notification-modal-header .header-notification-modal-read:hover {
+    cursor: pointer;
+}
+
+.header-notification .card-notification .card-body-notification-content {
+    margin: 10px 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .03);
+    padding: 10px 10px;
+}
+
+.dark .header-notification .card-notification .card-body-notification-content {
+    color: #f5f5f5;
+}
+
+.header-notification .card-notification .card-body-notification-content:after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #0866FF;
+    right: 29px;
+    top: 38px;
+    border-radius: 100%;
+}
+
+.header-notification .card-notification .card-body-notification-content .card-body-notification-content-title {
+    font-weight: 500;
+}
+
+.header-notification .header-notification-modal .card-notification-seen-all {
+    margin: 10px 18px;
+    border-radius: 5px;
+    color: #78909C;
+}
+
+.header-notification .header-notification-modal .card-notification-seen-all:hover {
+    background-color: #78909C;
+    cursor: pointer;
+    color: white;
+    font-weight: 400;
+}
+
+.dark .header-notification .header-notification-modal,
+.dark .header-notification .header-notification-modal .card,
+.dark .header-notification .header-notification-modal .card-header {
+    background-color: #282828;
+}
+
+.dark .header-notification .header-notification-modal .card .card-body:hover {
+    background-color: #3E3E3E;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .header-notification .fa-bell {
+        font-size: 1.3em;
+    }
+
+    .header-notification .header-notification-modal {
+        width: 275px;
+        font-size: 0.6em;
+        top: 47px;
+        right: -7px;
+    }
+
+    .header-notification .header-notification-modal .header-notification-modal-header {
+        align-items: center;
+        height: 30px;
+    }
+
+    .header-notification .card-notification .card-body-notification-content {
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .header-notification .card-notification .card-body-notification-content:after {
+        right: 12px;
+        top: 30px;
+    }
+
+    .header-notification .header-notification-numbers {
+        font-size: 0.6em;
+        padding: 0 2px;
+        top: -5px;
+        left: 5vw;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .header-notification .header-notification-modal {
+        top: 52px;
+    }
+
+    .header-notification .fa-bell {
+        font-size: 2em;
+    }
+
+    .header-notification .header-notification-numbers {
+        font-size: 0.9em;
+        padding: 0 3px;
+        top: -10px;
+        left: 27px;
+    }
+
+    .container-header-main .main-content-header-right .header-notification-modal {
+        top: 42px;
+        right: -46px;
+        width: 70vw;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+
+    /* .header-notification {
+        margin-right: 10px;
+    } */
+    .header-notification .header-notification-numbers {
+        font-size: 0.9em;
+        padding: 0 3px;
+        top: -9px;
+        left: 37px;
+    }
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1366px) {
+    .header-notification .header-notification-numbers {
+        position: absolute;
+        top: -12px;
+        left: 39px;
+    }
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1536px) {
+    .header-notification .header-notification-numbers {
+        position: absolute;
+        top: -12px;
+        left: 39px;
+    }
+}
+@media only screen and (min-width: 1536px) and (max-width: 1720px) {
+    .header-notification .header-notification-numbers {
+        position: absolute;
+        top: -14px;
+        left: 47px;
+    }
+}
+
+@media only screen and (min-width: 1720px) and (max-width: 1920px) {
+    .header-notification .header-notification-numbers {
+        position: absolute;
+        top: -14px;
+        left: 57px;
+    }
+}

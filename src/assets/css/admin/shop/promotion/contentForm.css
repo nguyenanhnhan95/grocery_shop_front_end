@@ -1,0 +1,15 @@
+.main-content-form-promotion{
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+}
+.main-content-form-promotion .card-form-promotion .form-control{
+    width: 100%;
+}
+.main-content-form-promotion .card-form-promotion .form-error{
+    color: red;
+    font-size: 0.8em;
+}
+.main-content-form-promotion .card-form-promotion .react-datepicker-wrapper {
+    width: 100%;
+}

@@ -1,0 +1,270 @@
+.header-user {
+    position: relative;
+    color: #6E6B7B;
+}
+.dark .header-user{
+    color: #f1f1f1;
+}
+.header-user .header-user-item {
+    display: flex;
+    align-items: center;
+}
+
+.header-user .header-user-item:hover {
+    cursor: pointer;
+}
+
+.header-user .header-user-item img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.header-user .header-user-login {
+    width: 100%;
+    font-size: 1em ;
+    font-weight: 500;
+}
+
+.header-user .header-user-login:hover {
+    cursor: pointer;
+    color: #0693e3;
+}
+
+.header-user .header-user-modal .header-user-modal-item {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.header-user .header-user-modal .header-user-modal-item i {
+    width: 30px;
+}
+
+.header-user .header-user-modal .header-user-modal-item:hover {
+    background: #f5f5f5;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.dark .header-user .header-user-modal .header-user-modal-item:hover {
+    background: #3E3E3E;
+}
+
+.header-user .header-user-modal .header-user-modal-item-name {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    font-size: 1.3em;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.header-user .header-user-modal .header-user-modal-item-image img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.header-user .header-user-modal hr {
+    margin: 10px 0;
+}
+.dark .header-user .header-user-modal hr {
+    background-color: #f5f5f5;
+}
+.header-user-modal-item-dark .parent::after {
+    content: '';
+    background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%236e6b7b\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'feather feather-chevron-right\'%3E%3Cpolyline points=\'9 18 15 12 9 6\'%3E%3C/polyline%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.4rem;
+    height: 1.1rem;
+    width: 1.1rem;
+    display: inline-block;
+    position: absolute;
+    right: 30px;
+    top: 146px;
+    -webkit-transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
+    -webkit-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+
+.header-user-modal-item-dark.show .parent::after {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+
+.header-user-modal-item-dark {
+    height: 40px;
+}
+
+.header-user-modal-item-dark.show {
+    min-height: 120px;
+}
+
+.header-user-modal-item-dark .header-user-modal-item:not(.parent) {
+    visibility: hidden;
+}
+
+.header-user-modal-item-dark.show .header-user-modal-item:not(.parent) {
+    visibility: visible;
+}
+
+.header-user .header-user-modal {
+    display: none;
+    width: 350px;
+    height: auto;
+    position: absolute;
+    box-shadow: -5px 0 5px -5px #78909C,
+        /* Bóng đổ bên trái */
+        5px 0 5px -5px #78909C,
+        /* Bóng đổ bên phải */
+        0 5px 5px -5px #78909C;
+    top: 67px;
+    background-color: white;
+    right: 40px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    z-index: 1;
+    cursor: default;
+    box-sizing: border-box;
+    border: 1px solid #78909C;
+    transform-origin: 99% top;
+    font-size: 1em;
+    font-weight: 500;
+    animation: headerNotifyGrowth ease-in 0.25s;
+}
+
+.dark .header-user .header-user-modal {
+    background-color: #282828;
+}
+
+@keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* .header-user .dropdown-menu-user {
+    top: 61px;
+    left: -160px;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: slideIn;
+    animation-name: fadeDropUser
+}
+
+.header-user .dropdown-menu-user .dropdown-item:hover {
+    color: #0693e3;
+    cursor: pointer;
+}
+
+@keyframes fadeDropUser {
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    0% {
+        -webkit-transform: translateY(1rem);
+        transform: translateY(1rem);
+        opacity: 0
+    }
+} */
+@media only screen and (max-width: 768px) {
+    .header-user .header-user-login {
+        font-size: 0.6em;
+    }
+    .header-user .header-user-item img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .header-user .header-user-item {
+        width: 30px;
+        height: 30px;
+    }
+
+    .header-user .header-user-modal {
+        width: 200px;
+        font-size: 0.6em;
+        top: 45px;
+        right: 0;
+        padding: 5px;
+    }
+
+    .header-user .header-user-modal .header-user-modal-item-image img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .header-user .header-user-modal .header-user-modal-item {
+        height: 30px;
+    }
+
+    .header-user .header-user-modal hr {
+        margin: 5px 0;
+        background-color: #f5f5f5;
+    }
+
+    .header-user-modal-item-dark .parent::after {
+        background-size: 1.1rem;
+        right: 14px;
+        top: 81px;
+    }
+    .header-user .header-user-modal .header-user-modal-item{
+        min-height: 30px;
+    }
+    .header-user-modal-item-dark{
+        height: 30px;
+    }
+    .header-user-modal-item-dark.show{
+        min-height: 90px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .header-user .header-user-item img {
+        width: 40px;
+        height: 40px;
+    }
+    .header-user .header-user-login {
+        font-size: 0.9em;
+    }
+    .header-user .header-user-item {
+        width: 40px;
+        height: 40px;
+    }
+    .header-user .header-user-item {
+        font-size: 1.8em;
+    }
+
+    .header-user .dropdown-menu-user .dropdown-item {
+        font-size: 1.6em;
+        padding: .3rem 1.5rem;
+    }
+
+    .header-user .header-user-modal {
+        top: 55px
+    }
+   
+}
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+    .header-user .header-user-modal {
+        top: 55px;
+        right: 10px;
+    }
+}

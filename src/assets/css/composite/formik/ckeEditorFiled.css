@@ -1,0 +1,71 @@
+/* .ck.ck-editor__main>.ck-editor__editable{
+    background-color: blue;
+} */
+
+.main-content .ck.ck-reset_all,
+.ck-reset_all *:not(.ck-reset_all-excluded *) {
+    color: #212529;
+}
+.main-content .ck.ck-editor__editable_inline > *{
+    margin: 5px 0;
+}
+.main-content .ck.ck-character-grid::-webkit-scrollbar {
+    display: none;
+}
+.main-content .ck-editor .ck-editor__editable{
+    min-height: 130px;
+}
+.dark .main-content .ck.ck-reset_all,
+.dark  .ck-reset_all *:not(.ck-reset_all-excluded *) {
+    color: var(--font-color-dark);
+}
+
+.dark .main-content .ck.ck-toolbar,
+.dark .ck.ck-editor__main>.ck-editor__editable,
+.dark .ck-dropdown__panel,
+.dark .ck.ck-list {
+    background-color: var(--bg-input-dark);
+    border: 1px solid var(--ck-color-base-border);
+}
+
+.dark .main-content .ck.ck-list .ck-on {
+    background-color: rgba(0, 0, 0, 0.04);
+    box-shadow: none;
+    color: var(--bg-trade);
+}
+
+/* .dark .ck-dropdown__panel{
+    border: 1px solid var(--ck-color-base-border);
+ } */
+.dark .main-content .ck.ck-list__item>.ck-button:hover:not(.ck-disabled) {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.dark .main-content .ck-dropdown__panel,
+.dark .ck.ck-list .ck-button {
+    border: none;
+}
+
+.main-content .ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
+    box-shadow: none;
+}
+
+/* background-color: rgba(0, 0, 0, 0.04); */
+.main-content .ck.ck-button:not(.ck-disabled):hover,
+a.ck.ck-button:not(.ck-disabled):hover {
+    cursor: pointer;
+}
+
+.dark .main-content .ck.ck-button:not(.ck-disabled):hover,
+a.ck.ck-button:not(.ck-disabled):hover {
+    color: var(--bg-trade);
+}
+
+.dark .main-content .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    background-color: var(--bg-input-dark);
+}
+
+.dark .main-content .ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable,
+.ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+    border: 1px solid var(--ck-color-base-border);
+}

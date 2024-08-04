@@ -1,0 +1,46 @@
+/* .container-content-search-advanced-item .MuiAutocomplete-inputRoot{
+    margin-top: 13px !important;
+} */
+/* .container-content-search-advanced-item .css-wb57ya-MuiFormControl-root-MuiTextField-root {
+    width: 93% !important;
+} */
+
+.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+    color: #f1f1f1;
+}
+
+
+.dark .container-content-search-advanced .container-content-search-advanced-item .MuiFormControl-root .MuiInputBase-root{
+    background-color: #3A3B3C;
+    color: #f1f1f1 !important;
+}
+.dark .container-content-search-advanced .container-content-search-advanced-item .MuiFormControl-root .MuiInputBase-root::placeholder{
+    color:#0693e3;
+}
+.dark .search-content-admin .container-content-search-advanced .container-content-search-advanced-item .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+    color: #8A8D91;
+}
+.dark .css-i4bv87-MuiSvgIcon-root{
+    color: #f1f1f1
+}
+.dark .css-1glvl0p-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator{
+    color: #f1f1f1
+}
+.dark .css-1glvl0p-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator:hover{
+    color:#0F0F0F;
+}
+.dark .container-content-search-advanced-item .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root{
+    color: #0693e3;
+}
+.dark .MuiAutocomplete-listbox{
+    background-color: var(--bg-input-dark);
+    color: var(--font-color-dark);
+}
+.dark .MuiAutocomplete-listbox .MuiAutocomplete-option:hover{
+    background-color: rgba(0, 0, 0, 0.04);
+    color: var(--bg-trade);
+}
+.dark .MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected="true"]{
+    color: var(--bg-trade);
+    background-color: rgba(0, 0, 0, 0.04) !important;
+}

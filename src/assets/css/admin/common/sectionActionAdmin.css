@@ -1,0 +1,48 @@
+
+
+.main-content-action {
+    background-color: white;
+    height: auto;
+    margin: 0 15px;
+    border-radius: 5px;
+}
+.dark .main-content-action{
+    background-color: #242526;
+}
+.main-content-action .container-content-action .row {
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    height: 70px;
+}
+
+.container-content-action button {
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    padding: 0 15px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+    background-color: #0693e3;
+}
+
+.container-content-action button:focus {
+    outline: none;
+}
+
+.container-content-action .nav-item button:hover {
+    background-color: #0471af;
+}
+
+@media only screen and (max-width: 768px) {
+    .main-content-action .container-content-action .row {
+        height: 50px;
+        flex-wrap: nowrap;
+    }
+    .container-content-action button {
+        height: 30px;
+        padding: 0px 5px;
+        font-size: 0.9em;
+    }
+}

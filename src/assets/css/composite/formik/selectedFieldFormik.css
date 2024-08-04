@@ -1,0 +1,32 @@
+.dark .main-content-form .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select{
+    color: var(--font-color-dark) !important;
+}
+.dark .MuiSelect-icon{
+    color: var(--font-color-dark) !important;
+}
+.main-content-form .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select{
+    color: var(--font-color-light) !important;
+}
+.main-content-form.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+    border: none;
+}
+.css-1rcndfs-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+    line-height: 1.65em !important;
+}
+.main-content-form .MuiFormControl-root:focus{
+    border-color: #80bdff !important;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25) !important;
+}
+.main-content-form .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border: 1px solid #ced4da !important;
+}
+.MuiFormControl-root .form-control{
+    border: 0 !important;
+}
+.main-content-form  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: 0;
+}
+.MuiPopover-root .dark {
+    background-color: var(--bg-input-dark);
+    color: var(--font-color-dark);
+}

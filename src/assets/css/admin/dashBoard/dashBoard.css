@@ -1,0 +1,78 @@
+.container-dashboard{
+    padding: 10px;
+}
+.container-dashboard .row{
+    margin: 0;
+}
+.container-dashboard .card{
+    border: none;
+    margin-bottom: 28px;
+}
+.container-dashboard .dashboard-section .card .dashboard-avatar-content{
+    width: 35px;
+    height: 35px;
+    background-color: green;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-right: 15%;
+}
+.container-dashboard .dashboard-section .col-12.col-sm-6.col-md-3:first-of-type{
+    padding-left: 5px;
+}
+.container-dashboard .dashboard-section .col-12.col-sm-6.col-md-3:last-of-type{
+    padding-right: 5px;
+}
+.container-dashboard .dashboard-section .card .card-body .bg-purple{
+    background-color: #7367F0;
+    color: white;
+}
+.container-dashboard .dashboard-section .card .card-body .bg-blue{
+    background-color: #00CFE8;
+    color: white;
+}
+.container-dashboard .dashboard-section .card .card-body .bg-orange{
+    background-color: #FB5533;
+    color: white;
+}
+.container-dashboard .dashboard-section .card .card-body .bg-green{
+    background-color: #27A600;
+    color: white;
+}
+ .dashboard-section .card .card-body .dashboard-title-content .dashboard-title-content-head{
+     font-size: 0.8em;
+     font-weight: 700;
+ }
+.dashboard-section .card .card-body .dashboard-title-content .dashboard-title-content-bottom{
+    font-size: 0.6em;
+    font-weight: 600;
+    color: #787486;
+}
+.dashboard-statistic .dashboard-statistic-total-sale-title{
+    font-weight: 500;
+    font-size: 1.2em;
+}
+.dashboard-statistic .dashboard-statistic-total-sale-date input{
+    border: 1px solid #787486;
+    border-radius: 5px;
+}
+.dashboard-statistic .dashboard-statistic-total-sale-date input:focus{
+    outline: none;
+}
+.dashboard-statistic .dashboard-item-total-sale-title{
+    font-weight: 500;
+    font-size: 0.9em;
+}
+.dashboard-statistic .dashboard-item-total-sale-date input{
+    border: 1px solid #787486;
+    border-radius: 5px;
+}
+.dashboard-statistic .dashboard-item-total-sale-date input:focus{
+    outline: none;
+}
+.container-dashboard .dashboard-feedback-customer .card-header{
+    font-weight: 500;
+    font-size: 1.2em;
+}

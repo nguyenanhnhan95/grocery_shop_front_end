@@ -1,0 +1,119 @@
+.header .container-header .drop-menu .category-item {
+    font-size: 1.2em !important;
+    font-weight: 600;
+    margin: 0 15px;
+    position: relative;
+    padding: 0 10px;
+}
+
+.header .container-header .drop-menu .category-item:hover {
+    color: #0693e3;
+    cursor: pointer;
+}
+
+.header .container-header .header-menu-pc {
+    display: flex;
+    width: 80vw;
+}
+
+.header .container-header .drop-menu .category-item:after {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6b7b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-right'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.5rem;
+    height: 1.1rem;
+    width: 1.1rem;
+    display: inline-block;
+    position: absolute;
+    right: -21px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    /* Center vertically and set initial rotation */
+    transition: transform 0.2s ease-out;
+    /* Smooth transition for transform property */
+}
+
+.header .container-header .drop-menu .category-item:hover:after {
+    transform: translateY(-50%) rotate(90deg);
+    /* Rotate 90 degrees on hover */
+}
+
+.header .container-header .drop-menu .dropdown .dropdown-menu {
+    font-size: 0.9em !important;
+    font-weight: bold !important;
+    margin-top: 0;
+    border-top-right-radius: unset;
+    border-top-left-radius: unset;
+    left: -20px;
+    top: 90px;
+    padding: 0;
+}
+
+.header .container-header .drop-menu .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.header .container-header .drop-menu .dropdown .dropdown-menu  {
+    background-color: #FFFFFF;
+    color: #6B6B6B;
+    font-weight: 500;
+}
+.dark .header .container-header .drop-menu .dropdown .dropdown-menu .dropdown-item{
+    background-color: #0F0F0F;
+    color: #f1f1f1;
+}
+.header .container-header .drop-menu .dropdown .dropdown-menu .dropdown-item:hover {
+    color: #0693e3;
+    -webkit-transition: -webkit-transform .25s ease;
+    transition: -webkit-transform .25s ease;
+    transition: transform .25s ease;
+    transition: transform .25s ease, -webkit-transform .25s ease;
+    -webkit-transform: translateX(3px);
+    -ms-transform: translateX(3px);
+    transform: translateX(3px);
+    background-color: transparent;
+}
+
+.header .container-header .drop-menu .dropdown .dropdown-menu .dropdown-item i {
+    margin-right: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .header .container-header .header-menu-pc {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .header .container-header .header-menu-pc {
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+    
+
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1366px) {
+    .header-logo img {
+        width: 165px;
+    }
+
+    .header .container-header .header-search .header-search-show {
+        margin-right: 10px;
+    }
+    
+}

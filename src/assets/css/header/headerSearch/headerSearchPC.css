@@ -1,0 +1,110 @@
+.header .container-header .header-search {
+    position: relative;
+    height: 35px;
+}
+
+.header .header-search-input .form-control:focus {
+    border-color: #80bdff;
+}
+
+.header .container-header .header-search .header-search-show {
+    font-size: 2em;
+}
+
+.header-search .header-search-input {
+    display: none;
+    position: absolute;
+    right: 19px;
+    top: 63px;
+    height: 37px;
+    width: 270px;
+    z-index: 1;
+    transition: height 0.5s ease;
+    overflow: hidden;
+    animation: headerInputSearch ease-in 0.3s;
+}
+
+@keyframes headerInputSearch {
+    from {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+}
+
+.header-search .header-search-input .header-search-input-enter {
+    width: 60vw;
+    height: 35px;
+    box-sizing: border-box;
+    border: 1px solid #78909C;
+}
+
+.header-search .header-search-input .header-search-input-enter:focus {
+    outline: none;
+}
+
+.header-search .header-search-input .input-group-append .header-search-input-press {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+}
+
+.header-search .header-search-show:hover {
+    cursor: pointer;
+}
+
+.header-search .header-search-input .header-search-input-press {
+    height: 35px;
+    box-sizing: border-box;
+    background-color: #78909C;
+}
+
+.header-search .header-search-input .header-search-input-press:focus {
+    outline: none;
+}
+
+.header-search .header-search-input .header-search-input-press i {
+    color: white;
+    padding: 15px 10px;
+}
+
+.header-search .header-search-input .header-search-input-press i:hover {
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header .container-header .header-search {
+        display: none ;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .header .header-search {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+    .header-search {
+        display: block;
+    }
+
+    .header-search .header-search-input {
+        top: 62px;
+    }
+}

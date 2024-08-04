@@ -1,0 +1,88 @@
+.main-content-action-save {
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+    
+}
+.main-content-action-save .container-content-action-save{
+    margin-top: 100px;
+}
+.main-content-action-save .container-content-action-save {
+    height: auto;
+}
+.dark .main-content-action-save .container-content-action-save{
+    background-color: var(--bg-box-dark);
+}
+.main-content-action-save .container-content-action-save .d-flex {
+    height: 80px;
+}
+
+.main-content-action-save .container-content-action-save .content-action-save-button {
+    margin-right: 20px;
+    border-radius: 5px;
+    height: 45px;
+    width: auto;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #0693e3;
+    padding: 5px 13px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.main-content-action-save .container-content-action-save .content-action-save-button:hover {
+    background-color: #0672af;
+}
+
+.main-content-action-save .container-content-action-save .content-action-save-button i {
+    margin-right: 5px;
+}
+@media only screen and (max-width:768px) {
+    .main-content-action-save .container-content-action-save {
+        margin-top: 78px;
+    }
+    .main-content-action-save .container-content-action-save .content-action-save-button {
+        margin-right: 10px;
+        border-radius: 5px;
+        height: 30px;
+        font-size: 0.7em;
+    }
+    .main-content-action-save .container-content-action-save .d-flex {
+        height: 50px;
+    }
+}
+@media only screen and (min-width:768px) and (max-width: 1024px) {
+    .main-content-action-save .container-content-action-save .d-flex {
+        font-size: 0.8em;
+    }
+    .main-content-action-save .container-content-action-save {
+        margin-top: 86px;
+    }
+    .main-content-action-save .container-content-action-save .content-action-save-button {
+        margin-right: 10px;
+        border-radius: 5px;
+        height: 35px;
+        width: auto;
+        outline: none;
+        border: none;
+        color: white;
+        background-color: #0693e3;
+        padding: 5px 13px;
+        font-size: 1em;
+        font-weight: 500;
+    }
+    .main-content-action-save .container-content-action-save .d-flex {
+        height: 60px;
+    }
+}
+@media only screen and (min-width:1024px) and (max-width: 1280px){
+    .main-content-action-save .container-content-action-save {
+        margin-top: 88px;
+    }
+}
+@media only screen and (min-width:1280px) and (max-width: 1366px){
+    .main-content-action-save .container-content-action-save {
+        margin-top: 92px;
+    }
+}
