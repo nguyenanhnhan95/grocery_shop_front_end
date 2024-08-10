@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../../../assets/css/admin/common/saveAction.css"
 import { useDispatch, useSelector } from "react-redux";
-import { actionSave, resetPage } from "../../../redux/slice/admin/action/actionAdmin";
+import { actionSave } from "../../../redux/slice/admin/action/actionAdmin";
 import { memo } from "react";
 function SaveAction(props) {
   const { onClickAction } = useSelector((state) => state.actionAdmin)
@@ -9,12 +9,10 @@ function SaveAction(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const handleSaveClose = (close) => {
-    dispatch(resetPage())
-    dispatch(actionSave({ close: close }))
     onClickAction.buttonSave.click()
+    dispatch(actionSave({ close: close }))
   }
   const handleClose = () => {
-    dispatch(resetPage())
     navigate(`/admin/${url}`)
   }
   return (

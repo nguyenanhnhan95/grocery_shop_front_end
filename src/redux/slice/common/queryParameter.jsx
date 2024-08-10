@@ -5,7 +5,13 @@ export const queryParameterSlice = createSlice({
     name: 'queryParameterSlice',
     initialState: {
         initialQueryParameter: null,
-        queryParameter: null
+        queryParameter: {
+            size: 5,
+            page: 0,
+            criterias: {
+                
+            }
+        }
     },
     reducers: {
         handleQueryParameter: (state, action) => {

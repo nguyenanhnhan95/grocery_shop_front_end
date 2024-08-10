@@ -2,16 +2,16 @@ import { useCallback, useState } from "react";
 import { createHeader } from "../../../utils/commonUtils";
 import axios from "axios";
 import { toastSuccess } from "../../../config/toast";
-import { validation } from "../../../utils/validation";
 
-export const useFetchSave = () => {
+export const useFetchSaveFile = () => {
     const [isPending, setIsPending] = useState(false);
     const [code, setCode] = useState(null);
-    const fetchSave = useCallback(async (url, data, setErrors,handleErrorsMessage) => {
+    const fetchSaveFile = useCallback(async (url,formData, data, setErrors) => {
         setIsPending(true);
         try {
             console.log(url)
-            const response = await axios.post(url, data, createHeader());
+            console.log(formData)
+            const response = await axios.post(url,formData, data, createHeader());
             console.log(response)
             if (response.data?.code === 200) {
                 toastSuccess(response.data.message)
@@ -22,12 +22,7 @@ export const useFetchSave = () => {
         } catch (error) {
             console.log(error)
             if (error.response.data.code === 4013) {
-                if(validation.checkFunction(handleErrorsMessage)){
-                    handleErrorsMessage(error.response.data.result,setErrors);
-                }else{
-                    setErrors(error.response.data.result)
-                }
-                
+                setErrors(error.response.data.result);
             }
 
         } finally {
@@ -35,5 +30,5 @@ export const useFetchSave = () => {
         }
     }, []);
 
-    return { fetchSave, isPending, code };
+    return { fetchSaveFile, isPending, code };
 };

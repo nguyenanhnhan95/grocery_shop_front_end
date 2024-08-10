@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage, } from "formik";
 import * as yup from "yup";
 import "../../../../assets/css/admin/productManage/variationOption/contentForm.css"
+import "../../../../assets/css/admin/skeletonLoading/contentForm.css"
 import { memo, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SelectField } from "../../../composite/formik/SelectedField";
@@ -33,12 +34,13 @@ function ContentForm(props) {
         }
     }, [fetchByField, id, dispatch])
     const handleDataToServer = (data, setErrors) => {
-        console.log(data)
-        if (id !== undefined && validation.isNumber(id)) {
-            fetchEdit(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`, data, setErrors)
-        } else {
-            console.log(data)
-            fetchSave(createActionURL(url).instant(), data, setErrors)
+        if (isPendingSave !== true && isPendingEdit !== true) {
+            if (id !== undefined && validation.isNumber(id)) {
+                fetchEdit(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`, data, setErrors)
+            } else {
+                console.log(data)
+                fetchSave(createActionURL(url).instant(), data, setErrors)
+            }
         }
     }
     useEffect(() => {
@@ -49,20 +51,22 @@ function ContentForm(props) {
         }
     }, [codeSave, codeEdit, close, navigate, url]);
     return (
-        <div className={isPendingVariations && LOADING_CONTENT_FORM}>
+        <div className={isPendingVariations || isPendingInitialEdit && LOADING_CONTENT_FORM}>
             <div className="main-content-form-variation main-content-form " >
                 <div className="card card-form-variation">
                     <div className="card-header">
-                        Thông tin giá trị tùy chọn
+                        <div className="card-header-title">
+                            Thông tin giá trị tùy chọn
+                        </div>
                     </div>
                     <Formik
                         enableReinitialize={true}
                         initialValues={{
                             name: initialEdit?.name ?? initialForm.name,
-                            description:initialEdit?.description ?? initialForm.description,
+                            description: initialEdit?.description ?? initialForm.description,
                             idVariation: initialEdit?.variation?.id ?? initialForm.variation.id,
                         }}
-                        validationSchema={yup.object({
+                        validationSchema={yup.object().shape({
                             name: yup.string().required("Chưa nhập tên :"),
                             idVariation: yup.string().required("Chưa nhập Option :")
                                 .matches(/^\d+\.?\d*$/, "Hệ thống dữ liệu nhập sai :")
@@ -79,7 +83,7 @@ function ContentForm(props) {
                                             <label htmlFor="name">Tên</label>
                                         </div>
                                         <div className="card-body-input">
-                                            <Field name="name" className="form-control" type="text" autoComplete="off"/>
+                                            <Field name="name" className="form-control" type="text" autoComplete="off" />
                                         </div>
                                         <ErrorMessage className="form-text form-error" name='name' component='div' />
                                     </div>

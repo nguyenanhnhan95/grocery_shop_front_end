@@ -153,6 +153,17 @@
         padding: 0;
     }
 }
+@media only screen and (min-width:768px) and (max-width: 1024px){
+    .search-content-admin .container-content-search .container-content-search-name input {
+        width: 80%;
+    }
+    .search-content-admin .container-content-search .container-content-option-advanced button{
+        margin-top: 0;
+    }
+    .search-content-admin .container-content-search .container-content-search-name button {
+        width: 15%;
+    }
+}
 @media only screen and (min-width: 1366px) {
     .search-content-admin .container-content-search-advanced {
         max-height: 0;

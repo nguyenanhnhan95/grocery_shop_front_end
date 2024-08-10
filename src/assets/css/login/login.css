@@ -91,6 +91,7 @@
 }
 .login .login-form .card-login .card-body form .form-check-label {
     font-size: 0.8em;
+    margin-left: 10px;
 }
 
 .login .login-form .card-login .card-body form .form-submit {
@@ -164,6 +165,12 @@
 }
 .dark .login .login-content .form-login .form-login-input input{
     background-color: var(--bg-input-dark);
+    color: var(--font-color-dark);
+}
+.dark .login .login-content .form-login .form-login-input input::placeholder{
+    color: var(--font-color-dark);
+}
+.dark .login .login-form .card-login .card-body form .form-submit{
     color: var(--font-color-dark);
 }
 @media only screen and (max-width: 768px) {

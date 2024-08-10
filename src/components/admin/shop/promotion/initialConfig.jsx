@@ -22,7 +22,7 @@ export const sectionActions = {
         }
     }
 }
-export const initialForm = { name: "", code: "", description: "", discountRate: 0, startDate: new Date(), endDate: null }
+export const initialForm = { name: "", code: "", description: "", discountRate: undefined, startDate: new Date(), endDate: null }
 export const optionSearch = {
     searchAdvanced: {
         style: {
@@ -106,7 +106,7 @@ export const optionActions = [
     }
 ]
 export const queryParameterInitial = {
-    size: 2,
+    size: 5,
     page: 0,
     criterias: {
         name: ""

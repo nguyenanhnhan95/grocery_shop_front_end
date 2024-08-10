@@ -1,0 +1,31 @@
+.loading-td-image{
+    position: relative;
+    /* overflow: hidden; */
+}
+.loading-td-image::before{
+    background-color: var(--font-icon-dark);
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    animation: skeletonLoading 2s linear infinite alternate;
+}
+.contain-td-image img{
+    height: 60px;
+    width: 60px;
+}
+@keyframes skeletonLoading {
+    0% {
+        /* left: 5%; */
+        background-color: var(--font-icon-dark);
+    }
+
+    100% {
+        /* left: 75%; */
+        background-color: var(--bg-light);
+    }
+}

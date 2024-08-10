@@ -9,60 +9,48 @@ export const columnProducts = [
     {
         name: "STT",
         style: {
-            'min-width': "10px"
-        }
-    },
-    {
-        name: "HÌNH ẢNH",
-        style: {
-            'min-width': "95px"
+            'width': "40px"
         }
     },
     {
         name: "Tên Sản Phẩm",
         style: {
-            'min-width': "250px"
+            'width': "200px"
         }
     },
     {
-        name: "Mã Sản Phẩm",
+        name: "HÌNH ẢNH",
         style: {
-            'min-width': "250px"
+            'width': "150px"
+        }
+    },
+    {
+        name: "Thương hiệu",
+        style: {
+            'width': "150px"
         }
     },
     {
         name: "Loại Sản Phẩm",
         style: {
-            'min-width': "150px"
+            'width': "150px"
         }
     },
     {
-        name: "Khuyến Mãi",
+        name: "Mô tả sản phẩm",
         style: {
-            'min-width': "150px"
-        }
-    },
-    {
-        name: "Giá Sản Phẩm",
-        style: {
-            'min-width': "95px"
-        }
-    },
-    {
-        name: "Giá Bán",
-        style: {
-            'min-width': "95px"
+            'width': "180px"
         }
     }
     ,
     {
         name: "",
         style: {
-            'min-width': "150px"
+            'width': "150px"
         }
     }
 ]
-export const productsAction = {
+export const sectionActions = {
     add: {
         icon: "fa-solid fa-plus fa-sm pr-1",
         name: "Thêm mới",
@@ -78,7 +66,7 @@ export const productsAction = {
         }
     }
 }
-export const productsSearch = {
+export const optionSearch = {
     searchAdvanced: {
         style: {
             display: "block"
@@ -105,14 +93,14 @@ export const initialForm =
     code: "",
     description: "",
     sky: "",
-    qtyInStock: 0,
+    qtyInStock: null,
     price: 0,
     promotions: null,
     images: [],
     ProductCategory: null,
     Variation:null
 }
-export const dataActions = [
+export const optionActions = [
     {
         name: "Xem",
         icon: "fa-solid fa-eye mr-2"
@@ -126,7 +114,7 @@ export const dataActions = [
         icon: "fa-regular fa-trash-can mr-2"
     }
 ]
-export const queryParameter = {
+export const queryParameterInitial = {
     size: 5,
     page: 0,
     criterias: {

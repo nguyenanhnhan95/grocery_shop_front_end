@@ -91,7 +91,6 @@ store.injectReducer = (action, key, asyncReducer) => {
             reducerManager.remove(key, asyncReducer);
             break;
         case actionReducerStore.clear:
-            console.log("áda")
             reducerManager.clear()
             break;
         default:

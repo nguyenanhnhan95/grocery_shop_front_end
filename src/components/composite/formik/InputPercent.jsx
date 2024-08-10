@@ -1,8 +1,8 @@
 import { useField, useFormikContext } from "formik";
-import { useEffect, useMemo, useState } from "react";
+import {  useState } from "react";
 import { EMPTY_STRING } from "../../../utils/commonConstants";
 import { validation } from "../../../utils/validation";
-import { debounce, InputAdornment, OutlinedInput } from "@mui/material";
+import { InputAdornment, OutlinedInput } from "@mui/material";
 import { removeStartZero } from "../../../utils/commonUtils";
 
 export const InputPercent = ({ ...props }) => {
@@ -29,9 +29,7 @@ export const InputPercent = ({ ...props }) => {
         }
 
     }
-    useEffect(() => {
-
-    }, [])
+    
     // const debouncedHandleEnterData = useMemo(() => debounce(handleEnterFiled, 500), [handleEnterFiled]);
     return (
         <>

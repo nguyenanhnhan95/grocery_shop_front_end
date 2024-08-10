@@ -24,7 +24,6 @@ export const checkFile = ( typeFile, file) => {
     
 };
 export const getObject = async (keyName) => {
-    try {
         const response = await s3Client.send(new GetObjectCommand({
             Bucket: connectAWSParams.bucketName,
             Key: keyName,
@@ -36,9 +35,6 @@ export const getObject = async (keyName) => {
         var blobUrl = URL.createObjectURL(blob)
         console.log(response.ContentType)
         return blobUrl;
-    } catch (error) {
-        console.error(error)
-    }
 }
 export const putObject = async (keyName, body) => {
     try {

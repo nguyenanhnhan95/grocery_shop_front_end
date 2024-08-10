@@ -2,10 +2,10 @@
     background-color: white;
     margin: 15px;
     /*border-radius: 0 5px;*/
-    overflow: hidden;
 }
 
 .main-content-data .container-content-data {
+    padding: 0;
     overflow: auto;
 }
 
@@ -22,10 +22,6 @@
     cursor: pointer;
 }
 
-.main-content-data .container-content-data {
-    padding: 0;
-    overflow: auto;
-}
 
 .main-content-data .container-content-data .table .table-thead {
     background-color: #0693e3;
@@ -49,6 +45,9 @@
     top: 0; /* Stick to the top of the container */
     background-color: #fff; /* Ensure the background color */
 }
+.main-content-data .container-content-data .table tbody .tr-product-manage{
+    height: 80px;
+}
 .main-content-data .tscrolls th:nth-child(1),
 .main-content-data .tscrolls td:nth-child(1) {
     position: sticky;
@@ -58,7 +57,7 @@
 .main-content-data .tscrolls th:nth-child(1){
     background-color: var(--bg-trade);
 }
-.main-content-data .tscrolls td:nth-child(1){
+.dark .main-content-data .tscrolls td:nth-child(1){
     background-color: var(--bg-box-dark);
 }
 .main-content-data .container-content-data .table tbody tr td:last-child {

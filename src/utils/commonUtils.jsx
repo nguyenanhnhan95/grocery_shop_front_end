@@ -188,7 +188,6 @@ export const changeScreenTheme = (theme) => {
 
 }
 export const getScreenThem = (screen) => {
-    console.log(screen)
     return screen === SCREEN_THEME_MODE.SCREEN_DARK.alias ? SCREEN_DARK : SCREEN_LIGHT;
 }
 /**

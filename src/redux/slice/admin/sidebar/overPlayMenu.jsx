@@ -8,7 +8,6 @@ export const overPlayMenuMainSlice = createSlice({
     },
     reducers: {
       onClickHandleOverPlay:(state,action)=>{
-        console.log(action)
         state.open=action?.payload
       },
       onClickMenuAdminRef:(state,action)=>{

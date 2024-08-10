@@ -27,7 +27,6 @@ function DarkUserModel() {
             console.log(error)
         }
     }
-    console.log(profile )
     return (
         <div className={`header-user-modal-item-dark ${show ? `show` : ``}`}>
             <div className="header-user-modal-item parent" onClick={handleShowMode}>

@@ -1,19 +1,25 @@
 import { memo, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { getScreenThem } from "../../../utils/commonUtils";
-import { AGREE, NOTIFICATION, VARIANT_OUTLINE_WANING } from "../../../utils/commonConstants";
+import { AGREE, DOMAIN_CLIENT, NOTIFICATION, VARIANT_OUTLINE_WANING } from "../../../utils/commonConstants";
 import "../../../assets/css/composite/modal/commonModal.css"
 import "../../../assets/css/composite/modal/notificationModal.css"
 import { useDispatch, useSelector } from "react-redux";
 import { actionCloseNotificationModal } from "../../../redux/action/modal/actionNotificationModal";
 import { handleNotificationModal } from "../../../redux/slice/modal/notificationModal";
+import { validation } from "../../../utils/validation";
 function NotificationModal() {
     const dispatch = useDispatch();
-    const {show,message} = useSelector((state)=>state.notificationModal)
+    const { show, message } = useSelector((state) => state.notificationModal)
     const { screenMode } = useSelector((state) => state.profile)
-    const handleRedirectBefore=()=>{
+    const handleRedirectBefore = () => {
         dispatch(handleNotificationModal(actionCloseNotificationModal()))
-        window.history.back();
+        if (validation.isString(document.referrer) && document.referrer.includes(DOMAIN_CLIENT)) {
+            window.location.href=DOMAIN_CLIENT;
+        } else {
+            window.history.back();
+        }
+
     }
 
     return (
@@ -23,7 +29,7 @@ function NotificationModal() {
             </Modal.Header>
             <Modal.Body>{message}</Modal.Body>
             <Modal.Footer >
-                <Button variant={VARIANT_OUTLINE_WANING} onClick={()=>handleRedirectBefore()}>
+                <Button variant={VARIANT_OUTLINE_WANING} onClick={() => handleRedirectBefore()}>
                     {AGREE}
                 </Button>
             </Modal.Footer>

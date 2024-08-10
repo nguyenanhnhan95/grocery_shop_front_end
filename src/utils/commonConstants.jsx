@@ -47,12 +47,16 @@ export const THIS_FILED_SELECT_ITEM_CANNOT_EMPTY = "Vui lòng lựa chọn thôn
 export const THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY = "Vui lòng tải dữ liệu ."
 export const THIS_FILE_SIZE_TOO_LARGE = "File quá lớn ."
 export const THIS_FILE_EXISTING ="File này đã tồn tại ."
-export const THIS_FILED_ENTER_CORRECT="Bạn có chắc chắn nhập đúng trường này không ."
+export const THIS_FIELD_VALUE_NOT_FORMAT="Trường này nhập giá trị không phù hợp ."
 export const THIS_FILED_ENTER_LARGE="Bạn nhập trường này quá dài ."
 export const THIS_FILED_ENTER_SMALL="Bạn nhập trường này quá ngắn ."
 export const THIS_FILE_NOT_FORMAT="File không đúng định dạng ."
 export const THIS_FILED_MUST_POSITIVE="Bạn nhập trường này số dương ."
+export const THIS_FILED_GREATER_THAN_THOUSAND="Bạn nhập trường này trên 1000 ₫ ."
+export const THIS_FILED_MONEY_TOO_LARGE="Bạn nhập số tiền quá lớn ."
 export const THIS_ERROR_TECHNICAL="Đã xảy ra lỗi. Việc này có thể là do lỗi kỹ thuật và chúng tôi đang khắc phục rồi"
+export const THIS_FIELD_DATE_GREATER_EQUAL_DATE_CURRENT="Phải lớn hơn hoặc bằng ngày hiện tại .";
+export const THIS_FIELD_CODE_NUMBER_NOT_FORMAT="Nhập mã code không phù hợp: ex :012345678"
 /**
  * CSS
  */

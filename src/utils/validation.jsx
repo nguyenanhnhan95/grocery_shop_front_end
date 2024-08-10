@@ -1,3 +1,4 @@
+import { isString } from "formik";
 import { ALLOW_ARRAY_IMAGES } from "./commonConstants";
 
 export const validation = {
@@ -27,6 +28,10 @@ export const validation = {
         const extension = str.split('.').pop().toLowerCase();
         return ALLOW_ARRAY_IMAGES.indexOf(extension) !== -1;
     },
+    isString: function (str){
+        return (typeof str === 'string' || str instanceof String)?true:false; 
+    }
+    ,
     checkJsonString: function (str) {
         try {
             JSON.parse(str);
@@ -61,7 +66,26 @@ export const validation = {
         }
         return true;
     },
-    checkFunction: function (func){
+    checkFunction: function (func) {
         return typeof func === 'function';
+    },
+    isNumberKey: function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    },
+    checkDateGraterThenDateCurrent: function (date) {
+        if(date instanceof Date && !isNaN(date)){
+            const dateCurrent = new Date();
+            if(dateCurrent.getFullYear()===date.getFullYear() && dateCurrent.getDate()===date.getDate()){
+                return true;
+            }
+        }
+        return false;
     }
-};   
+};
+export const regex = {
+    string :/^[A-Za-zÀÁÂÃÈÊÌÒÓÔÙĂẰẲẴẸÊỄÌỌÔÙƯỨỲÝđĐâàầặêệễôươ\s]+$/,
+    number : /^\d+\.?\d*$/
+}   

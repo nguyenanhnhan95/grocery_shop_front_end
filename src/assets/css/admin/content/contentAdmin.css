@@ -34,6 +34,7 @@
     min-height: 50px;
     display: flex;
     align-items: center;
+    padding-left: 0.2rem;
 }
 .dark .main-content,.dark .main-content .main-content-form{
     background-color: #0F0F0F;
@@ -151,5 +152,9 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .main-content .container-body-admin {
         margin-top: 80px;
+    }
+    .main-content  .container-body-admin .main-content-title{
+        font-size: 1.8rem;
+        font-weight: 500;
     }
 }

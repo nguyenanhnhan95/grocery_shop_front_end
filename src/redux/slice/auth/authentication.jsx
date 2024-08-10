@@ -6,9 +6,7 @@ import { getToken } from "../../../utils/commonUtils";
 
 export const fetchRefreshToken = createAsyncThunk('auth/refresh-token', async (_, { dispatch, rejectWithValue }) => {
     try {
-        console.log(localStorage.getItem(CONST_LOGIN.ACCESS_TOKEN))
         const response = await axios.get(`${REFRESH_TOKEN_API}${getToken()}`);
-        console.log(response.data.code)
         if (response?.data?.code === 200) {
             console.log(response.data.result)
             localStorage.setItem(CONST_LOGIN.ACCESS_TOKEN, response.data.result)

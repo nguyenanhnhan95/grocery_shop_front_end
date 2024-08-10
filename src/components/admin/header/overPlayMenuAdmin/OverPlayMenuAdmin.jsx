@@ -9,7 +9,6 @@ function OverPlayMenuAdmin() {
         dispatch(onClickHandleOverPlay(open))
     }
     const clickMenuAdminRef = useSelector(state => state.overPlayMenuMain.clickMenuAdminRef)
-    console.log(clickMenuAdminRef)
     useEffect(() => {
         function handleClickOutside(event) {
             try {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import "../../../assets/css/composite/formik/uploadImg.css"
 import { checkFile } from "../../../config/S3Config";
 import { ALLOW_IMAGES_File, FILE_IMAGE } from "../../../utils/commonConstants";
@@ -17,6 +17,8 @@ function UploadImg({ ...props }) {
     useEffect(() => {
         initialFileImages();
     }, [])
+    console.log(field)
+    console.log(files)
     const initialFileImages = useCallback(() => {
         // try {
         //     if (field?.value?.length > 0) {
@@ -34,9 +36,9 @@ function UploadImg({ ...props }) {
     const handleFileUpload = () => {
         fileUploadRef.current.click();
     };
-    console.log(field)
+   
     const handleFileChange = (event) => {
-        const file = checkFile(FILE_IMAGE, event.target.files[0]);
+        const file = event.target.files[0];
         if (file && file instanceof File) {
             if(multi){
                 if(files.indexOf(file)){
@@ -65,7 +67,7 @@ function UploadImg({ ...props }) {
         setFieldValue(field.name,files );
     }, [files])
 
-
+   
 
     return (
         <div className="card-upload-images">
@@ -94,4 +96,4 @@ function UploadImg({ ...props }) {
         </div>
     )
 }
-export default UploadImg;
+export default memo(UploadImg);

@@ -9,7 +9,6 @@ export const getSidebarMenusAdmin = createAsyncThunk('getSidebarMenus',
       const response = await axios.get(LINK_MENU.adminSide, createHeader());
       return response.data
     } catch (error) {
-      console.log(error.response.status)
       handleExceptionView({ code: error.response.status })
     } 
   }
@@ -17,11 +16,9 @@ export const getSidebarMenusAdmin = createAsyncThunk('getSidebarMenus',
 export const getMenuByPathAdmin = createAsyncThunk('/menu/admin-side/path',
   async (path, { dispatch }) => {
     try {
-      console.log(`${LINK_MENU.adminSidePath}${REQUEST_PARAM_PATH}${path}`)
       const response = await axios.get(`${LINK_MENU.adminSidePath}${REQUEST_PARAM_PATH}${path}`, createHeader());
       return response.data
     } catch (error) {
-      console.log(error.response.status)
       handleExceptionView({ code: error.response.status })
     } 
   }
@@ -38,7 +35,6 @@ export const menuContentMainSlice = createSlice({
   },
   reducers: {
     transferMenuToContentMain: (state, action) => {
-      console.log(action)
       state.menu = action?.payload
     }
   },
@@ -55,7 +51,6 @@ export const menuContentMainSlice = createSlice({
         state.error = null;
         state.statusMenus = FETCH_MENUS_ADMIN.FETCH_MENUS_ADMIN_SUCCESS;
         state.menus = handleAssignData(action).updateArrayList();
-        console.log(loadMenuParentActive(state.menus))
         state.menuParentActive=loadMenuParentActive(state.menus)
       })
     builder.addCase(getMenuByPathAdmin.pending, (state) => {
