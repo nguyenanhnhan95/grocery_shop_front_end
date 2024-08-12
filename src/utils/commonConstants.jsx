@@ -24,10 +24,13 @@ export const EXISTING = "EXISTING";
 export const SHOW = "show";
 export const TYPE_STRING = "string";
 export const LOGIN_SESSION_EXPIRE_DATE = "Phiên đăng nhập của bạn đã hêt hạn ."
-export const LOADING_CONTENT_FORM = "loading-content-form"
 export const TYPE_INPUT_NUMBER="number";
 export const TYPE_INPUT_TEXT="text";
-
+/**
+ * STATUS LOADING
+ */
+export const LOADING_CONTENT_FORM = "loading-content-form";
+export const LOADING_LIST_TABLE = "loading-list-table";
 /**
  * ERROR MESSAGE
  */

@@ -10,9 +10,7 @@ export const useFetchSave = () => {
     const fetchSave = useCallback(async (url, data, setErrors,handleErrorsMessage) => {
         setIsPending(true);
         try {
-            console.log(url)
             const response = await axios.post(url, data, createHeader());
-            console.log(response)
             if (response.data?.code === 200) {
                 toastSuccess(response.data.message)
             }

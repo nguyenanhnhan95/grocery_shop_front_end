@@ -20,6 +20,7 @@ function LoginForm() {
                 handleRedirectAdmin()
             }
         } catch (error) {
+            console.log(error)
             setErrors(error.result)
         }
     }

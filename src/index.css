@@ -93,3 +93,15 @@ code {
 .ck-powered-by {
   display: none;
 }
+
+@keyframes skeletonLoading {
+  0% {
+      /* left: 5%; */
+      background-color: var(--font-icon-dark);
+  }
+
+  100% {
+      /* left: 75%; */
+      background-color: var(--bg-light);
+  }
+}

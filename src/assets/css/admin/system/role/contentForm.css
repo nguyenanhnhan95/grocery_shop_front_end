@@ -1,0 +1,30 @@
+.main-content-form{
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+}
+.main-content-form .card-update-permission{
+    margin-left: auto;
+}
+.main-content-form-role .row .card {
+    padding: 0;
+}
+.main-content-form .card-update-permission .table{
+    --bs-table-bg: none;
+    --bs-table-color: none;
+    --bs-table-hover-color: none;
+}
+.main-content-form .card-update-permission .table .table-thead{
+    background-color: #0693e3;
+    color: white;
+}
+.main-content-form .card-update-permission .table .table-thead tr > th {
+    border-bottom-width: 0;
+
+}
+.main-content-form .card-update-permission .table tbody tr .permission-scope{
+    border-bottom-width: 0;
+}
+.main-content-form .card-update-permission .table tr .permission-scope-check{
+    padding: 0.72rem 1rem;
+}

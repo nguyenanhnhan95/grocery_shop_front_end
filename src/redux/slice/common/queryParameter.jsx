@@ -30,7 +30,7 @@ export const queryParameterSlice = createSlice({
             }
         },
         createQueryParameter: (state, action) => {
-            console.log(action)
+            console.log(action.payload)
             state.initialQueryParameter = action?.payload;
             state.queryParameter = action?.payload;
         }

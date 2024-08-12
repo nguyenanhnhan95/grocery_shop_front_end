@@ -7,6 +7,7 @@ import RouteVariation from "../productManage/variation/RouteVariation";
 import RouteShopPromotion from "../shop/promotion/RouteShopPromotion";
 import RouteVariationOption from "../productManage/variationOption/RouteVariationOption";
 import { memo } from "react";
+import RouteRoles from "../system/roles/RouteRoles";
 function ContentAdmin() {
   return (
     <div className="main-content">
@@ -18,6 +19,7 @@ function ContentAdmin() {
         <Route path="/products-variation-option/*" element={<RouteVariationOption />} />
         <Route path="/products-variation/*" element={<RouteVariation />} />
         <Route path="/shop-promotion/*" element={<RouteShopPromotion/>} />
+        <Route path="/role/*" element={<RouteRoles/>} />
       </Routes>
     </div>
   )

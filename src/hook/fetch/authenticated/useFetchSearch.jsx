@@ -20,6 +20,7 @@ export const useFetchSearch = (props) => {
                 setData(response.data.result);
                 setError(null);
             } catch (error) {
+                setData(initialData)
                 setError(`${error} Could not Fetch Data `);
                 setIsPending(false);
             }

@@ -8,6 +8,7 @@ import { useFetchDelete } from "../../../hook/fetch/authenticated/useFetchDelete
 import { createActionURL } from "../../../utils/commonUtils";
 import { createQueryParameter } from "../../../redux/slice/common/queryParameter";
 
+
 function ActionDropdown(props) {
     const { id, url,optionActions } = props;
     const { initialQueryParameter } = useSelector(state => state.queryParameter)
@@ -28,6 +29,7 @@ function ActionDropdown(props) {
                 navigate(`/admin/${url}/edit/${id}`);
                 break;
             case 'delete':
+                console.log("ádasd")
                 handleShowModal(true)
                 break;
             default:
@@ -38,11 +40,10 @@ function ActionDropdown(props) {
         fetchDelete()
         handleShowModal(false);
     }, [ id, handleShowModal])
-
     return (
         <div className="dropdown">
             <i className="fa-solid fa-ellipsis-vertical" data-bs-toggle="dropdown" aria-expanded="false" />
-            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-action">
+            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-action" style={{height:Array.isArray(optionActions) ? 35*optionActions.length:'auto'}}>
                 {optionActions.map((action, aIndex) => (
                     <div onClick={() => handleAction(action)} key={aIndex}><li className="dropdown-item"><i className={action.icon}></i>{action.name}</li></div>
                 ))}
