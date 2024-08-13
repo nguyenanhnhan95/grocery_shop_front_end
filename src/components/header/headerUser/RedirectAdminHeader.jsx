@@ -18,8 +18,7 @@ function RedirectAdminHeader() {
             return true;
         }catch(error){
             return false;
-        }
-       
+        }  
     }
     return (
         <>
