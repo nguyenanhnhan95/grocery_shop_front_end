@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_SCREEN_THEME_REQUEST_PARAM, EMPTY_STRING, ICON_CHECK,  LINK_USER,  SCREEN_THEME_MODE, SCREEN_THEME_NAME, SLASH, WHITE_SPACE } from "../../../utils/commonConstants";
-import { changeScreenTheme, createHeader } from "../../../utils/commonUtils";
+import { changeScreenTheme} from "../../../utils/commonUtils";
 import axios from "axios";
 import { updateProfile } from "../../../redux/slice/person/profile";
 
@@ -20,7 +20,7 @@ function DarkUserModel() {
         try {
             changeScreenTheme(modeScreen)
             const newProfile = { ...profile, screenTheme: modeScreen }
-            await axios.patch(`${LINK_USER.getProfile}${SLASH}${CHANGE_SCREEN_THEME_REQUEST_PARAM}`, newProfile, createHeader());
+            await axios.patch(`${LINK_USER.getProfile}${SLASH}${CHANGE_SCREEN_THEME_REQUEST_PARAM}`, newProfile, {withCredentials:true});
             dispatch(updateProfile({ profile: newProfile }));
             
         } catch (error) {

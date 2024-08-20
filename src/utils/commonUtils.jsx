@@ -8,19 +8,19 @@ import { validation } from "./validation";
 /**
 * AUTHENTICATION 
 */
-export const createHeader = () => {
-    return {
-        headers: {
-            Authorization: 'Bearer ' + getToken()
-        }
-    }
-}
-export const getToken = () => {
-    return localStorage.getItem(CONST_LOGIN.ACCESS_TOKEN)
-}
-export const removeToken = () => {
-    return localStorage.removeItem(CONST_LOGIN.ACCESS_TOKEN)
-}
+// export const createHeader = () => {
+//     return {
+//         headers: {
+//             Authorization: 'Bearer ' + getToken()
+//         }
+//     }
+// }
+// export const getToken = () => {
+//     return localStorage.getItem(CONST_LOGIN.ACCESS_TOKEN)
+// }
+// export const removeToken = () => {
+//     return localStorage.removeItem(CONST_LOGIN.ACCESS_TOKEN)
+// }
 /**
 * HANDLE DATE 
 */
@@ -126,7 +126,7 @@ export const handleRedirectHome = () => {
     window.location.href = LINK_DOMAIN.domainClient
 }
 export const handleRedirectLogout = () => {
-    window.location.href = `${LINK_USER.linkLogOut}?token=${localStorage.getItem(CONST_LOGIN.ACCESS_TOKEN)}`;
+    window.location.href = `${LINK_USER.linkLogOut}`;
 }
 export const handleRedirectLogIn = () => {
     window.location.href = LINK_USER.linkLogin;
@@ -242,9 +242,4 @@ export const debounce = (func, delay) => {
         }, delay);
     };
 };
-/**
-* Check token
-*/
-export const checkToken = (token) => {
-    return typeof token === TYPE_STRING && token.length > 0
-}
+

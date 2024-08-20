@@ -28,8 +28,14 @@ export const validation = {
         const extension = str.split('.').pop().toLowerCase();
         return ALLOW_ARRAY_IMAGES.indexOf(extension) !== -1;
     },
-    isString: function (str){
-        return (typeof str === 'string' || str instanceof String)?true:false; 
+    isString: function (str) {
+        return (typeof str === 'string' || str instanceof String) ? true : false;
+    },
+    isArrayEmpty: function (array){
+        if (Array.isArray(array)) {
+            return array.length == 0;
+        }
+        return false;
     }
     ,
     checkJsonString: function (str) {
@@ -40,7 +46,7 @@ export const validation = {
         }
         return true;
     },
-    checkArrayEmpty: function (array) {
+    checkArrayNotEmpty: function (array) {
         if (Array.isArray(array)) {
             return array && array.length > 0;
         }
@@ -76,9 +82,9 @@ export const validation = {
         return true;
     },
     checkDateGraterThenDateCurrent: function (date) {
-        if(date instanceof Date && !isNaN(date)){
+        if (date instanceof Date && !isNaN(date)) {
             const dateCurrent = new Date();
-            if(dateCurrent.getFullYear()===date.getFullYear() && dateCurrent.getDate()===date.getDate()){
+            if (dateCurrent.getFullYear() === date.getFullYear() && dateCurrent.getDate() === date.getDate()) {
                 return true;
             }
         }
@@ -86,6 +92,6 @@ export const validation = {
     }
 };
 export const regex = {
-    string :/^[A-Za-zÀÁÂÃÈÊÌÒÓÔÙĂẰẲẴẸÊỄÌỌÔÙƯỨỲÝđĐâàầặêệễôươ\s]+$/,
-    number : /^\d+\.?\d*$/
+    string: /^[A-Za-zÀÁÂÃÈÊÌÒÓÔÙĂẰẲẴẸÊỄÌỌÔÙƯỨỲÝđĐâàầặêệễôươ\s]+$/,
+    number: /^\d+\.?\d*$/
 }   

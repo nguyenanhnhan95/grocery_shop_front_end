@@ -38,11 +38,11 @@ function LoginForm() {
     return (
         <>
             <Formik initialValues={{
-                name: "",
+                nameLogin: "",
                 password: "",
             }}
                 validationSchema={yup.object({
-                    name: yup.string().required("Chưa nhập email :"),
+                    nameLogin: yup.string().required("Chưa nhập email :"),
                     password: yup.string().required("Chưa nhập mật khẩu")
                 })}
                 onSubmit={(value, { setErrors }) =>
@@ -53,9 +53,9 @@ function LoginForm() {
                     <div className="form-login">
                         <ErrorMessage className="form-text form-error" name='notificationFail' component='div' />
                         <div className="mb-3 form-login-input">
-                            <label htmlFor="name" className="form-label">Tên đăng nhập</label>
-                            <Field type="text" name="name" className="form-control" id="name" autoComplete="off" placeholder="join" />
-                            <ErrorMessage className="form-text form-error" name='name' component='div' />
+                            <label htmlFor="nameLogin" className="form-label">Tên đăng nhập</label>
+                            <Field type="text" name="nameLogin" className="form-control" id="nameLogin" autoComplete="off" placeholder="join" />
+                            <ErrorMessage className="form-text form-error" name='nameLogin' component='div' />
                         </div>
                         <div className="mb-3 form-password form-login-input">
                             <label htmlFor="password" className="form-label">Mật khẩu</label>

@@ -11,7 +11,7 @@ export const useAccessAdminPage = (permissionRoles) => {
     const { roles, status } = useSelector((state) => state.profile);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    console.log(roles)
     const isAuthorized = useMemo(() => {
         if (status === FETCH_PROFILE.FETCH_PROFILE_SUCCESS) {
             return roles.some(role => permissionRoles.includes(role));

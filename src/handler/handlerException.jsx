@@ -2,36 +2,36 @@ import { actionShowNotificationModal } from "../redux/action/modal/actionNotific
 import { fetchRefreshToken } from "../redux/slice/auth/authentication";
 import { handleNotificationModal } from "../redux/slice/modal/notificationModal";
 import { fetchProfileSlice } from "../redux/slice/person/profile";
-import { CONST_LOGIN,  LOGIN_SESSION_EXPIRE_DATE } from "../utils/commonConstants";
-import { checkToken, getToken, handleRedirectHome, handleRedirectLogIn } from "../utils/commonUtils";
+import { CONST_LOGIN, LOGIN_SESSION_EXPIRE_DATE } from "../utils/commonConstants";
+import { handleRedirectHome, handleRedirectLogIn } from "../utils/commonUtils";
 
-export const handleProfileException = async (props) => {
+export const handleAuthenticateException = async (props) => {
     const { code, error, dispatch, message } = props;
+    console.log(code)
     switch (code) {
         case 403:
             handleRedirectHome()
             break;
         case 4006:
-            handleRedirectLogIn()
+            // handleRedirectLogIn()
             break;
         case 4007:
             dispatch(handleNotificationModal(actionShowNotificationModal(LOGIN_SESSION_EXPIRE_DATE)));
             setTimeout(() => {
-                localStorage.removeItem(CONST_LOGIN.ACCESS_TOKEN);
                 handleRedirectLogIn()
             }, 3000)
-
             break;
         case 4008:
             try {
-                await dispatch(fetchRefreshToken()).unwrap(); // Đợi refresh token thành công
-                if (checkToken(getToken())) {
-                    dispatch(fetchProfileSlice()); // Gọi lại fetchProfileSlice sau khi refresh token
+                const response= await dispatch(fetchRefreshToken()).unwrap();
+                console.log(response)
+                if(response?.code===200){
+                    dispatch(fetchProfileSlice());
                 }
+                 // Gọi lại fetchProfileSlice sau khi refresh token
             } catch (refreshError) {
                 dispatch(handleNotificationModal(actionShowNotificationModal(LOGIN_SESSION_EXPIRE_DATE)));
                 setTimeout(() => {
-                    localStorage.removeItem(CONST_LOGIN.ACCESS_TOKEN);
                     handleRedirectLogIn()
                 }, 3000)
             }
@@ -47,9 +47,21 @@ export const handleServiceRefreshToken = async ({ handleService, dispatch, args 
     } catch (error) {
         dispatch(handleNotificationModal(actionShowNotificationModal(LOGIN_SESSION_EXPIRE_DATE)));
         setTimeout(() => {
-            localStorage.removeItem(CONST_LOGIN.ACCESS_TOKEN);
             handleRedirectLogIn();
         }, 3000);
         return Promise.reject(error);
     }
 };
+export const handleTokenRefresh = async ({ dispatch, handleService }) => {
+    try {
+      const response = await dispatch(fetchRefreshToken()).unwrap();
+      if (response?.code === 200) {
+        handleService(); // Retry the original service
+      }
+    } catch (refreshError) {
+      dispatch(handleNotificationModal(actionShowNotificationModal(LOGIN_SESSION_EXPIRE_DATE)));
+      setTimeout(() => {
+        handleRedirectLogIn(); // Redirect to login after token refresh failure
+      }, 3000);
+    }
+  };

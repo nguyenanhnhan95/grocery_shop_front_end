@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { FETCH_BY_PATH_MENU_ADMIN, FETCH_MENUS_ADMIN, LINK_MENU, REQUEST_PARAM_PATH } from "../../../../utils/commonConstants";
 import axios from "axios";
-import { createHeader, handleAssignData, handleExceptionView, loadMenuParentActive } from "../../../../utils/commonUtils";
+import {  handleAssignData, handleExceptionView, loadMenuParentActive } from "../../../../utils/commonUtils";
 
 export const getSidebarMenusAdmin = createAsyncThunk('getSidebarMenus',
   async (_, { dispatch }) => {
     try {
-      const response = await axios.get(LINK_MENU.adminSide, createHeader());
+      const response = await axios.get(LINK_MENU.adminSide, {withCredentials:true});
       return response.data
     } catch (error) {
       handleExceptionView({ code: error.response.status })
@@ -16,7 +16,7 @@ export const getSidebarMenusAdmin = createAsyncThunk('getSidebarMenus',
 export const getMenuByPathAdmin = createAsyncThunk('/menu/admin-side/path',
   async (path, { dispatch }) => {
     try {
-      const response = await axios.get(`${LINK_MENU.adminSidePath}${REQUEST_PARAM_PATH}${path}`, createHeader());
+      const response = await axios.get(`${LINK_MENU.adminSidePath}${REQUEST_PARAM_PATH}${path}`, {withCredentials:true});
       return response.data
     } catch (error) {
       handleExceptionView({ code: error.response.status })

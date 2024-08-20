@@ -18,6 +18,13 @@
     background-color: #0693e3;
     color: white;
 }
+.dark .main-content-form .card-update-permission  .table-hover .name-permisson:hover{
+    color:var(--bs-card-color);
+    
+}
+.main-content-form .card-update-permission  .table-hover .name-permisson:hover{
+    --bs-table-hover-bg: transparent;
+}
 .main-content-form .card-update-permission .table .table-thead tr > th {
     border-bottom-width: 0;
 

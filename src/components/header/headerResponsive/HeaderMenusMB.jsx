@@ -9,7 +9,7 @@ function HeaderMenusMB() {
     const toggleSidebar = () => {
         setSidebarActive(!isSidebarActive);
     };
-    console.log(list)
+
     const closeSidebar = () => {
         setSidebarActive(false);
     };

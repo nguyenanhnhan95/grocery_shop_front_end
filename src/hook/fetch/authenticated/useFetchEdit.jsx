@@ -1,16 +1,18 @@
 import { useCallback, useState } from "react";
-import { createHeader } from "../../../utils/commonUtils";
 import axios from "axios";
-import { toastSuccess } from "../../../config/toast";
+import { toastError, toastSuccess } from "../../../config/toast";
+import { useAuthenticateTokenException } from "../../handler/useAuthenticateTokenException";
+
 
 export const useFetchEdit = () => {
     const [isPending, setIsPending] = useState(false);
     const [code, setCode] = useState(null);
+    const { handleAuthenticateException } = useAuthenticateTokenException();
     const fetchEdit = useCallback(async (url, data, setErrors) => {
         setIsPending(true);
         try {
-            console.log(data)
-            const response = await axios.patch(url, data, createHeader());
+            console.log(url)
+            const response = await axios.patch(url, data, {withCredentials:true});
             console.log(response)
             if (response.data?.code === 200) {
                 toastSuccess(response.data.message)
@@ -19,9 +21,13 @@ export const useFetchEdit = () => {
             setIsPending(false);
         } catch (error) {
             if (error.response.data.code === 4013) {
-                setErrors(error.response.data.result);
+                if ("notification" in error.response.data.result) {
+                    toastError(error.response.data.result.notification)
+                } else {
+                    setErrors(error.response.data.result);
+                }
             }
-
+            handleAuthenticateException({error:error,code:error?.response?.data?.status,handleService: () => fetchEdit(url, data, setErrors)})
         } finally {
             setIsPending(false);
         }

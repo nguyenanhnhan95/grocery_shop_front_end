@@ -3,16 +3,12 @@ import { useSelector } from "react-redux";
 import logoAvatarUser from "../../../assets/img/header/logo_user_default.jpg"
 function AvatarUserHeader(props) {
     const { handleHeaderUserClick } = props;
-    const { profile, authenticate } = useSelector((state) => state.profile)
+    const {  authenticate, srcAvatar,errorAvatar } = useSelector((state) => state.profile)
     return (
         <>
             {authenticate === true && (
                 <div className="header-user-item" onClick={handleHeaderUserClick}>
-                    {profile?.avatar === null ? (
-                        <img src={logoAvatarUser} alt="" />
-                    ) : (
-                        <img src={profile?.avatar} alt="" />
-                    )}
+                    <img src={srcAvatar === null || errorAvatar !==null ? logoAvatarUser : srcAvatar} alt="" />
                 </div>
 
             )

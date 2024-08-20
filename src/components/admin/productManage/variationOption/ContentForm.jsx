@@ -5,7 +5,7 @@ import "../../../../assets/css/admin/skeletonLoading/contentForm.css"
 import { memo, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SelectField } from "../../../composite/formik/SelectedField";
-import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID } from "../../../../utils/commonConstants";
+import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID, THIS_FILED_ENTER_LARGE } from "../../../../utils/commonConstants";
 import { useFetchData } from "../../../../hook/fetch/authenticated/useFetchData";
 import { createActionURL } from "../../../../utils/commonUtils";
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,12 +21,14 @@ function ContentForm(props) {
     const { id } = useParams();
     const { close } = useSelector((state) => state.actionAdmin);
     const navigate = useNavigate();
-    const { data: variations, isPending: isPendingVariations, error: errorVariations } = useFetchData(createActionURL("products-variation").instant());
+    const {fetchData:fetchDataVariations, data: variations, isPending: isPendingVariations } = useFetchData();
     const { fetchByField, data: initialEdit, isPending: isPendingInitialEdit, error: errorInitialEdit } = useFetchByFiled();
     const { fetchSave, code: codeSave, isPending: isPendingSave } = useFetchSave();
     const { fetchEdit, code: codeEdit, isPending: isPendingEdit } = useFetchEdit();
     const buttonRef = useRef(null);
-
+    useEffect(()=>{
+        fetchDataVariations(createActionURL("products-variation").instant())
+    },[fetchDataVariations])
     useEffect(() => {
         dispatch(onClickSaveAction({ buttonSave: buttonRef.current }))
         if (id !== undefined && validation.isNumber(id)) {
@@ -67,7 +69,9 @@ function ContentForm(props) {
                             idVariation: initialEdit?.variation?.id ?? initialForm.variation.id,
                         }}
                         validationSchema={yup.object().shape({
-                            name: yup.string().required("Chưa nhập tên :"),
+                            name: yup.string().trim().required("Chưa nhập tên :"),
+                            description: yup.string().trim()
+                            .max(250, THIS_FILED_ENTER_LARGE),
                             idVariation: yup.string().required("Chưa nhập Option :")
                                 .matches(/^\d+\.?\d*$/, "Hệ thống dữ liệu nhập sai :")
                         })}

@@ -66,15 +66,15 @@ function ContentForm(props) {
                             endDate: initialEdit?.endDate ? new Date(initialEdit.endDate) : null,
                         }}
                         validationSchema={yup.object({
-                            name: yup.string().required("Chưa nhập tên :")
+                            name: yup.string().trim().required("Chưa nhập tên :")
                                 .min(3, THIS_FILED_ENTER_SMALL)
                                 .max(100, THIS_FILED_ENTER_LARGE)
                                 .matches(regex.string, THIS_FIELD_VALUE_NOT_FORMAT),
-                            code: yup.string().required("Chưa nhập mã code :")
+                            code: yup.string().trim().required("Chưa nhập mã code :")
                                 .min(6, THIS_FILED_ENTER_SMALL)
                                 .max(15, THIS_FILED_ENTER_LARGE)
                                 .matches(regex.number, "Nhập mã code không phù hợp: ex :012345678"),
-                            description: yup.string()
+                            description: yup.string().trim()
                                 .nullable()
                                 .matches(regex.string, THIS_FIELD_VALUE_NOT_FORMAT)
                                 .min(3, THIS_FILED_ENTER_SMALL)

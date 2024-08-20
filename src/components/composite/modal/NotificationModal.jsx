@@ -14,11 +14,11 @@ function NotificationModal() {
     const { screenMode } = useSelector((state) => state.profile)
     const handleRedirectBefore = () => {
         dispatch(handleNotificationModal(actionCloseNotificationModal()))
-        if (validation.isString(document.referrer) && document.referrer.includes(DOMAIN_CLIENT)) {
+        // if (validation.isString(document.referrer) && document.referrer.includes(DOMAIN_CLIENT)) {
             window.location.href=DOMAIN_CLIENT;
-        } else {
-            window.history.back();
-        }
+        // } else {
+        //     window.history.back();
+        // }
 
     }
 

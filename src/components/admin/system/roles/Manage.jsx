@@ -5,7 +5,7 @@ import SectionActionAdmin from "../../common/SectionActionAdmin";
 import TitleActionAdmin from "../../common/TitleActionAdmin";
 import { useDispatch } from "react-redux";
 import { createQueryParameter } from "../../../../redux/slice/common/queryParameter";
-import { columnProducts, optionSearch, sectionActions } from "./initialConfig";
+import {  columnRoles, optionSearch, sectionActions } from "./initialConfig";
 import TBodyTable from "./TBodyTable";
 
 
@@ -22,7 +22,7 @@ function Manage(props) {
             <TitleActionAdmin />
             <SectionActionAdmin  itemAction={sectionActions}/>
             <SearchContentAdmin  itemSearch={optionSearch}/>
-            <TableManage  url={url} TBodyTable={TBodyTable} nameColumn={columnProducts} />
+            <TableManage  url={url} TBodyTable={TBodyTable} nameColumn={columnRoles} />
         </div>
     )
 }

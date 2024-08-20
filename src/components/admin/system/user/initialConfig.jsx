@@ -1,7 +1,5 @@
 
-
-
-export const columnRoles = [
+export const columnUser = [
     {
         name: "STT",
         style: {
@@ -9,21 +7,41 @@ export const columnRoles = [
         }
     },
     {
-        name: "Tên ",
+        name: "Họ Và Tên",
+        style: {
+            'width': "70px"
+        }
+    }
+    ,
+    {
+        name: "Tên Đăng Nhập ",
         style: {
             'width': "150px"
         }
     },
     {
-        name: "Mô Tả",
+        name: "Avatar",
         style: {
-            'width': "300px"
+            'width': "150px"
         }
     },
     {
+        name: "Email",
+        style: {
+            'width': "150px"
+        }
+    },
+    {
+        name: "Trạng Thái",
+        style: {
+            'width': "100px"
+        }
+    }
+    ,
+    {
         name: "",
         style: {
-            'width': "70px"
+            'width': "100px"
         }
     }
 ]
@@ -46,16 +64,19 @@ export const sectionActions = {
 export const optionSearch = {
     searchAdvanced: {
         style: {
-            display: "none"
+            display: "block"
         }
     },
     items: []
 }
 export const initialForm =
 {
+    imgUrl:"",
     name: "",
-    description: "",
-    permissions:[]
+    email:"",
+    fullName:"",
+    accountStatus:"",
+    createDate:new Date(),
 }
 export const optionActions = [
     {
@@ -74,6 +95,8 @@ export const queryParameterInitial = {
     page: 0,
     criterias: {
         name: "",
+        role:null,
+        accountStatus:null,
         includeDeleted:false
     }
 }

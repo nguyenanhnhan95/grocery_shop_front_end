@@ -1,22 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CONST_LOGIN, REFRESH_TOKEN_API } from "../../../utils/commonConstants";
+import { CONST_LOGIN, DOMAIN_SERVER } from "../../../utils/commonConstants";
 import { FETCH_REFRESH_TOKEN } from "../../action/auth/authentication";
 import axios from "axios";
-import { getToken } from "../../../utils/commonUtils";
+
 
 export const fetchRefreshToken = createAsyncThunk('auth/refresh-token', async (_, { dispatch, rejectWithValue }) => {
     try {
-        const response = await axios.get(`${REFRESH_TOKEN_API}${getToken()}`);
-        if (response?.data?.code === 200) {
-            console.log(response.data.result)
-            localStorage.setItem(CONST_LOGIN.ACCESS_TOKEN, response.data.result)
-        } else {
-            return rejectWithValue(response.data);
-        }
-
+        const response = await axios.get(`${DOMAIN_SERVER}/auth/refresh-token`,{withCredentials:true});
+        return response.data;
     } catch (error) {
         console.log(rejectWithValue(error).payload.response.status)
-        handleExceptionView({ code: rejectWithValue(error).payload?.response?.status })
+        return rejectWithValue(error)
     }
 })
 export const refreshTokenSlice = createSlice({

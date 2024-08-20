@@ -59,7 +59,8 @@ export const THIS_FILED_GREATER_THAN_THOUSAND="Bạn nhập trường này trên
 export const THIS_FILED_MONEY_TOO_LARGE="Bạn nhập số tiền quá lớn ."
 export const THIS_ERROR_TECHNICAL="Đã xảy ra lỗi. Việc này có thể là do lỗi kỹ thuật và chúng tôi đang khắc phục rồi"
 export const THIS_FIELD_DATE_GREATER_EQUAL_DATE_CURRENT="Phải lớn hơn hoặc bằng ngày hiện tại .";
-export const THIS_FIELD_CODE_NUMBER_NOT_FORMAT="Nhập mã code không phù hợp: ex :012345678"
+export const THIS_FIELD_CODE_NUMBER_NOT_FORMAT="Nhập mã code không phù hợp: ex :012345678";
+export const THIS_FILE_ENTER_FAIL="Trường này nhập dữ liệu bị lỗi . "
 /**
  * CSS
  */
@@ -410,7 +411,7 @@ export const ROLES = {
 	ROLE_MANAGER: "ROLE_MANAGER",
 	ROLE_EMPLOYEE: "ROLE_EMPLOYEE"
 }
-export const REFRESH_TOKEN_API = `${DOMAIN_SERVER}/auth/refresh-token?token=`
+
 export const PERMISSION_RESOURCE = {
 	ADMIN: [ROLES.ROLE_ADMIN, ROLES.ROLE_EMPLOYEE, ROLES.ROLE_MANAGER]
 }

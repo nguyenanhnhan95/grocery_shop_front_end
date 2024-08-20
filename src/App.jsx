@@ -14,7 +14,6 @@ import menuContentMainSlice from "./redux/slice/admin/sidebar/menuContentMain.js
 import overPlayMenuMainSlice from "./redux/slice/admin/sidebar/overPlayMenu.jsx";
 import { actionAdminSlice } from "./redux/slice/admin/action/actionAdmin.jsx";
 import { getAllCategoryMenus } from "./redux/slice/product/productCategory.jsx";
-import InitialAdmin from "./components/wrapper/InitialAdmin.jsx";
 import Home from "./pages/home/Home.jsx";
 import { getScreenThem } from "./utils/commonUtils.jsx";
 import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler.jsx";
@@ -34,9 +33,7 @@ const Admin = lazy(() => import('./pages/admin/Admin').then((module) => {
     store.injectReducer(actionReducerStore.add, reducerSliceKey.productCategoryMenus, getAllCategoryMenus.reducer)
     return module;
 }))
-const InitialHome = lazy(() => import('./components/wrapper/InitialHome').then((module) => {
-    return module;
-}))
+
 function App() {
     const { screenMode } = useScreenMode()
     return (
@@ -45,9 +42,9 @@ function App() {
                 <div className={`${getScreenThem(screenMode)}`}>
                     <BrowserRouter>
                         <Routes>
-                            <Route path="/" element={<InitialHome><Home /></InitialHome>} />
+                            <Route path="/" element={<Home />} />
                             <Route path="/login" element={<Login />} />
-                            <Route path="/admin/*" element={<InitialAdmin><Admin /></InitialAdmin>} />
+                            <Route path="/admin/*" element={<Admin />} />
                             <Route path={'/oauth2/redirect'} element={<OAuth2RedirectHandler />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>

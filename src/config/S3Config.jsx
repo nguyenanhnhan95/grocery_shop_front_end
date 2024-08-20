@@ -28,12 +28,10 @@ export const getObject = async (keyName) => {
             Bucket: connectAWSParams.bucketName,
             Key: keyName,
         }));
-        console.log(response)
         const str = await response.Body?.transformToByteArray();
         const blob = new Blob([str], { type: response.ContentType });
     
         var blobUrl = URL.createObjectURL(blob)
-        console.log(response.ContentType)
         return blobUrl;
 }
 export const putObject = async (keyName, body) => {

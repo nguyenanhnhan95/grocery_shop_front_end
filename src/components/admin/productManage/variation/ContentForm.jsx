@@ -5,7 +5,7 @@ import { memo, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onClickSaveAction } from "../../../../redux/slice/admin/action/actionAdmin";
 import { useFetchByFiled } from "../../../../hook/fetch/authenticated/useFetchByFiled";
-import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID } from "../../../../utils/commonConstants";
+import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID, THIS_FILED_ENTER_LARGE } from "../../../../utils/commonConstants";
 import { useNavigate, useParams } from "react-router-dom";
 import { validation } from "../../../../utils/validation";
 import { createActionURL } from "../../../../utils/commonUtils";
@@ -62,7 +62,9 @@ function ContentForm(props) {
                             description: initialEdit?.description ?? initialForm.description,
                         }}
                         validationSchema={yup.object({
-                            name: yup.string().required("Chưa nhập tên :")
+                            name: yup.string().trim().required("Chưa nhập tên :"),
+                            description: yup.string().trim()
+                            .max(250, THIS_FILED_ENTER_LARGE),
                         })}
                         onSubmit={(data, { setErrors }) =>
                             handleDataToServer(data, setErrors)

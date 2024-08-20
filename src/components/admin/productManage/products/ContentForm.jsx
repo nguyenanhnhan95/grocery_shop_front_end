@@ -3,8 +3,8 @@ import "../../../../assets/css/admin/productManage/product/contentForm.css"
 import * as yup from "yup";
 import UploadImage from "./../../../composite/formik/UploadImg"
 import "../../../../assets/css/admin/skeletonLoading/contentForm.css"
-import { createActionURL, createHeader } from "../../../../utils/commonUtils";
-import { CHILDREN, LOADING_CONTENT_FORM, PARENT, REQUEST_PARAM_ID, THIS_FIELD_CANNOT_EMPTY, THIS_FIELD_CODE_NUMBER_NOT_FORMAT, THIS_FILE_NOT_FORMAT, THIS_FILE_SIZE_TOO_LARGE, THIS_FILED_ENTER_LARGE, THIS_FILED_ENTER_SMALL, THIS_FILED_GREATER_THAN_THOUSAND, THIS_FILED_MONEY_TOO_LARGE, THIS_FILED_MUST_POSITIVE, THIS_FILED_SELECT_ITEM_CANNOT_EMPTY, THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, TYPE_INPUT_TEXT, UNDER_STROKE, VND } from "../../../../utils/commonConstants";
+import { createActionURL } from "../../../../utils/commonUtils";
+import {  LOADING_CONTENT_FORM,  REQUEST_PARAM_ID, THIS_FIELD_CANNOT_EMPTY, THIS_FIELD_CODE_NUMBER_NOT_FORMAT, THIS_FILE_NOT_FORMAT, THIS_FILE_SIZE_TOO_LARGE, THIS_FILED_ENTER_LARGE, THIS_FILED_ENTER_SMALL, THIS_FILED_GREATER_THAN_THOUSAND, THIS_FILED_MONEY_TOO_LARGE, THIS_FILED_MUST_POSITIVE, THIS_FILED_SELECT_ITEM_CANNOT_EMPTY, THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, TYPE_INPUT_TEXT, UNDER_STROKE, VND } from "../../../../utils/commonConstants";
 import { CKEditorField } from "../../../composite/formik/CKEditorField";
 import { SelectField } from "../../../composite/formik/SelectedField";
 import { regex, validation } from "../../../../utils/validation";
@@ -28,16 +28,34 @@ function ContentForm(props) {
     const buttonRef = useRef(null);
     const { fetchByField, data: initialEdit, isPending: isPendingInitialEdit, error: errorInitialEdit } = useFetchByFiled();
     const { fetchSave, code: codeSave, isPending: isPendingSave } = useFetchSave();
-    const { data: variations, isPending: isPendingVariations } = useFetchData(createActionURL("products-variation").instant());
-    const { data: variationOptions, isPending: isPendingVariationOptions } = useFetchData(createActionURL("products-variation-option").instant());
-    const { data: productCategories, isPending: isPendingProductCategories } = useFetchData(createActionURL("product-category/children").instant());
-    const { data: promotions, isPending: isPendingPromotions } = useFetchData(createActionURL("shop-promotion").instant());
+    const {fetchData:fetchDataVariations, data: variations, isPending: isPendingVariations } = useFetchData();
+    const {fetchData:fetchVariationOptions, data: variationOptions, isPending: isPendingVariationOptions } = useFetchData();
+    const {fetchData:fetchProductCategories, data: productCategories, isPending: isPendingProductCategories } = useFetchData();
+    const {fetchData:fetchPromotions, data: promotions, isPending: isPendingPromotions } = useFetchData();
     useEffect(() => {
         dispatch(onClickSaveAction({ buttonSave: buttonRef.current }))
         if (id !== undefined && validation.isNumber(id)) {
             fetchByField(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`)
         }
     }, [fetchByField, id, dispatch])
+    useEffect(()=>{
+        const fetchAllData = async () => {
+            await Promise.all([
+                fetchDataVariations(createActionURL("products-variation").instant()),
+                fetchVariationOptions(createActionURL("products-variation-option").instant()),
+                fetchProductCategories(createActionURL("product-category/children").instant()),
+                fetchPromotions(createActionURL("shop-promotion").instant())
+            ]);
+        };
+        fetchAllData();
+    },[fetchDataVariations, fetchVariationOptions, fetchProductCategories, fetchPromotions])
+    useEffect(() => {
+        if (codeSave === 200 ) {
+            if (close) {
+                navigate(`/admin/${url}`);
+            }
+        }
+    }, [codeSave,  close, navigate, url]);
     const handleErrorsMessage = useCallback((errors, setErrors) => {
         try {
             const message = Object.keys(errors).reduce((acc, key) => {
@@ -127,13 +145,13 @@ function ContentForm(props) {
                     }}
                     validationSchema={yup.object().shape({
                         multipart: yup.mixed().required(THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY)
-                            .test('isNotEmptyArray', THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, validation.checkArrayEmpty)
+                            .test('isNotEmptyArray', THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, validation.checkArrayNotEmpty)
                             .test('fileSize', THIS_FILE_SIZE_TOO_LARGE, validation.checkFileSize)
                             .test('fileType', THIS_FILE_NOT_FORMAT, validation.checkFileTypeImage),
-                        name: yup.string().required(THIS_FIELD_CANNOT_EMPTY)
+                        name: yup.string().trim().required(THIS_FIELD_CANNOT_EMPTY)
                             .max(100, THIS_FILED_ENTER_LARGE)
                             .min(4, THIS_FILED_ENTER_SMALL),
-                        brand: yup.string().required(THIS_FIELD_CANNOT_EMPTY)
+                        brand: yup.string().trim().required(THIS_FIELD_CANNOT_EMPTY)
                             .max(100, THIS_FILED_ENTER_LARGE)
                             .min(4, THIS_FILED_ENTER_SMALL),
                         idProductCategory: yup.string().required(THIS_FILED_SELECT_ITEM_CANNOT_EMPTY),
@@ -141,7 +159,7 @@ function ContentForm(props) {
                         productItem: yup.array().of(
                             yup.object().shape({
                                 multipart: yup.mixed().required(THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY)
-                                    .test('isNotEmptyArray', THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, validation.checkArrayEmpty)
+                                    .test('isNotEmptyArray', THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, validation.checkArrayNotEmpty)
                                     .test('fileSize', THIS_FILE_SIZE_TOO_LARGE, validation.checkFileSize)
                                     .test('fileType', THIS_FILE_NOT_FORMAT, validation.checkFileTypeImage),
                                 price: yup.number().required(THIS_FIELD_CANNOT_EMPTY)

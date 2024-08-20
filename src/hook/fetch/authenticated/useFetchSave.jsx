@@ -1,16 +1,18 @@
 import { useCallback, useState } from "react";
-import { createHeader } from "../../../utils/commonUtils";
 import axios from "axios";
 import { toastSuccess } from "../../../config/toast";
 import { validation } from "../../../utils/validation";
+import { useAuthenticateTokenException } from "../../handler/useAuthenticateTokenException";
+
 
 export const useFetchSave = () => {
     const [isPending, setIsPending] = useState(false);
     const [code, setCode] = useState(null);
+    const { handleAuthenticateException } = useAuthenticateTokenException();
     const fetchSave = useCallback(async (url, data, setErrors,handleErrorsMessage) => {
         setIsPending(true);
         try {
-            const response = await axios.post(url, data, createHeader());
+            const response = await axios.post(url, data, {withCredentials:true});
             if (response.data?.code === 200) {
                 toastSuccess(response.data.message)
             }
@@ -27,7 +29,7 @@ export const useFetchSave = () => {
                 }
                 
             }
-
+            handleAuthenticateException({error:error,code:error?.response?.data?.status,handleService: () => fetchSave(url, data, setErrors,handleErrorsMessage)})
         } finally {
             setIsPending(false);
         }
