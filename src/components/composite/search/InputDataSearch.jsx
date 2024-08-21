@@ -2,11 +2,11 @@ import { Autocomplete, Box, Paper, Popper, TextField } from "@mui/material";
 import { memo, useCallback, useMemo } from "react";
 import "../../../assets/css/composite/search/inputDataSearch.css"
 import { createActionURL, debounce, getScreenThem } from "../../../utils/commonUtils";
-import { useFetchData } from "../../../hook/fetch/authenticated/useFetchData";
+import { useFetchGet } from "../../../hook/fetch/authenticated/useFetchGet";
 import { useScreenMode } from "../../../hook/auth/useScreenMode";
 function InputDataSearch(props) {
     const { setSearchFiled, item, searchFiled } = props;
-    const { data: options } = useFetchData(createActionURL(item.httpApi).instant());
+    const { data: options } = useFetchGet(createActionURL(item.httpApi).instant());
     const { screenMode } = useScreenMode()
     const handleInputChange = useCallback((newInputValue) => {
         if (newInputValue !== undefined && newInputValue.length > 0) {

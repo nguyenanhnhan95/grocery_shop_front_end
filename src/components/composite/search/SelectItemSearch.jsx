@@ -6,11 +6,11 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { validation } from "../../../utils/validation";
 import { createActionURL, getScreenThem } from "../../../utils/commonUtils";
-import { useFetchData } from "../../../hook/fetch/authenticated/useFetchData";
+import { useFetchGet } from "../../../hook/fetch/authenticated/useFetchGet";
 import { useScreenMode } from "../../../hook/auth/useScreenMode";
 function SelectItemSearch(props) {
     const { setSearchFiled, item, searchFiled } = props;
-    const { data: options } = useFetchData(createActionURL(item.httpApi).instant());
+    const { data: options } = useFetchGet(createActionURL(item.httpApi).instant());
     const { screenMode } = useScreenMode()
     const handleSelect = (value) => {
         const id = value.target.value;

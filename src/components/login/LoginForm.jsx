@@ -1,29 +1,29 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import Cookies from 'js-cookie'
-import { useDispatch, useSelector } from "react-redux";
-import { handleRedirectAdmin } from "../../utils/commonUtils";
-import { CONST_LOGIN, EMPTY_STRING, FETCH_LOGIN, KEEP_LOGIN, LINK_DOMAIN, LOGIN, LOGIN_LOADING, SLASH } from "../../utils/commonConstants";
-import { loginFormAuth } from "../../redux/slice/login/login";
+import { createActionURL } from "../../utils/commonUtils";
+import { CONST_LOGIN, EMPTY_STRING, KEEP_LOGIN, LINK_DOMAIN, LOGIN, LOGIN_LOADING, SLASH } from "../../utils/commonConstants";
+import { useNavigate } from "react-router-dom";
+import { useFetchPost } from "../../hook/fetch/authenticated/useFetchPost";
 function LoginForm() {
     const [showPassword, setShowPassword] = useState(false)
     const [keepLogin, setKeepLogin] = useState(false)
-    const { status } = useSelector((state) => state.loginForm)
-    const dispatch = useDispatch();
-   
-    const handleLogin = async (loginRequest, setErrors) => {
-        try {
-            if (status === FETCH_LOGIN.FETCH_LOGIN_INITIAL) {              
-                await dispatch(loginFormAuth({ ...loginRequest, flagKeep: keepLogin })).unwrap();
-                Cookies.remove(CONST_LOGIN.keepLogin, { domain: LINK_DOMAIN.domain, path: SLASH });
-                handleRedirectAdmin()
-            }
-        } catch (error) {
-            console.log(error)
-            setErrors(error.result)
+
+    const { fetchPost, isPending, code } = useFetchPost();
+    const navigate = useNavigate();
+
+    const handleLogin = useCallback(async (loginRequest, setErrors) => {
+
+        fetchPost(createActionURL("auth/login").instant(), { ...loginRequest, flagKeep: keepLogin }, setErrors)
+
+    }, [fetchPost, isPending])
+    useEffect(() => {
+        if (code === 200) {
+            Cookies.remove(CONST_LOGIN.keepLogin, { domain: LINK_DOMAIN.domain, path: SLASH });
+            navigate("/")
         }
-    }
+    }, [code, navigate])
     const handleKeepLogin = (currentKeepLogin) => {
         if (currentKeepLogin) {
             setKeepLogin(false);
@@ -37,10 +37,12 @@ function LoginForm() {
     }
     return (
         <>
-            <Formik initialValues={{
-                nameLogin: "",
-                password: "",
-            }}
+            <Formik
+                enableReinitialize={true}
+                initialValues={{
+                    nameLogin: "",
+                    password: "",
+                }}
                 validationSchema={yup.object({
                     nameLogin: yup.string().required("Chưa nhập email :"),
                     password: yup.string().required("Chưa nhập mật khẩu")
@@ -72,14 +74,15 @@ function LoginForm() {
                                 onChange={() => handleKeepLogin(keepLogin)} />
                             <label className="form-check-label" htmlFor="exampleCheck1">{KEEP_LOGIN}</label>
                         </div>
-                        <button type="submit" className="form-submit mb-3" role="status">
-                            {status !== FETCH_LOGIN.FETCH_LOGIN_LOADING ?
-                                LOGIN
-                                : <div className="d-flex justify-content-center ">
+                        <button type={isPending ? 'button' : 'submit'} className="form-submit mb-3" role="status">
+                            {isPending ?
+                                <div className="d-flex justify-content-center ">
                                     <div className="spinner-border " role="status">
                                         <span className="visually-hidden"></span>
                                     </div><span>{LOGIN_LOADING}</span>
-                                </div>}
+                                </div>
+                            :
+                            LOGIN }
 
                         </button>
                     </div>

@@ -4,11 +4,11 @@ import * as yup from "yup";
 import UploadImage from "./../../../composite/formik/UploadImg"
 import "../../../../assets/css/admin/skeletonLoading/contentForm.css"
 import { createActionURL } from "../../../../utils/commonUtils";
-import {  LOADING_CONTENT_FORM,  REQUEST_PARAM_ID, THIS_FIELD_CANNOT_EMPTY, THIS_FIELD_CODE_NUMBER_NOT_FORMAT, THIS_FILE_NOT_FORMAT, THIS_FILE_SIZE_TOO_LARGE, THIS_FILED_ENTER_LARGE, THIS_FILED_ENTER_SMALL, THIS_FILED_GREATER_THAN_THOUSAND, THIS_FILED_MONEY_TOO_LARGE, THIS_FILED_MUST_POSITIVE, THIS_FILED_SELECT_ITEM_CANNOT_EMPTY, THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, TYPE_INPUT_TEXT, UNDER_STROKE, VND } from "../../../../utils/commonConstants";
+import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID, THIS_FIELD_CANNOT_EMPTY, THIS_FIELD_CODE_NUMBER_NOT_FORMAT, THIS_FILE_NOT_FORMAT, THIS_FILE_SIZE_TOO_LARGE, THIS_FILED_ENTER_LARGE, THIS_FILED_ENTER_SMALL, THIS_FILED_GREATER_THAN_THOUSAND, THIS_FILED_MONEY_TOO_LARGE, THIS_FILED_MUST_POSITIVE, THIS_FILED_SELECT_ITEM_CANNOT_EMPTY, THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, TYPE_INPUT_TEXT, UNDER_STROKE, VND } from "../../../../utils/commonConstants";
 import { CKEditorField } from "../../../composite/formik/CKEditorField";
 import { SelectField } from "../../../composite/formik/SelectedField";
 import { regex, validation } from "../../../../utils/validation";
-import { useFetchData } from "../../../../hook/fetch/authenticated/useFetchData";
+import { useFetchGet } from "../../../../hook/fetch/authenticated/useFetchGet";
 import "../../../../assets/css/admin/skeletonLoading/contentForm.css"
 import { NumberFormatField } from "../../../composite/formik/NumberFormatField";
 import { InputAdornment } from "@mui/material";
@@ -17,7 +17,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { memo, useCallback, useEffect, useRef } from "react";
 import { onClickSaveAction } from "../../../../redux/slice/admin/action/actionAdmin";
 import { useFetchByFiled } from "../../../../hook/fetch/authenticated/useFetchByFiled";
-import { useFetchSave } from "../../../../hook/fetch/authenticated/useFetchSave";
+import { useFetchPost } from "../../../../hook/fetch/authenticated/useFetchPost";
+import { toastSuccess } from "../../../../config/toast";
 
 function ContentForm(props) {
     const dispatch = useDispatch();
@@ -27,18 +28,18 @@ function ContentForm(props) {
     const navigate = useNavigate();
     const buttonRef = useRef(null);
     const { fetchByField, data: initialEdit, isPending: isPendingInitialEdit, error: errorInitialEdit } = useFetchByFiled();
-    const { fetchSave, code: codeSave, isPending: isPendingSave } = useFetchSave();
-    const {fetchData:fetchDataVariations, data: variations, isPending: isPendingVariations } = useFetchData();
-    const {fetchData:fetchVariationOptions, data: variationOptions, isPending: isPendingVariationOptions } = useFetchData();
-    const {fetchData:fetchProductCategories, data: productCategories, isPending: isPendingProductCategories } = useFetchData();
-    const {fetchData:fetchPromotions, data: promotions, isPending: isPendingPromotions } = useFetchData();
+    const { fetchPost, code: codeSave, isPending: isPendingSave ,message:messageSave } = useFetchPost();
+    const { fetchGet: fetchDataVariations, data: variations, isPending: isPendingVariations } = useFetchGet();
+    const { fetchGet: fetchVariationOptions, data: variationOptions, isPending: isPendingVariationOptions } = useFetchGet();
+    const { fetchGet: fetchProductCategories, data: productCategories, isPending: isPendingProductCategories } = useFetchGet();
+    const { fetchGet: fetchPromotions, data: promotions, isPending: isPendingPromotions } = useFetchGet();
     useEffect(() => {
         dispatch(onClickSaveAction({ buttonSave: buttonRef.current }))
         if (id !== undefined && validation.isNumber(id)) {
             fetchByField(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`)
         }
     }, [fetchByField, id, dispatch])
-    useEffect(()=>{
+    useEffect(() => {
         const fetchAllData = async () => {
             await Promise.all([
                 fetchDataVariations(createActionURL("products-variation").instant()),
@@ -48,14 +49,15 @@ function ContentForm(props) {
             ]);
         };
         fetchAllData();
-    },[fetchDataVariations, fetchVariationOptions, fetchProductCategories, fetchPromotions])
+    }, [fetchDataVariations, fetchVariationOptions, fetchProductCategories, fetchPromotions])
     useEffect(() => {
-        if (codeSave === 200 ) {
+        if (codeSave === 200) {
             if (close) {
                 navigate(`/admin/${url}`);
+                toastSuccess(messageSave);
             }
         }
-    }, [codeSave,  close, navigate, url]);
+    }, [codeSave, close, navigate, url]);
     const handleErrorsMessage = useCallback((errors, setErrors) => {
         try {
             const message = Object.keys(errors).reduce((acc, key) => {
@@ -105,8 +107,6 @@ function ContentForm(props) {
                 }
 
             });
-            console.log(data)
-            console.log(dataToServer)
             delete dataToServer.multipart;
             dataToServer.productItem.forEach((productItem, productIndex) => {
                 delete productItem.multipart
@@ -115,10 +115,9 @@ function ContentForm(props) {
             const blob = new Blob([json], {
                 type: 'application/json'
             });
-            // multiPart.append("data", blob);
             multiPart.append('productDto', blob)
             console.log(dataToServer)
-            fetchSave(createActionURL(url).instant(), multiPart, setErrors, handleErrorsMessage);
+            fetchPost(createActionURL(url).instant(), multiPart, setErrors, handleErrorsMessage);
         }
     }
 

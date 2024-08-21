@@ -1,18 +1,18 @@
 import { memo, useEffect } from "react";
-import { useFetchData } from "../../../hook/fetch/authenticated/useFetchData";
+import { useFetchGet } from "../../../hook/fetch/authenticated/useFetchGet";
 import { createActionURL } from "../../../utils/commonUtils";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutProfile } from "../../../redux/slice/person/profile";
 
-function LogoutUser(props){
-    const { fetchData, isPending, error, code } = useFetchData();
-    const {handleCloseHeaderModel} = props;
+function LogoutUser(props) {
+    const { fetchGet, isPending, error, code } = useFetchGet();
+    const { handleCloseHeaderModel } = props;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleLogout = () => {
         if (!isPending) {
-            fetchData(createActionURL("auth/logout").instant());
+            fetchGet(createActionURL("auth/logout").instant());
         }
     };
 
@@ -29,7 +29,7 @@ function LogoutUser(props){
             navigate(`?error=${encodeURIComponent(error)}`);
         }
     }, [error, navigate]);
-    return(
+    return (
         <div className="header-user-modal-item" onClick={handleLogout}><i className="fa-solid fa-power-off"></i>Đăng xuất</div>
     )
 }

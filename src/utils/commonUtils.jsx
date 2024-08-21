@@ -3,8 +3,8 @@ import DateItemSearch from "../components/composite/search/DateItemSearch";
 import InputDataSearch from "../components/composite/search/InputDataSearch";
 import SelectItemSearch from "../components/composite/search/SelectItemSearch";
 import { fetchRefreshToken } from "../redux/slice/auth/authentication";
-import { CONST_LOGIN, DOMAIN_CLIENT, DOMAIN_SERVER, LINK_DOMAIN, LINK_ERROR, LINK_USER, PATH_DASHBOARD_ADMIN, SCREEN_DARK, SCREEN_LIGHT, SCREEN_THEME, SCREEN_THEME_MODE, SLASH, TYPE_STRING } from "./commonConstants";
-import { validation } from "./validation";
+import {  DOMAIN_CLIENT, DOMAIN_SERVER, LINK_DOMAIN,  LINK_USER, SCREEN_DARK, SCREEN_LIGHT, SCREEN_THEME, SCREEN_THEME_MODE, SLASH } from "./commonConstants";
+
 /**
 * AUTHENTICATION 
 */
@@ -149,8 +149,6 @@ export const handleExceptionView = (props) => {
             handleRedirectLogIn()
             break;
         case 4007:
-
-            localStorage.removeItem(CONST_LOGIN.ACCESS_TOKEN);
             window.location.href = LINK_USER.linkLogin;
             break;
         case 4008:

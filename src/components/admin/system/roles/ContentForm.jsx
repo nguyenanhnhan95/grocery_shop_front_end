@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFetchByFiled } from "../../../../hook/fetch/authenticated/useFetchByFiled";
-import { useFetchSave } from "../../../../hook/fetch/authenticated/useFetchSave";
-import { useFetchEdit } from "../../../../hook/fetch/authenticated/useFetchEdit";
+import { useFetchPost } from "../../../../hook/fetch/authenticated/useFetchPost";
+import { useFetchPatch } from "../../../../hook/fetch/authenticated/useFetchPatch";
 import { onClickSaveAction } from "../../../../redux/slice/admin/action/actionAdmin";
 import { validation } from "../../../../utils/validation";
 import { createActionURL } from "../../../../utils/commonUtils";
@@ -12,7 +12,7 @@ import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID, THIS_FIELD_CANNOT_EMPTY, THIS_F
 import { Form, ErrorMessage, Field, Formik } from "formik";
 import * as yup from "yup";
 import "../../../../assets/css/admin/system/role/contentForm.css"
-import { useFetchData } from "../../../../hook/fetch/authenticated/useFetchData";
+import { useFetchGet } from "../../../../hook/fetch/authenticated/useFetchGet";
 
 import { CheckBoxPermisson } from "./CheckBoxPermisson";
 function ContentForm(props) {
@@ -23,9 +23,9 @@ function ContentForm(props) {
     const navigate = useNavigate();
     const buttonRef = useRef(null);
     const { fetchByField, data: initialEdit, isPending: isPendingInitialEdit, error: errorInitialEdit } = useFetchByFiled();
-    const { fetchSave, code: codeSave, isPending: isPendingSave } = useFetchSave();
-    const { fetchEdit, code: codeEdit, isPending: isPendingEdit } = useFetchEdit();
-    const { data: listPermissions, isPending: isPendingListPermissions } = useFetchData(createActionURL("role/permissions").instant());
+    const { fetchSave, code: codeSave, isPending: isPendingSave } = useFetchPost();
+    const { fetchEdit, code: codeEdit, isPending: isPendingEdit } = useFetchPatch();
+    const { data: listPermissions, isPending: isPendingListPermissions } = useFetchGet(createActionURL("role/permissions").instant());
     useEffect(() => {
         dispatch(onClickSaveAction({ buttonSave: buttonRef.current }))
         if (id !== undefined && validation.isNumber(id)) {
@@ -49,7 +49,7 @@ function ContentForm(props) {
         }
     }, [codeSave, codeEdit, close, navigate, url]);
     const handleSuitablePermission = (permisson) => {
-        if(validation.isArrayEmpty(permisson)){
+        if (validation.isArrayEmpty(permisson)) {
             return true;
         }
         if (Array.isArray(permisson) && Array.isArray(listPermissions)) {
@@ -75,7 +75,7 @@ function ContentForm(props) {
                             .required(THIS_FIELD_CANNOT_EMPTY)
                             .max(50, THIS_FILED_ENTER_LARGE)
                             .min(4, THIS_FILED_ENTER_SMALL),
-                            description: yup.string().trim()
+                        description: yup.string().trim()
                             .max(250, THIS_FILED_ENTER_LARGE),
                         permissions: yup.mixed()
                             .test('isSuitable', THIS_FILE_ENTER_FAIL, handleSuitablePermission)

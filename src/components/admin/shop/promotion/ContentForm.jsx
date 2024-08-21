@@ -9,11 +9,12 @@ import { InputAdornmentField } from "../../../composite/formik/InputAdornmentFie
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFetchByFiled } from "../../../../hook/fetch/authenticated/useFetchByFiled";
-import { useFetchSave } from "../../../../hook/fetch/authenticated/useFetchSave";
-import { useFetchEdit } from "../../../../hook/fetch/authenticated/useFetchEdit";
+import { useFetchPost } from "../../../../hook/fetch/authenticated/useFetchPost";
+import { useFetchPatch } from "../../../../hook/fetch/authenticated/useFetchPatch";
 import { onClickSaveAction } from "../../../../redux/slice/admin/action/actionAdmin";
 import { createActionURL } from "../../../../utils/commonUtils";
 import { regex, validation } from "../../../../utils/validation";
+import { toastSuccess } from "../../../../config/toast";
 function ContentForm(props) {
     const dispatch = useDispatch();
     const { initialForm, url } = props;
@@ -22,8 +23,8 @@ function ContentForm(props) {
     const navigate = useNavigate();
     const buttonRef = useRef(null);
     const { fetchByField, data: initialEdit, isPending: isPendingInitialEdit, error: errorInitialEdit } = useFetchByFiled();
-    const { fetchSave, code: codeSave, isPending: isPendingSave } = useFetchSave();
-    const { fetchEdit, code: codeEdit, isPending: isPendingEdit } = useFetchEdit();
+    const { fetchPost, code: codeSave, isPending: isPendingSave ,message:messageSave } = useFetchPost();
+    const { fetchPatch, code: codeEdit, isPending: isPendingEdit ,message:messageEdit} = useFetchPatch();
     useEffect(() => {
         dispatch(onClickSaveAction({ buttonSave: buttonRef.current }))
         if (id !== undefined && validation.isNumber(id)) {
@@ -33,18 +34,24 @@ function ContentForm(props) {
     const handleDataToServer = (data, setErrors) => {
         if (isPendingSave !== true && isPendingEdit !== true) {
             if (id !== undefined && validation.isNumber(id)) {
-                fetchEdit(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`, data, setErrors)
+                fetchPatch(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`, data, setErrors)
             } else {
-                fetchSave(createActionURL(url).instant(), data, setErrors)
+                fetchPost(createActionURL(url).instant(), data, setErrors)
             }
         }
     }
     useEffect(() => {
-        if (codeSave === 200 || codeEdit === 200) {
-            if (close) {
-                navigate(`/admin/${url}`);
+        const handleNavigationAndToast = (code, message) => {
+            if (code === 200) {
+                if(close){
+                    navigate(`/admin/${url}`);
+                }               
+                toastSuccess(message);
             }
-        }
+        };
+    
+        handleNavigationAndToast(codeSave, messageSave);
+        handleNavigationAndToast(codeEdit, messageEdit);
     }, [codeSave, codeEdit, close, navigate, url]);
     return (
         <div className={isPendingInitialEdit && LOADING_CONTENT_FORM}>

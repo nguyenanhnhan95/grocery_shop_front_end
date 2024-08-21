@@ -15,7 +15,7 @@ const initialState = {
     errorAvatar: null,
     error: null,
 }
-export const fetchProfileSlice = createAsyncThunk('fetchProfile', async (_, { dispatch, rejectWithValue }) => {
+export const fetchProfileSlice = createAsyncThunk('fetchProfile', async (_, {  rejectWithValue }) => {
     try {
         const response = await axios.get(LINK_USER.getProfile, { withCredentials: true });
         if (response.data?.code === 200) {
@@ -67,7 +67,6 @@ export const profileSlice = createSlice({
                 state.error = null;
             })
             .addCase(fetchProfileSlice.fulfilled, (state, action) => {
-                console.log(action)
                 state.authenticate = true;
                 state.profile = action.payload.result;
                 state.roles = handleArrayVariables(action.payload.result.roles)

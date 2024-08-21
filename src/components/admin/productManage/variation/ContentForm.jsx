@@ -9,8 +9,9 @@ import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID, THIS_FILED_ENTER_LARGE } from "
 import { useNavigate, useParams } from "react-router-dom";
 import { validation } from "../../../../utils/validation";
 import { createActionURL } from "../../../../utils/commonUtils";
-import { useFetchSave } from "../../../../hook/fetch/authenticated/useFetchSave";
-import { useFetchEdit } from "../../../../hook/fetch/authenticated/useFetchEdit";
+import { useFetchPost } from "../../../../hook/fetch/authenticated/useFetchPost";
+import { useFetchPatch } from "../../../../hook/fetch/authenticated/useFetchPatch";
+import { toastSuccess } from "../../../../config/toast";
 
 
 function ContentForm(props) {
@@ -20,8 +21,8 @@ function ContentForm(props) {
     const { close } = useSelector((state) => state.actionAdmin);
     const navigate = useNavigate();
     const { fetchByField, data: initialEdit, isPending: isPendingInitialEdit, error: errorInitialEdit } = useFetchByFiled();
-    const { fetchSave, code: codeSave, isPending: isPendingSave } = useFetchSave();
-    const { fetchEdit, code: codeEdit, isPending: isPendingEdit } = useFetchEdit();
+    const { fetchPost, code: codeSave, isPending: isPendingSave ,message:messageSave } = useFetchPost();
+    const { fetchPatch, code: codeEdit, isPending: isPendingEdit ,message:messageEdit } = useFetchPatch();
     const buttonRef = useRef(null);
 
     useEffect(() => {
@@ -33,18 +34,24 @@ function ContentForm(props) {
     const handleDataToServer = (data, setErrors) => {
         if (isPendingSave !== true && isPendingEdit !== true) {
             if (id !== undefined && validation.isNumber(id)) {
-                fetchEdit(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`, data, setErrors)
+                fetchPatch(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`, data, setErrors)
             } else {
-                fetchSave(createActionURL(url).instant(), data, setErrors)
+                fetchPost(createActionURL(url).instant(), data, setErrors)
             }
         }
     }
     useEffect(() => {
-        if (codeSave === 200 || codeEdit === 200) {
-            if (close) {
-                navigate(`/admin/${url}`);
+        const handleNavigationAndToast = (code, message) => {
+            if (code === 200) {
+                if(close){
+                    navigate(`/admin/${url}`);
+                }               
+                toastSuccess(message);
             }
-        }
+        };
+    
+        handleNavigationAndToast(codeSave, messageSave);
+        handleNavigationAndToast(codeEdit, messageEdit);
     }, [codeSave, codeEdit, close, navigate, url]);
     return (
         <div className={isPendingInitialEdit && LOADING_CONTENT_FORM}>
@@ -64,7 +71,7 @@ function ContentForm(props) {
                         validationSchema={yup.object({
                             name: yup.string().trim().required("Chưa nhập tên :"),
                             description: yup.string().trim()
-                            .max(250, THIS_FILED_ENTER_LARGE),
+                                .max(250, THIS_FILED_ENTER_LARGE),
                         })}
                         onSubmit={(data, { setErrors }) =>
                             handleDataToServer(data, setErrors)

@@ -9,20 +9,17 @@ import "./assets/css/composite/modal/commonModal.css"
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "./../node_modules/bootstrap/dist/js/bootstrap.bundle.js"
 import NotFound from "./components/error/NotFound";
-import { loginFormSlice } from "./redux/slice/login/login.jsx";
 import menuContentMainSlice from "./redux/slice/admin/sidebar/menuContentMain.jsx";
 import overPlayMenuMainSlice from "./redux/slice/admin/sidebar/overPlayMenu.jsx";
 import { actionAdminSlice } from "./redux/slice/admin/action/actionAdmin.jsx";
 import { getAllCategoryMenus } from "./redux/slice/product/productCategory.jsx";
 import Home from "./pages/home/Home.jsx";
 import { getScreenThem } from "./utils/commonUtils.jsx";
-import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler.jsx";
 import NotificationModal from "./components/composite/modal/NotificationModal.jsx";
 import { useScreenMode } from "./hook/auth/useScreenMode.jsx";
 
 const Login = lazy(() => import('./pages/login/Login').then((module) => {
     store.injectReducer(actionReducerStore.clear, '', '')
-    store.injectReducer(actionReducerStore.add, reducerSliceKey.loginForm, loginFormSlice.reducer)
     return module;
 }))
 const Admin = lazy(() => import('./pages/admin/Admin').then((module) => {
@@ -45,7 +42,6 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/admin/*" element={<Admin />} />
-                            <Route path={'/oauth2/redirect'} element={<OAuth2RedirectHandler />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </BrowserRouter>

@@ -2,34 +2,35 @@ import axios from "axios";
 import { useCallback, useMemo, useState } from "react";
 import { useAuthenticateTokenException } from "../../handler/useAuthenticateTokenException";
 
-export const useFetchData = () => {
+export const useFetchGet = () => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
   const [code, setCode] = useState(null);
   const { handleAuthenticateException } = useAuthenticateTokenException();
-  const fetchData = useCallback(async (url) => {
+  const fetchGet = useCallback(async (url) => {
     setIsPending(true);
     try {
-      const response = await axios.get(url, {withCredentials:true});
+      const response = await axios.get(url, { withCredentials: true });
       setCode(response.data?.code)
       setData(response.data?.result);
       setError(null);
     } catch (error) {
+      console.log(error)
       setError(error);
       // if(error?.payload?.response?.data?.status===4008){
 
       // }
-      handleAuthenticateException({error:error,code:error?.response?.data?.status,handleService: () => fetchData(url)})
+      handleAuthenticateException({ error: error, code: error?.response?.data?.status, handleService: () => fetchGet(url) })
     } finally {
       setIsPending(false);
     }
   }, []);
   return useMemo(() => ({
-    fetchData,
+    fetchGet,
     data,
     isPending,
     error,
     code,
-  }), [data, isPending, error, code,fetchData]);
+  }), [data, isPending, error, code, fetchGet]);
 };

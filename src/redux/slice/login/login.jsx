@@ -4,10 +4,9 @@ import { CONST_LOGIN, FETCH_LOGIN, LINK_USER } from "../../../utils/commonConsta
 export const loginFormAuth = createAsyncThunk('auth/login',
     async (account, { rejectWithValue }) => {
         try {
+            console.log(account)
             const response = await axios.post(LINK_USER.authLogin, account,{withCredentials:true});
-            console.log(response.data)
             if(response?.data?.code== 200){
-                localStorage.setItem(CONST_LOGIN.ACCESS_TOKEN, response.data.result);
                 return response.data;
             }     
         } catch (error) {
