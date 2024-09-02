@@ -27,7 +27,7 @@ export const useFetchPatch = () => {
                     setErrors(error.response.data.result);
                 }
             }
-            handleAuthenticateException({ error: error, code: error?.response?.data?.status, handleService: () => fetchPatch(url, data, setErrors) })
+            handleAuthenticateException({ error: error, code: error?.response?.data?.code, handleService: () => fetchPatch(url, data, setErrors) })
         } finally {
             setIsPending(false);
         }

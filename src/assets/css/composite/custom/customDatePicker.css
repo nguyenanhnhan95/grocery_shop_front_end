@@ -1,0 +1,44 @@
+.css-10o2lyd-MuiStack-root{
+    overflow: hidden !important;
+    padding: 0;
+}
+.css-23p0if-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
+    border: 1px solid var(--bg-trade) !important;
+}
+
+.css-1vs7z2v-MuiYearCalendar-root::-webkit-scrollbar {
+    display: none;
+}
+.MuiPopper-root{
+    z-index: 10;
+}
+.dark .MuiPaper-root {
+    background-color: var(--bg-input-dark);
+    color: var(--font-color-dark) ;
+}
+.MuiButtonBase-root{
+    display: block ;
+}
+.dark .css-12mkn7b-MuiButtonBase-root-MuiIconButton-root-MuiPickersCalendarHeader-switchViewButton,
+.dark .css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button,
+.dark .css-1nkg345-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button,
+.dark .css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel,
+.dark .css-23p0if-MuiButtonBase-root-MuiPickersDay-root,
+.dark .css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root{
+    color: var(--font-color-dark);
+}
+.dark .css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root:hover{
+    background-color: var(--font-color-light);
+}
+
+.dark .MuiDialogContent-root{
+    background-color: var(--bg-input-dark);
+    border: none;
+    border-radius: 5px;   
+}
+.dark .MuiDialogContent-root .MuiTypography-root,
+.dark .MuiDialogContent-root .MuiTypography-root .MuiPickersCalendarHeader-root,
+.dark .MuiDialogContent-root .MuiTypography-root .css-17vsgdu-MuiPaper-root,
+.dark .MuiDialogContent-root  .MuiPickersFadeTransitionGroup-root{
+    color: var(--font-color-dark);
+}

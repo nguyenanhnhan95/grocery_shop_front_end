@@ -3,18 +3,17 @@ import "../../../assets/css/header/headerUser/headerUser.css"
 import AvatarUserHeader from "./AvatarUserHeader";
 import HeaderUserModel from "./HeaderUserModel";
 import RedirectLogin from "../../login/RedirectLogin";
-import { useFetchFile } from "../../../hook/fetch/aws/useFetchFile";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfileSlice, updateSrcAvatar } from "../../../redux/slice/person/profile";
 import { FETCH_PROFILE } from "../../../redux/action/person/person";
-import { handleTokenRefresh } from "../../../handler/handlerException";
+import { useFetchUrlImage } from "../../../hook/fetch/aws/useFetchUrlImage";
 function HeaderUser() {
     const [isModalUserVisible, setIsModalUserVisible] = useState(false);
     const headerUserRef = useRef(null);
     const headerUserModalRef = useRef(null);
     const dispatch = useDispatch();
     const { srcAvatar, profile, status, error } = useSelector(state => state.profile)
-    const { fetchFile, data, isPending } = useFetchFile();
+    const { fetchUrlImage, data, isPending } = useFetchUrlImage();
     useEffect(() => {
         if (status === FETCH_PROFILE.FETCH_PROFILE_INITIAL) {
             dispatch(fetchProfileSlice());
@@ -22,21 +21,9 @@ function HeaderUser() {
     }, [status, dispatch])
     useEffect(() => {
         if (srcAvatar === null && profile !== null) {
-            fetchFile(profile.avatar)
+            fetchUrlImage(profile.avatar)
         }
     }, [srcAvatar, profile])
-    useEffect(() => {
-        const handleErrorRefresh = async () => {
-            await handleTokenRefresh({
-                dispatch,
-                handleService: () => dispatch(fetchProfileSlice())
-            });
-        };
-        if (error?.response?.data?.status === 4008) {
-            handleErrorRefresh(); // Call the async function within the useEffect
-        }
-    }, [error, dispatch]);
-
     useEffect(() => {
         if (data != null) {
             dispatch(updateSrcAvatar({ srcAvatar: data, error: error }))
@@ -53,7 +40,7 @@ function HeaderUser() {
         return () => {
             document.removeEventListener('click', handleClickOutside);
         };
-    }, []);
+    }, [headerUserRef]);
 
     const handleHeaderUserClick = useCallback(() => {
         if (isModalUserVisible) {
@@ -64,14 +51,14 @@ function HeaderUser() {
             setIsModalUserVisible(true);
         }
     }, [headerUserModalRef, isModalUserVisible]);
-    const handleCloseHeaderModel = useCallback(() => {
-        headerUserModalRef.current.style.display = 'none';
-    }, [headerUserModalRef])
+    // const handleCloseHeaderModel = useCallback(() => {
+    //     // headerUserModalRef.current.style.display = 'none';
+    // }, [headerUserModalRef])
     return (
         <li className={`nav-item  header-user ${isPending || status === FETCH_PROFILE.FETCH_PROFILE_LOADING && 'loading-information-user'}`} ref={headerUserRef} >
             <AvatarUserHeader handleHeaderUserClick={handleHeaderUserClick} />
             <RedirectLogin />
-            <HeaderUserModel handleCloseHeaderModel={handleCloseHeaderModel} headerUserModalRef={headerUserModalRef} headerUserRef={headerUserRef} />
+            <HeaderUserModel headerUserModalRef={headerUserModalRef} isModalUserVisible={isModalUserVisible} />
         </li>
     )
 }

@@ -1,3 +1,7 @@
+import DateItemSearch from "../components/composite/search/DateItemSearch";
+import InputDataSearch from "../components/composite/search/InputDataSearch";
+import SelectCustomSearch from "../components/composite/search/SelectCustomSearch";
+import SelectModelSearch from "../components/composite/search/SelectModelSearch";
 
 export const NOTIFY_DELETE = "Bạn có chắc chắn muốn xóa dữ liệu này không?";
 export const CONFIRM_DELETE = "Hành động này không thể hoàn tác.";
@@ -24,13 +28,22 @@ export const EXISTING = "EXISTING";
 export const SHOW = "show";
 export const TYPE_STRING = "string";
 export const LOGIN_SESSION_EXPIRE_DATE = "Phiên đăng nhập của bạn đã hêt hạn ."
-export const TYPE_INPUT_NUMBER="number";
-export const TYPE_INPUT_TEXT="text";
+export const TYPE_INPUT_NUMBER = "number";
+export const TYPE_INPUT_TEXT = "text";
 /**
  * STATUS LOADING
  */
 export const LOADING_CONTENT_FORM = "loading-content-form";
 export const LOADING_LIST_TABLE = "loading-list-table";
+/**
+ * PLACE HOLDER
+ */
+export const PLACE_HOLDER_NAME_LOGIN="nguyenvana";
+export const PLACE_HOLDER_FULL_NAME="Nguyen Van A";
+export const PLACE_HOLDER_PASSWORD = "············"
+export const PLACE_HOLDER_CURRENT_RESIDENCE= "Nhập tên đường, thôn, xóm,... nơi đăng ký hộ khẩu thường trú";
+export const PLACE_HOLDER_EMAIL="nguyenvana@gmail.com"
+
 /**
  * ERROR MESSAGE
  */
@@ -49,18 +62,20 @@ export const PHONENUMBER_ISNOT_THE_CORRECT_FORMAT = "Số điện thoại không
 export const THIS_FILED_SELECT_ITEM_CANNOT_EMPTY = "Vui lòng lựa chọn thông tin.";
 export const THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY = "Vui lòng tải dữ liệu ."
 export const THIS_FILE_SIZE_TOO_LARGE = "File quá lớn ."
-export const THIS_FILE_EXISTING ="File này đã tồn tại ."
-export const THIS_FIELD_VALUE_NOT_FORMAT="Trường này nhập giá trị không phù hợp ."
-export const THIS_FILED_ENTER_LARGE="Bạn nhập trường này quá dài ."
-export const THIS_FILED_ENTER_SMALL="Bạn nhập trường này quá ngắn ."
-export const THIS_FILE_NOT_FORMAT="File không đúng định dạng ."
-export const THIS_FILED_MUST_POSITIVE="Bạn nhập trường này số dương ."
-export const THIS_FILED_GREATER_THAN_THOUSAND="Bạn nhập trường này trên 1000 ₫ ."
-export const THIS_FILED_MONEY_TOO_LARGE="Bạn nhập số tiền quá lớn ."
-export const THIS_ERROR_TECHNICAL="Đã xảy ra lỗi. Việc này có thể là do lỗi kỹ thuật và chúng tôi đang khắc phục rồi"
-export const THIS_FIELD_DATE_GREATER_EQUAL_DATE_CURRENT="Phải lớn hơn hoặc bằng ngày hiện tại .";
-export const THIS_FIELD_CODE_NUMBER_NOT_FORMAT="Nhập mã code không phù hợp: ex :012345678";
-export const THIS_FILE_ENTER_FAIL="Trường này nhập dữ liệu bị lỗi . "
+export const THIS_FILE_EXISTING = "File này đã tồn tại ."
+export const THIS_FIELD_VALUE_NOT_FORMAT = "Trường này nhập giá trị không phù hợp ."
+export const THIS_FILED_ENTER_LARGE = "Bạn nhập trường này quá dài ."
+export const THIS_FILED_ENTER_SMALL = "Bạn nhập trường này quá ngắn ."
+export const THIS_FILE_NOT_FORMAT = "File không đúng định dạng ."
+export const THIS_FILED_MUST_POSITIVE = "Bạn nhập trường này số dương ."
+export const THIS_FILED_GREATER_THAN_THOUSAND = "Bạn nhập trường này trên 1000 ₫ ."
+export const THIS_FILED_MONEY_TOO_LARGE = "Bạn nhập số tiền quá lớn ."
+export const THIS_ERROR_TECHNICAL = "Đã xảy ra lỗi. Việc này có thể là do lỗi kỹ thuật và chúng tôi đang khắc phục rồi"
+export const THIS_FIELD_DATE_GREATER_EQUAL_DATE_CURRENT = "Phải lớn hơn hoặc bằng ngày hiện tại .";
+export const THIS_FIELD_CODE_NUMBER_NOT_FORMAT = "Nhập mã code không phù hợp: ex :012345678";
+export const THIS_FILE_ENTER_FAIL = "Trường này nhập dữ liệu bị lỗi . "
+export const THIS_FIELD_CONFIRM_NOT_MATCH = "Mật khẩu xác nhận không đúng."
+export const THIS_FIELD_BIRTH_OF_DATE_GREATER_THAN_18="Ngày sinh phải lớn hơn 18 tuổi .";
 /**
  * CSS
  */
@@ -100,8 +115,8 @@ export const STEP_TICK = "fa fa-check custom-tick-step";
 export const STEP_TICK_ACTIVE = "fa fa-check custom-tick-step tick-step-active";
 export const NGUOI_DUNG_FE = "Người dùng";
 
-export const PARENT="parent";
-export const CHILDREN="children";
+export const PARENT = "parent";
+export const CHILDREN = "children";
 
 /**
  * COLON.
@@ -327,7 +342,7 @@ export const ALLOW_IMAGES_File = "image/png, image/gif, image/jpeg";
 export const ALLOW_VIDEOS_FILE = "video/mp4,video/x-m4v,video/*"
 export const ALLOW_AUDIOS_FILE = "audio/*"
 export const ALLOW_ALL_FILE = "video/*"
-export const ALLOW_ARRAY_IMAGES=["jpg", "jpeg", "png"];
+export const ALLOW_ARRAY_IMAGES = ["jpg", "jpeg", "png"];
 /**
 * AWS  
 */
@@ -519,7 +534,7 @@ export const reducerSliceKey = {
 	adminStateManage: "adminStateManage",
 	homeStateManage: "homeStateManage",
 	productVariation: "productVariation",
-	productVariationOption:"productVariationOption",
+	productVariationOption: "productVariationOption",
 	shopPromotion: "shopPromotion"
 }
 export const actionReducerStore = {
@@ -533,9 +548,19 @@ export const actionReducerStore = {
 */
 export const typeSearchAdvanced = {
 	DateItemSearch: "DateItemSearch",
-	SelectItemSearch: "SelectItemSearch",
-	InputDataSearch: "InputDataSearch"
+	SelectModelSearch: "SelectModelSearch",
+	InputDataSearch: "InputDataSearch",
+	SelectCustomSearch:"SelectCustomSearch"
 }
+/**
+* OPTION SEARCH ADVANCED 
+*/
+export const componentsAdvanced = {
+    SelectModelSearch,
+    DateItemSearch,
+    InputDataSearch,
+	SelectCustomSearch
+};
 /**
 * ACTION REDUX
 */

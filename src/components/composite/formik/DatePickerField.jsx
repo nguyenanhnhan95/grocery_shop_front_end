@@ -1,17 +1,18 @@
 import React from "react";
-import DatePicker from "react-datepicker";
-import 'react-datepicker/dist/react-datepicker.css';
-import "../../../assets/css/composite/formik/datePickerFiled.css"
-export const DatePickerField = ({ field, form, ...props }) => {
+import CustomDatePicker from "../custom/customDatePicker";
+import dayjs from "dayjs";
+
+export const DatePickerField = ({ field, title, form, ...props }) => {
+
     return (
-        <DatePicker
-            {...field}
-            {...props}
-            autoComplete="off"
-            selected={(field.value && new Date(field.value)) || null}
-            onChange={val => {
-                form.setFieldValue(field.name, val);
-            }}
+        <CustomDatePicker 
+               autoComplete="off"
+               defaultValue={(field.value && dayjs()) || null}
+               onChange={val => {
+                   form.setFieldValue(field.name, val);
+               }}
+               title={title}
+               {...props}
         />
     );
 };

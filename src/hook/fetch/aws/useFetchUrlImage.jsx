@@ -1,18 +1,18 @@
 
 import { useCallback, useState, useMemo } from "react";
-import { getObjectAsFile } from "../../../config/S3Config";
+import { getObjectUrlImage } from "../../../config/S3Config";
 
-export const useFetchFile = () => {
+export const useFetchUrlImage = () => {
     const [state, setState] = useState({
         isPending: false,
         error: null,
         data: null,
     });
 
-    const fetchFile = useCallback(async (keyName) => {
+    const fetchUrlImage = useCallback(async (keyName) => {
         setState({ isPending: true, error: null, data: null });
         try {
-            const response = await getObjectAsFile(keyName);
+            const response = await getObjectUrlImage(keyName);
             setState({ isPending: false, error: null, data: response });
         } catch (err) {
             setState({ isPending: false, error: `Could not fetch data: ${err.message || err}`, data: null });
@@ -21,5 +21,5 @@ export const useFetchFile = () => {
 
     const { isPending, error, data } = state;
 
-    return useMemo(() => ({ fetchFile, isPending, error, data }), [fetchFile, isPending, error, data]);
+    return useMemo(() => ({ fetchUrlImage, isPending, error, data }), [fetchUrlImage, isPending, error, data]);
 };

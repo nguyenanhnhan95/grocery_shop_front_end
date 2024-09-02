@@ -3,7 +3,6 @@ import axios from "axios";
 import { LINK_USER, SCREEN_THEME, SCREEN_THEME_MODE } from "../../../utils/commonConstants";
 import { handleArrayVariables } from "../../../utils/commonUtils";
 import { FETCH_PROFILE } from "../../action/person/person";
-import { handleAuthenticateException } from "../../../handler/handlerException"
 export const Local_Storage_Profile = "STORE_PROFILE";
 const initialState = {
     authenticate: JSON.parse(localStorage.getItem(Local_Storage_Profile))?.authenticate || false,
@@ -15,15 +14,13 @@ const initialState = {
     errorAvatar: null,
     error: null,
 }
-export const fetchProfileSlice = createAsyncThunk('fetchProfile', async (_, {  rejectWithValue }) => {
+export const fetchProfileSlice = createAsyncThunk('fetchProfile', async (_, { rejectWithValue }) => {
     try {
         const response = await axios.get(LINK_USER.getProfile, { withCredentials: true });
         if (response.data?.code === 200) {
             return response.data;
         }
     } catch (error) {
-        console.log(rejectWithValue(error)?.payload?.response?.data?.status)
-        // handleAuthenticateException({ code: rejectWithValue(error)?.payload?.response?.data?.status, dispatch: dispatch })
         return rejectWithValue(error);
     }
 })
@@ -37,14 +34,13 @@ export const profileSlice = createSlice({
             state.screenMode = action?.payload?.profile?.screenTheme
         },
         updateSrcAvatar: (state, action) => {
-            if (JSON.parse(localStorage.getItem(Local_Storage_Profile))?.srcAvatar?.srcAvatar === null && state.profile?.avatar !== null) {
-                if (action.payload?.error !== null) {
-                    const temp = { ...JSON.parse(localStorage.getItem(Local_Storage_Profile)), srcAvatar: action.payload.srcAvatar }
+            if (state.profile?.avatar !== null) {
+                if (action.payload?.error === null) {
+                    const temp = { ...JSON.parse(localStorage.getItem(Local_Storage_Profile)), srcAvatar: action?.payload?.srcAvatar }
                     localStorage.setItem(Local_Storage_Profile, JSON.stringify(temp))
                 }
-
-                state.srcAvatar = action.payload.srcAvatar;
-                state.errorAvatar = action.payload.error;
+                state.srcAvatar = action.payload?.srcAvatar;
+                // state.errorAvatar = action.payload?.error;
             }
         },
         logoutProfile: (state) => {
@@ -66,6 +62,14 @@ export const profileSlice = createSlice({
                 state.roles = [];
                 state.error = null;
             })
+            .addCase(fetchProfileSlice.rejected, (state, action) => {
+                localStorage.removeItem(Local_Storage_Profile)
+                state.authenticate = false;
+                state.profile = null;
+                state.loading = false;
+                state.status = FETCH_PROFILE.FETCH_PROFILE_FAIL;
+                state.error = action.payload;
+            })
             .addCase(fetchProfileSlice.fulfilled, (state, action) => {
                 state.authenticate = true;
                 state.profile = action.payload.result;
@@ -82,17 +86,6 @@ export const profileSlice = createSlice({
                     authenticate: true,
                     srcAvatar: null
                 }));
-            })
-            .addCase(fetchProfileSlice.rejected, (state, action) => {
-                console.log(action)
-                if (action?.payload?.status !== 4008) {
-                    localStorage.removeItem(Local_Storage_Profile)
-                    state.authenticate = false;
-                    state.profile = null;
-                }
-                state.loading = false;
-                state.status = FETCH_PROFILE.FETCH_PROFILE_FAIL;
-                state.error = action.payload;
             })
     }
 })

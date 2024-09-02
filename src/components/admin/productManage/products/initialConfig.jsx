@@ -83,7 +83,7 @@ export const optionSearch = {
         {
             title: "Loại Sản Phẩm",
             search: { productCategory: null },
-            component: typeSearchAdvanced.SelectItemSearch
+            component: typeSearchAdvanced.SelectItemModel
         },
     ]
 }

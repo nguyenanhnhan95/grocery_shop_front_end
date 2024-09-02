@@ -29,7 +29,7 @@ export const useFetchPost = () => {
                 }
 
             }
-            handleAuthenticateException({ error: error, code: error?.response?.data?.status, handleService: () => fetchPost(url, data, setErrors, handleErrorsMessage) })
+            handleAuthenticateException({ error: error, code: error?.response?.data?.code, handleService: () => fetchPost(url, data, setErrors, handleErrorsMessage) })
         } finally {
             setIsPending(false);
         }

@@ -1,6 +1,6 @@
-import { isString } from "formik";
-import { ALLOW_ARRAY_IMAGES } from "./commonConstants";
 
+import { ALLOW_ARRAY_IMAGES } from "./commonConstants";
+import differenceInYears from "date-fns/differenceInYears";
 export const validation = {
     isEmailAddress: function (str) {
         var pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -31,13 +31,17 @@ export const validation = {
     isString: function (str) {
         return (typeof str === 'string' || str instanceof String) ? true : false;
     },
-    isArrayEmpty: function (array){
+    isArrayEmpty: function (array) {
         if (Array.isArray(array)) {
             return array.length == 0;
         }
         return false;
-    }
-    ,
+    },
+    isFile: function (input) {
+        if ('File' in window && input instanceof File)
+            return true;
+        else return false;
+    },
     checkJsonString: function (str) {
         try {
             JSON.parse(str);
@@ -47,8 +51,8 @@ export const validation = {
         return true;
     },
     checkArrayNotEmpty: function (array) {
-        if (Array.isArray(array)) {
-            return array && array.length > 0;
+        if (array && Array.isArray(array)) {
+            return array.length > 0;
         }
         return false;
     },
@@ -89,9 +93,20 @@ export const validation = {
             }
         }
         return false;
-    }
+    },
+    checkBirthOfDate: function (value) {
+        return differenceInYears(new Date(), new Date(value)) >= 18;
+    },
+
 };
 export const regex = {
     string: /^[A-Za-zÀÁÂÃÈÊÌÒÓÔÙĂẰẲẴẸÊỄÌỌÔÙƯỨỲÝđĐâàầặêệễôươ\s]+$/,
-    number: /^\d+\.?\d*$/
+    number: /^\d+\.?\d*$/,
+    email: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
+    phone: /^[0-9\-\+]{9,11}$/,
+    cccd: /^[1-9]{12}$/,
+    wordVi: /[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơưĂĐĨŨƠƯẠỹ ]+/,
+    fullName: /^([\p{Lu}][\p{Ll}]{1,8})(\s([\p{Lu}]|[\p{Lu}][\p{Ll}]{1,10})){0,5}$/,
+    characterNormal: /[a-z0-9]+$/,
+    address: /[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơưĂĐĨŨƠƯẠỹ -,/]/
 }   

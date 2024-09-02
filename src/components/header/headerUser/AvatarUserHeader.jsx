@@ -8,7 +8,7 @@ function AvatarUserHeader(props) {
         <>
             {authenticate === true && (
                 <div className="header-user-item" onClick={handleHeaderUserClick}>
-                    <img src={srcAvatar === null || errorAvatar !==null ? logoAvatarUser : srcAvatar} alt="" />
+                    <img src={(srcAvatar === null || errorAvatar !==null) ? logoAvatarUser : srcAvatar} alt="" />
                 </div>
 
             )

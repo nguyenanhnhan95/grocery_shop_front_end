@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutProfile } from "../../../redux/slice/person/profile";
 
-function LogoutUser(props) {
+function LogoutUser({headerUserModalRef}) {
     const { fetchGet, isPending, error, code } = useFetchGet();
-    const { handleCloseHeaderModel } = props;
+    // const { handleCloseHeaderModel } = props;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleLogout = () => {
@@ -19,7 +19,7 @@ function LogoutUser(props) {
     useEffect(() => {
         if (code === 200) {
             dispatch(logoutProfile())
-            handleCloseHeaderModel()
+            headerUserModalRef.current.style.display = 'none';
             navigate("/");
         }
     }, [code, navigate]);

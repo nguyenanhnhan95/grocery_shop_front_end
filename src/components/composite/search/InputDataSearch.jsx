@@ -37,7 +37,7 @@ function InputDataSearch(props) {
     const debouncedHandleEnterData = useMemo(() => debounce(handleInputChange, 500), [handleInputChange]);
 
     return (
-        <div className="col-12 col-md-4 col-xl-3 container-content-search-advanced-item">
+        <div className="col-12 col-md-6 col-xl-3 container-content-search-advanced-item">
             <Autocomplete
 
                 getOptionLabel={(option) => option.code}

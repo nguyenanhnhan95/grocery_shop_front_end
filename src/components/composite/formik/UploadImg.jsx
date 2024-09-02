@@ -1,11 +1,11 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import "../../../assets/css/composite/formik/uploadImg.css"
-import { checkFile } from "../../../config/S3Config";
-import { ALLOW_IMAGES_File, FILE_IMAGE } from "../../../utils/commonConstants";
+import { ALLOW_IMAGES_File, FILE_STORE_AWS_PATH } from "../../../utils/commonConstants";
 import { useField, useFormikContext } from "formik";
 import { createUrlImage } from "../../../utils/commonUtils";
 import ImageModal from "../modal/ImageModal";
 import { validation } from "../../../utils/validation";
+import { getObjectAsFile } from "../../../config/S3Config";
 function UploadImg({ ...props }) {
     const [files, setFiles] = useState([]);
     const { setFieldValue } = useFormikContext();
@@ -14,41 +14,35 @@ function UploadImg({ ...props }) {
     const [field] = useField(props);
     const [show, setShow] = useState(false);
     const [urlImage, setUrlImage] = useState('');
+    const initialFilesNotMulti = useCallback( async(keyValue)=>{
+        try{
+            const response = await getObjectAsFile(keyValue)
+            setFiles([response])
+        }catch(err){
+            setFiles([]);
+        }
+    },[getObjectAsFile])
     useEffect(() => {
-        initialFileImages();
-    }, [])
-    console.log(field)
-    console.log(files)
-    const initialFileImages = useCallback(() => {
-        // try {
-        //     if (field?.value?.length > 0) {
-        //         const formData = new FormData();
-        //         formData.append(NO, fileInput.files[0]);
-        //         // Tạo một mảng mới kết hợp các phần tử từ `files` và `field.value`
-        //         const updatedFiles = [...files, ...field.value];
-        //         // Cập nhật state với mảng mới
-        //         setFiles(updatedFiles);
-        //     }
-        // } catch (error) {
-        //     console.error(error)
-        // }
-    }, [])
+        if (!multi && validation.isString(field.value) && field.value.includes(FILE_STORE_AWS_PATH.IMAGE)) {
+            initialFilesNotMulti(field.value);
+        }
+    }, [field.value, initialFilesNotMulti, multi]);
     const handleFileUpload = () => {
         fileUploadRef.current.click();
     };
-   
+
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file && file instanceof File) {
-            if(multi){
-                if(files.indexOf(file)){
-                    const newFiles = [...files,file]
+            if (multi) {
+                if (files.indexOf(file)) {
+                    const newFiles = [...files, file]
                     setFiles(newFiles)
                 }
-            }else{
+            } else {
                 setFiles([file])
             }
-            
+
         }
 
     }
@@ -57,17 +51,17 @@ function UploadImg({ ...props }) {
         setShow(true)
     }
     const handleDeleteImage = (index) => {
-        if(validation.isNumber(index)){
+        if (validation.isNumber(index)) {
             const newFiles = files.filter((_, i) => i !== index);
             setFiles(newFiles)
         }
-        
+
     }
     useEffect(() => {
-        setFieldValue(field.name,files );
+        setFieldValue(field.name, files);
     }, [files])
 
-   
+
 
     return (
         <div className="card-upload-images">
@@ -82,9 +76,9 @@ function UploadImg({ ...props }) {
             </div>
             <div className="card-body card-show-images row">
                 {files && files.map((file, index) => (
-                    <div className="col-6 col-sm-6 col-md-4 col-xl-2 card-show-images-item" key={index}>
+                    <div className="col-3 col-sm-6 col-md-4 col-xl-2 card-show-images-item" key={index}>
 
-                        <img src={createUrlImage(file)} alt="" onClick={() => handleShowImage(createUrlImage(file))} />
+                        <img src={validation.isFile(file) ? createUrlImage(file) : file} alt="" onClick={() => handleShowImage(createUrlImage(file))} />
                         <div className="delete-images-item" onClick={() => handleDeleteImage(index)}>
                             <i className="fa-solid fa-xmark"></i>
                         </div>

@@ -36,7 +36,7 @@ export const optionSearch={
             callApi:true,
             httpApi:"products-variation",
             search:{variation:null},
-            component:typeSearchAdvanced.SelectItemSearch
+            component:typeSearchAdvanced.SelectModelSearch
         },
     ]
 }

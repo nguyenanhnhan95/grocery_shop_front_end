@@ -2,12 +2,10 @@ import { Tuple, combineReducers, configureStore } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
 import { actionReducerStore } from "../utils/commonConstants";
 import { profileSlice } from "../redux/slice/person/profile";
-import { refreshTokenSlice } from "../redux/slice/auth/authentication";
 import { notificationModalSlice } from "../redux/slice/modal/notificationModal";
 import { queryParameterSlice } from "../redux/slice/common/queryParameter";
 export const staticReducers = {
     profile: profileSlice.reducer,
-    refreshToken:refreshTokenSlice.reducer,
     notificationModal:notificationModalSlice.reducer,
     queryParameter:queryParameterSlice.reducer,
 }

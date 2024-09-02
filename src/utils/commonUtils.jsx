@@ -1,9 +1,7 @@
 
-import DateItemSearch from "../components/composite/search/DateItemSearch";
-import InputDataSearch from "../components/composite/search/InputDataSearch";
-import SelectItemSearch from "../components/composite/search/SelectItemSearch";
-import { fetchRefreshToken } from "../redux/slice/auth/authentication";
-import {  DOMAIN_CLIENT, DOMAIN_SERVER, LINK_DOMAIN,  LINK_USER, SCREEN_DARK, SCREEN_LIGHT, SCREEN_THEME, SCREEN_THEME_MODE, SLASH } from "./commonConstants";
+
+
+import { DOMAIN_CLIENT, DOMAIN_SERVER, LINK_DOMAIN, LINK_USER, SCREEN_DARK, SCREEN_LIGHT, SCREEN_THEME, SCREEN_THEME_MODE, SLASH } from "./commonConstants";
 
 /**
 * AUTHENTICATION 
@@ -41,26 +39,14 @@ export const getDateCurrent = () => {
 
 }
 export function convertDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
 
-    if (month.length < 2)
-        month = '0' + month;
-    if (day.length < 2)
-        day = '0' + day;
-
-    return [year, month, day].join('-');
+    return `${day}-${month}-${year}`;
 }
-/**
-* OPTION SEARCH ADVANCED 
-*/
-export const componentsAdvanced = {
-    SelectItemSearch,
-    DateItemSearch,
-    InputDataSearch
-};
+
 /**
 * HANDLE URL 
 */
@@ -75,6 +61,15 @@ export const createActionURL = (sub) => {
         edit: () => createUrl('edit'),
         search: () => createUrl('search'),
         delete: () => createUrl('?id='),
+        requestParam: (attribute) => {
+            if (!Array.isArray(attribute) || attribute.length === 0) return createUrl('');
+            let size = attribute.length;
+            if (size === 1) {
+                return createUrl(`?${attribute[0].key}=${attribute[0].value}`)
+            }
+            const queryParams = attribute.map(attr => `${attr.key}=${attr.value}`).join('&');
+            return createUrl(`?${queryParams}`);
+        }
     };
 };
 export const removeURIDomain = (urlCurrent) => {
@@ -95,12 +90,18 @@ export function handlePathMenuAdmin(href) {
     return removeURIDomain(removeSlashURILast(href));
 }
 export function createUrlImage(file) {
-    console.log(file)
     try {
         return URL.createObjectURL(file)
     } catch (error) {
         console.log(error)
     }
+}
+export function convertToJsonFile(data){
+    const json = JSON.stringify(data);
+    const blob = new Blob([json], {
+        type: 'application/json'
+    });
+    return blob;
 }
 
 export function convertFileToImg(files) {
@@ -115,6 +116,15 @@ export function convertFileToImg(files) {
         })
     }
     return images;
+}
+
+export function getNameFile(keyName){
+    try{
+        return keyName.substring(keyName.lastIndexOf("/") + 1, keyName.lastIndexOf("."));
+    }catch(error){
+        console.error(keyName)
+        return "";
+    }
 }
 /**
 * HANDLE Redirect 

@@ -21,7 +21,7 @@ export const useFetchDelete = (props) => {
             setIsPending(false);
             setError(null);
         } catch (error) {
-            handleAuthenticateException({error:error,code:error?.response?.data?.status,handleService: () => fetchDelete()})
+            handleAuthenticateException({error:error,code:error?.response?.data?.code,handleService: () => fetchDelete()})
             setError(error);           
         }finally{
             setIsPending(false);

@@ -114,6 +114,7 @@ function ContentForm(props) {
                                                 name="idVariation"
                                                 className="form-control"
                                                 options={variations}
+                                                attribute='id'
                                                 nameDefault="- Chọn giá trị -"
                                             />
                                         </div>

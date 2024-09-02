@@ -1,4 +1,4 @@
-import { memo } from "react"
+import { memo, useEffect, useState } from "react"
 import "../../../assets/css/composite/search/selectItemSearch.css"
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,33 +8,44 @@ import { validation } from "../../../utils/validation";
 import { createActionURL, getScreenThem } from "../../../utils/commonUtils";
 import { useFetchGet } from "../../../hook/fetch/authenticated/useFetchGet";
 import { useScreenMode } from "../../../hook/auth/useScreenMode";
-function SelectItemSearch(props) {
+function SelectModelSearch(props) {
     const { setSearchFiled, item, searchFiled } = props;
-    const { data: options } = useFetchGet(createActionURL(item.httpApi).instant());
+    const [options,setOptions] = useState([]);
+    const {data, code, fetchGet} = useFetchGet();
     const { screenMode } = useScreenMode()
+    useEffect(()=>{
+        if(item?.callApi){
+            fetchGet(createActionURL(item.httpApi).instant());
+        }
+    },[])
+    useEffect(()=>{
+        if(code===200){
+            setOptions(data)
+        }
+    },[code])
     const handleSelect = (value) => {
         const id = value.target.value;
-        if (validation.isNumber(id)) {
-            const selectedItem = options.find(option => option.id === id * 1);
+        if (validation.isNotEmpty(id)) {
+            const selectedItem = options.find(option => option.id === id);
             const newSearchName = { ...item.search };
             const firstKey = Object.keys(newSearchName)[0];
             const newQueryParameter = {
-                searchFiled,
-                [firstKey]: parseInt(selectedItem.id),
+                ...searchFiled,
+                [firstKey]: selectedItem.id,
             }
             setSearchFiled(newQueryParameter)
         } else {
             const newSearchName = { ...item.search };
             const firstKey = Object.keys(newSearchName)[0];
             const newQueryParameter = {
-                searchFiled,
+                ...searchFiled,
                 [firstKey]: null
             }
             setSearchFiled(newQueryParameter)
         }
     }
     return (
-        <div className="col-12 col-md-4 col-xl-3 container-content-search-advanced-item">
+        <div className="col-12 col-md-6 col-xl-3 container-content-search-advanced-item">
             <FormControl >
                 <InputLabel id={item.title} >{item.title}</InputLabel>
                 <Select defaultValue={''}
@@ -60,4 +71,4 @@ function SelectItemSearch(props) {
         </div>
     )
 }
-export default memo(SelectItemSearch);
+export default memo(SelectModelSearch);

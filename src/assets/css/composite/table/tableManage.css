@@ -51,6 +51,9 @@
 .main-content-data .container-content-data .table tbody .tr-product-manage{
     height: 80px;
 }
+.main-content-data .container-content-data .table tbody .badge {
+    --bs-badge-font-size:0.85em;
+}
 .main-content-data .tscrolls th:nth-child(1),
 .main-content-data .tscrolls td:nth-child(1) {
     position: sticky;
@@ -65,9 +68,9 @@
     z-index: 1;
     overflow: hidden;
 }
-.main-content-data .loading-list-table .tscrolls th:nth-child(1), .main-content-data .tscrolls td:nth-child(1){
+/* .main-content-data .loading-list-table .tscrolls th:nth-child(1), .main-content-data .tscrolls td:nth-child(1){
     position: unset;
-}
+} */
 .main-content-data .loading-list-table tbody::before{
     background-color: var(--font-icon-dark);
     width: 100%;

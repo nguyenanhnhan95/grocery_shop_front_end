@@ -8,6 +8,7 @@ import ErrorSystem from "./pages/error/ErrorSystem";
 import "./assets/css/composite/modal/commonModal.css"
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "./../node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+import "./assets/app-assets/css/colors.min.css"
 import NotFound from "./components/error/NotFound";
 import menuContentMainSlice from "./redux/slice/admin/sidebar/menuContentMain.jsx";
 import overPlayMenuMainSlice from "./redux/slice/admin/sidebar/overPlayMenu.jsx";

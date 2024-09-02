@@ -8,6 +8,7 @@ import { LOADING_LIST_TABLE } from "../../../utils/commonConstants";
 function TableManage(props) {
   const { url, TBodyTable,nameColumn } = props;
   const { data: list, isPending: isPendingList } = useFetchSearch({ url: createActionURL(url).instant(), initialData: { result: [], total: 0 } });
+
   return (
     <div className="main-content-data pb-3">
       <div className="container-fluid container-content-data  ">

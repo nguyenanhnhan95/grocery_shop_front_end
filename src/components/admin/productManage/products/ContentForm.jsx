@@ -39,6 +39,7 @@ function ContentForm(props) {
             fetchByField(`${createActionURL(url).instant()}${REQUEST_PARAM_ID}${id}`)
         }
     }, [fetchByField, id, dispatch])
+    
     useEffect(() => {
         const fetchAllData = async () => {
             await Promise.all([
@@ -61,8 +62,6 @@ function ContentForm(props) {
     const handleErrorsMessage = useCallback((errors, setErrors) => {
         try {
             const message = Object.keys(errors).reduce((acc, key) => {
-                console.log(acc)
-                console.log(key)
                 if (key.startsWith("productItem[")) {
                     const index = parseInt(key.charAt(12), 10);
                     if (!isNaN(index)) {
@@ -82,15 +81,11 @@ function ContentForm(props) {
         }
     }, []);
     const handleDataSentToServer = (data, setErrors) => {
-        console.log(data)
         const dataToServer = structuredClone(data);
-        console.log(dataToServer)
         if (isPendingSave !== true) {
             const multiPart = new FormData();
             if (Array.isArray(data.multipart) && data.multipart.length > 0) {
-                console.log("ádasd")
                 data.multipart.forEach(image => {
-                    console.log("ádasd")
                     multiPart.append("product", image);
                 });
             } else {
@@ -224,6 +219,7 @@ function ContentForm(props) {
                                                     name="idProductCategory"
                                                     className="form-control"
                                                     options={productCategories}
+                                                    attribute='id'
                                                     errors={errors}
                                                     multi={false}
                                                     nameDefault="- Chọn loại sản phẩm -"
@@ -239,6 +235,7 @@ function ContentForm(props) {
                                                 <SelectField
                                                     name="idVariation"
                                                     className="form-control"
+                                                    attribute='id'
                                                     options={variations}
                                                     multi={false}
                                                     nameDefault="- Chọn giá trị -"
@@ -325,6 +322,7 @@ function ContentForm(props) {
                                                             <div className="card-body-input">
                                                                 <SelectField
                                                                     name={`productItem[${index}].idPromotions`}
+                                                                    attribute='id'
                                                                     className="form-control"
                                                                     options={promotions}
                                                                     multi={true}
@@ -341,6 +339,7 @@ function ContentForm(props) {
                                                                 <SelectField
                                                                     name={`productItem[${index}].idVariationOptions`}
                                                                     className="form-control"
+                                                                    attribute='id'
                                                                     options={variationOptions}
                                                                     multi={true}
                                                                     nameDefault="- Chọn giá trị tùy chọn -"

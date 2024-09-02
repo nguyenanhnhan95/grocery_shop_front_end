@@ -1,8 +1,8 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 import "../../../assets/css/admin/common/searchContentAdmin.css"
 import { useSelector } from "react-redux";
-import { componentsAdvanced } from "../../../utils/commonUtils";
 import SearchNameAdmin from "./SearchNameAdmin";
+import { componentsAdvanced } from "../../../utils/commonConstants";
 function SearchContentAdmin(props) {
   const { itemSearch } = props;
   const { queryParameter } = useSelector(state => state.queryParameter)
@@ -25,7 +25,6 @@ function SearchContentAdmin(props) {
             {itemSearch.items.map((each, index) => {
               const Component = componentsAdvanced[each.component];
               if (!Component) {
-                console.log(index)
                 return null; // Skip rendering if the component is not defined
               }
               return (

@@ -25,7 +25,7 @@ function ContentForm(props) {
     const { fetchByField, data: initialEdit, isPending: isPendingInitialEdit, error: errorInitialEdit } = useFetchByFiled();
     const { fetchSave, code: codeSave, isPending: isPendingSave } = useFetchPost();
     const { fetchEdit, code: codeEdit, isPending: isPendingEdit } = useFetchPatch();
-    const { data: listPermissions, isPending: isPendingListPermissions } = useFetchGet(createActionURL("role/permissions").instant());
+    const { fetchGet:fetchPermission,data: listPermissions, isPending: isPendingListPermissions } = useFetchGet(createActionURL("role/permissions").instant());
     useEffect(() => {
         dispatch(onClickSaveAction({ buttonSave: buttonRef.current }))
         if (id !== undefined && validation.isNumber(id)) {
@@ -60,6 +60,9 @@ function ContentForm(props) {
             );
         }
     }
+    useEffect(()=>{
+        fetchPermission(createActionURL("role/permissions").instant())
+    },[fetchPermission])
     return (
         <div className={isPendingInitialEdit || isPendingListPermissions ? LOADING_CONTENT_FORM : ''}>
             <div className="main-content-form-role main-content-form " >

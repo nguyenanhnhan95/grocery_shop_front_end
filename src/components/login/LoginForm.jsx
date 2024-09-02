@@ -3,7 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import Cookies from 'js-cookie'
 import { createActionURL } from "../../utils/commonUtils";
-import { CONST_LOGIN, EMPTY_STRING, KEEP_LOGIN, LINK_DOMAIN, LOGIN, LOGIN_LOADING, SLASH } from "../../utils/commonConstants";
+import { CONST_LOGIN, EMPTY_STRING, KEEP_LOGIN, LINK_DOMAIN, LOGIN, LOGIN_LOADING, PLACE_HOLDER_PASSWORD, SLASH } from "../../utils/commonConstants";
 import { useNavigate } from "react-router-dom";
 import { useFetchPost } from "../../hook/fetch/authenticated/useFetchPost";
 function LoginForm() {
@@ -61,7 +61,7 @@ function LoginForm() {
                         </div>
                         <div className="mb-3 form-password form-login-input">
                             <label htmlFor="password" className="form-label">Mật khẩu</label>
-                            <Field type={showPassword ? 'text' : 'password'} name="password" className="form-control " autoComplete="username password" id="password" placeholder="············" />
+                            <Field type={showPassword ? 'text' : 'password'} name="password" className="form-control " autoComplete="username password" id="password" placeholder={PLACE_HOLDER_PASSWORD} />
                             <ErrorMessage name='password' className="form-text form-error" component='div' />
                             {showPassword ?
                                 <i className="fa-solid fa-eye" onClick={() => setShowPassword(false)} />

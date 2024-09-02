@@ -18,8 +18,15 @@
 .main-content .main-content-form{
     margin-bottom: 5%;
 }
+.main-content .main-content-form hr{
+    margin: 1rem 0 !important;
+    color: black ;
+}
 .main-content .main-content-form .card-form-item {
     margin-top: 20px;
+}
+.main-content .main-content-form .card .card-body .row>*{
+    margin-bottom: 10px;
 }
 .main-content .main-content-form .form-error{
     color: var(--font-color-danger);
@@ -34,7 +41,23 @@
     min-height: 50px;
     display: flex;
     align-items: center;
+    padding-left: 0.1rem;
+}
+.main-content .main-content-form label .required{
+    color: var(--rq-input);
     padding-left: 0.2rem;
+}
+.main-content .main-content-form input::placeholder{
+    color: var(--pl--input);
+}
+.main-content .main-content-form .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root{
+    border-radius: var(--bs-border-radius) !important;
+}
+.main-content .main-content-form .card .card-body .row .row{
+    padding-right: 0;
+}
+.main-content .main-content-form .card .card-body .row .css-10o2lyd-MuiStack-root{
+    padding-top: 0;
 }
 .dark .main-content,.dark .main-content .main-content-form{
     background-color: #0F0F0F;
@@ -43,7 +66,7 @@
     background-color: var(--bg-box-dark);
     color: var(--font-color-dark);
 }
-.dark  .main-content-title{
+.dark  .main-content-title ,.main-content .main-content-form hr{
     color: var(--font-color-dark);
 }
 .dark .main-content-form .card-header{
@@ -109,7 +132,12 @@ input[type=number]::-webkit-outer-spin-button {
     .main-content .container-body-admin {
         margin-top: 60px;
     }
-
+    .main-content-form .card-body label{
+        font-size: 0.9em;
+    }
+    .main-content-form .card-body .form-control{
+        height: 35px;
+    }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px){
     .main-content {

@@ -25,7 +25,7 @@ export const useFetchPostFile = () => {
             if (error.response.data.code === 4013) {
                 setErrors(error.response.data.result);
             }
-            handleAuthenticateException({error:error,code:error?.response?.data?.status,handleService: () => fetchPostFile(url,formData, data, setErrors)})
+            handleAuthenticateException({error:error,code:error?.response?.data?.code,handleService: () => fetchPostFile(url,formData, data, setErrors)})
         } finally {
             setIsPending(false);
         }

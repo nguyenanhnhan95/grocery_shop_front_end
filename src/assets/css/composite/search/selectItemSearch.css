@@ -64,7 +64,7 @@
 .css-1aqny2q-MuiPickersCalendarHeader-root{
     margin-top: 0 !important;
 } */
-@media only screen and (max-width:768px) {
+/* @media only screen and (max-width:768px) {
     .css-3dah0e-MuiModal-root-MuiDialog-root .MuiDialog-paper{
         width: 310px;
     }    
@@ -73,4 +73,4 @@
     .css-3dah0e-MuiModal-root-MuiDialog-root .MuiDialog-paper{
         width: 310px;
     }    
-}
+} */

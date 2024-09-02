@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from "react";
 import { useAuthenticateTokenException } from "../../handler/useAuthenticateTokenException";
 
 export const useFetchGet = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
   const [code, setCode] = useState(null);
@@ -16,12 +16,12 @@ export const useFetchGet = () => {
       setData(response.data?.result);
       setError(null);
     } catch (error) {
-      console.log(error)
       setError(error);
+      console.log(error)
       // if(error?.payload?.response?.data?.status===4008){
 
       // }
-      handleAuthenticateException({ error: error, code: error?.response?.data?.status, handleService: () => fetchGet(url) })
+      handleAuthenticateException({ error: error, code: error?.response?.data?.code, handleService: () => fetchGet(url) })
     } finally {
       setIsPending(false);
     }

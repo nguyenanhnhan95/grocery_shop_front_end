@@ -44,7 +44,7 @@ export const useAuthorizePage = (allowRoles) => {
         }
     }, [code])
     useEffect(() => {
-        if (error !== null && error?.response?.data?.status !== 4008) {
+        if (error !== null ) {
             notifyNotAuthorized()
         }
     }, [error])

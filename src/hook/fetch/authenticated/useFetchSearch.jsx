@@ -18,10 +18,12 @@ export const useFetchSearch = (props) => {
                 const encodedQuery = encodeURIComponent(JSON.stringify(queryParameter));
                 const response = await axios.get(`${url}${REQUEST_PARAM_QUERY}${encodedQuery}`, {withCredentials:true});
                 setIsPending(false)
-                setData(response.data.result);
+                if(Array.isArray(response?.data?.result?.result)){
+                    setData(response.data.result);
+                } 
                 setError(null);
             } catch (error) {
-                handleAuthenticateException({error:error,code:error?.response?.data?.status,handleService: () => fetchData()})
+                handleAuthenticateException({error:error,code:error?.response?.data?.code,handleService: () => fetchData()})
                 setData(initialData)
                 setError(`${error} Could not Fetch Data `);                
             } finally{

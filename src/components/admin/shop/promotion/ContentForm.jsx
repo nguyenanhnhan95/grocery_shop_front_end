@@ -54,7 +54,7 @@ function ContentForm(props) {
         handleNavigationAndToast(codeEdit, messageEdit);
     }, [codeSave, codeEdit, close, navigate, url]);
     return (
-        <div className={isPendingInitialEdit && LOADING_CONTENT_FORM}>
+        <div className={isPendingInitialEdit ? LOADING_CONTENT_FORM : ''}>
             <div className="main-content-form-promotion main-content-form" >
                 <div className="card card-form-promotion">
                     <div className="card-header">
@@ -148,7 +148,7 @@ function ContentForm(props) {
                                             <label htmlFor="startDate">Ngày bắt đầu</label>
                                         </div>
                                         <div className="card-body-input">
-                                            <Field name="startDate" component={DatePickerField} className="form-control" type="date" />
+                                            <Field name="startDate" title="Ngày bắt đầu" component={DatePickerField} className="form-control" type="date" />
                                         </div>
                                         <ErrorMessage className="form-text form-error" name='startDate' component='div' />
                                     </div>

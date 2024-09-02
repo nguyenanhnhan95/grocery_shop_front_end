@@ -69,15 +69,18 @@ button:focus-visible {
 :root {
   --bg-box-dark: #242526;
   --bg-screen-dark: #0F0F0F;
-  --bg-input-dark:#3A3B3C;
-  --bg-trade:#0693e3;
-  --font-color-dark:#f1f1f1;
-  --font-color-light:#6E6B7B;
-  --font-icon-dark:#B1B4B7;
-  --font-color-danger:#EA5455;
-  --box-color-danger:#FBDDDD;
-  --bg-light:#F5F5F5
+  --bg-input-dark: #3A3B3C;
+  --bg-trade: #0693e3;
+  --font-color-dark: #f1f1f1;
+  --font-color-light: #6E6B7B;
+  --font-icon-dark: #B1B4B7;
+  --font-color-danger: #EA5455;
+  --box-color-danger: #FBDDDD;
+  --bg-light: #F5F5F5;
+  --pl--input:#B9B9C3;
+  --rq-input:#D22627;
 }
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -90,18 +93,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .ck-powered-by {
   display: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
 @keyframes skeletonLoading {
   0% {
-      /* left: 5%; */
-      background-color: var(--font-icon-dark);
+    /* left: 5%; */
+    background-color: var(--font-icon-dark);
   }
 
   100% {
-      /* left: 75%; */
-      background-color: var(--bg-light);
+    /* left: 75%; */
+    background-color: var(--bg-light);
   }
 }

@@ -5,16 +5,16 @@ import DarkUserModel from "./DarkUserModel";
 import LogoutUser from "./LogoutUser";
 
 function HeaderUserModel(props) {
-    const { isModalUserVisible, headerUserModalRef, headerUserRef,handleCloseHeaderModel } = props;
-    
+    const { isModalUserVisible, headerUserModalRef } = props;
+
     return (
         <div className="header-user-modal" style={{ display: isModalUserVisible ? 'block' : 'none' }} ref={headerUserModalRef}>
-            <InformationUserModel headerUserRef={headerUserRef} />
+            <InformationUserModel  />
             <hr />
             <div className="header-user-modal-item"><i className="fa-solid fa-user-gear"></i>Cập nhập tài khoản</div>
             <DarkUserModel />
             <RedirectAdminHeader />
-            <LogoutUser handleCloseHeaderModel={handleCloseHeaderModel}/>
+            <LogoutUser headerUserModalRef={headerUserModalRef} />
         </div>
     )
 }

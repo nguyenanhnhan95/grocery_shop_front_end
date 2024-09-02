@@ -3,6 +3,7 @@ import {
     GetObjectCommand,
 } from "@aws-sdk/client-s3";
 import { FILE_IMAGE, connectAWSParams } from "../utils/commonConstants";
+import { getNameFile } from "../utils/commonUtils";
 const s3Client = new S3Client({
     region: connectAWSParams.region,
     credentials: {
@@ -10,8 +11,8 @@ const s3Client = new S3Client({
         secretAccessKey: connectAWSParams.secretAccessKey,
     },
 });
-export const checkFile = ( typeFile, file) => {
-    if(file !== undefined && file instanceof File){
+export const checkFile = (typeFile, file) => {
+    if (file !== undefined && file instanceof File) {
         console.log(file)
         switch (typeFile) {
             case FILE_IMAGE:
@@ -21,18 +22,29 @@ export const checkFile = ( typeFile, file) => {
                 return;
         }
     }
-    
+
 };
-export const getObject = async (keyName) => {
+export const getObjectUrlImage = async (keyName) => {
+    const response = await s3Client.send(new GetObjectCommand({
+        Bucket: connectAWSParams.bucketName,
+        Key: keyName,
+    }));
+    const str = await response.Body?.transformToByteArray();
+    const blob = new Blob([str], { type: response.ContentType });
+
+    var blobUrl = URL.createObjectURL(blob)
+    return blobUrl;
+}
+export const getObjectAsFile = async (keyName) => {
         const response = await s3Client.send(new GetObjectCommand({
             Bucket: connectAWSParams.bucketName,
             Key: keyName,
-        }));
+        }));       
         const str = await response.Body?.transformToByteArray();
         const blob = new Blob([str], { type: response.ContentType });
-    
-        var blobUrl = URL.createObjectURL(blob)
-        return blobUrl;
+        const fileName = getNameFile(keyName); // Lấy tên từ key
+        const file = new File([blob], fileName, { type: response.ContentType });
+        return file;
 }
 export const putObject = async (keyName, body) => {
     try {
