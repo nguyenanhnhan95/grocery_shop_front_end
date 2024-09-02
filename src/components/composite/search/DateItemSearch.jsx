@@ -1,6 +1,6 @@
 import { memo, useCallback} from "react";
 import "../../../assets/css/composite/search/dateItemSearch.css"
-import CustomDatePicker from "../custom/customDatePicker";
+import CustomDatePicker from "../custom/CustomDatePicker";
 
 function DateItemSearch(props) {
     const { searchFiled, item, setSearchFiled } = props;

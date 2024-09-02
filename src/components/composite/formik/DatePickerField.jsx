@@ -1,6 +1,7 @@
 import React from "react";
-import CustomDatePicker from "../custom/customDatePicker";
+
 import dayjs from "dayjs";
+import CustomDatePicker from "../custom/CustomDatePicker";
 
 export const DatePickerField = ({ field, title, form, ...props }) => {
 
