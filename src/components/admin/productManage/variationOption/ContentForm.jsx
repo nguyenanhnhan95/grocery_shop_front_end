@@ -4,7 +4,6 @@ import "../../../../assets/css/admin/productManage/variationOption/contentForm.c
 import "../../../../assets/css/admin/skeletonLoading/contentForm.css"
 import { memo, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SelectField } from "../../../composite/formik/SelectedField";
 import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID, THIS_FILED_ENTER_LARGE } from "../../../../utils/commonConstants";
 import { useFetchGet } from "../../../../hook/fetch/authenticated/useFetchGet";
 import { createActionURL } from "../../../../utils/commonUtils";
@@ -15,6 +14,7 @@ import { useFetchPatch } from "../../../../hook/fetch/authenticated/useFetchPatc
 import { onClickSaveAction } from "../../../../redux/slice/admin/action/actionAdmin";
 import { validation } from "../../../../utils/validation";
 import { toastSuccess } from "../../../../config/toast";
+import SelectField from "../../../composite/formik/SelectField";
 
 function ContentForm(props) {
     const dispatch = useDispatch();

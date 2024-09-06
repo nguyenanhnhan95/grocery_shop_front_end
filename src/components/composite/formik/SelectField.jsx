@@ -5,18 +5,18 @@ import { StyleFocusFormControl } from '../styleMui/selectMui';
 import { getScreenThem } from '../../../utils/commonUtils';
 import { useScreenMode } from '../../../hook/auth/useScreenMode';
 import { validation } from '../../../utils/validation';
-import { useCallback } from 'react';
+import { useCallback, memo } from 'react';
 
 
-export const SelectField = ({ options, attribute, processField, ...props }) => {
+const SelectField = ({ options, attribute, processField, ...props }) => {
     const { setFieldValue } = useFormikContext();
     const [field, meta] = useField(props.name);
     const handleChange = useCallback((event) => {
         const { value } = event.target;
+        setFieldValue(field.name, value);
         if (validation.checkFunction(processField)) {
             processField(value, setFieldValue);
         }
-        setFieldValue(field.name, value);
     }, [processField, field.name, setFieldValue]);
     const { screenMode } = useScreenMode()
     return (
@@ -30,8 +30,8 @@ export const SelectField = ({ options, attribute, processField, ...props }) => {
                 onChange={handleChange}
                 inputProps={{ 'aria-label': 'Without label' }}
                 renderValue={
-                    (field.value !== undefined && field.value?.length !== 0)
-                        ? undefined
+                    (field.value !== null && field.value?.length !== 0)
+                        ? null
                         : () => props.nameDefault
                 }
 
@@ -52,3 +52,4 @@ export const SelectField = ({ options, attribute, processField, ...props }) => {
         </FormControl>
     )
 }
+export default memo(SelectField);

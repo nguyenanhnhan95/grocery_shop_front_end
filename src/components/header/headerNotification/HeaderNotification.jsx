@@ -31,7 +31,8 @@ function HeaderNotification() {
     return (
         <li className="nav-item  header-notification" ref={notifyHeaderRef} >
             <i className="fa-regular fa-bell  " onClick={handleNotificationHeaderClick} />
-            <div className="header-notification-numbers">15</div>
+            <div className="header-notification-numbers  translate-middle badge rounded-circle">15</div>
+            
             <div className="header-notification-modal" style={{ display: isModalNotificationVisible ? 'block' : 'none' }} ref={notifyHeaderModalRef}>
                 <div className="d-flex justify-content-between header-notification-modal-header">
                     <div className="header-notification-modal-title">Thông báo</div>

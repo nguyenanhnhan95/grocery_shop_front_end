@@ -565,3 +565,11 @@ export const componentsAdvanced = {
 * ACTION REDUX
 */
 export const INITIAL_QUERY_PARAMETER = "INITIAL_QUERY_PARAMETER";
+/**
+* ACTION ENUM
+*/
+export const EAccountStatus={
+	ACTIVATED:"Đã kích hoạt",
+	INACTIVE:"Chưa kích hoạt",
+	LOCK:"Đã khóa"
+}

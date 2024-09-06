@@ -8,7 +8,7 @@ export const DatePickerField = ({ field, title, form, ...props }) => {
     return (
         <CustomDatePicker 
                autoComplete="off"
-               defaultValue={(field.value && dayjs()) || null}
+               value={field.value ? dayjs(new Date(field.value)) : null}
                onChange={val => {
                    form.setFieldValue(field.name, val);
                }}

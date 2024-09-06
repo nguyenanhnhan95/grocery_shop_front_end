@@ -7,20 +7,19 @@
 }
 
 .header-notification .fa-bell {
-    font-size: 2em;
+    font-size: 2.5rem;
 }
 
 .header-notification .header-notification-numbers {
     position: absolute;
     width: auto;
     height: auto;
-    top: -14px;
-    left: 53px;
-    font-size: 0.9em;
+    left: 63%;
+    bottom: 27%;
+    font-size: 0.9rem;
     font-weight: 500;
     background-color: #EA5455;
-    padding: 0px 3px;
-    border-radius: 50%;
+    padding:4px;
     color: white;
     border: 1px solid white;
 }
@@ -193,10 +192,10 @@
     }
 
     .header-notification .header-notification-numbers {
-        font-size: 0.6em;
-        padding: 0 2px;
-        top: -5px;
-        left: 5vw;
+        font-size: 0.6rem;
+        padding: 2px;
+        left: 65%;
+        bottom: 40%;
     }
 }
 
@@ -210,10 +209,10 @@
     }
 
     .header-notification .header-notification-numbers {
-        font-size: 0.9em;
-        padding: 0 3px;
-        top: -10px;
-        left: 27px;
+        font-size: 0.7rem;
+        padding: 3px;
+        left: 68%;
+        bottom: 35%;
     }
 
     .container-header-main .main-content-header-right .header-notification-modal {
@@ -230,40 +229,37 @@
         margin-right: 10px;
     } */
     .header-notification .header-notification-numbers {
-        font-size: 0.9em;
-        padding: 0 3px;
-        top: -9px;
-        left: 37px;
+        font-size: 0.9rem;
+        padding: 3px;
     }
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1366px) {
     .header-notification .header-notification-numbers {
         position: absolute;
-        top: -12px;
-        left: 39px;
+        font-size: 0.9rem;
+        padding: 4px;
+        left: 70%;
     }
 }
 
 @media only screen and (min-width: 1366px) and (max-width: 1536px) {
     .header-notification .header-notification-numbers {
         position: absolute;
-        top: -12px;
-        left: 39px;
+ 
     }
 }
 @media only screen and (min-width: 1536px) and (max-width: 1720px) {
     .header-notification .header-notification-numbers {
         position: absolute;
-        top: -14px;
-        left: 47px;
+
     }
 }
 
 @media only screen and (min-width: 1720px) and (max-width: 1920px) {
     .header-notification .header-notification-numbers {
         position: absolute;
-        top: -14px;
-        left: 57px;
+
+
     }
 }

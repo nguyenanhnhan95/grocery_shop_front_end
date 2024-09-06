@@ -15,7 +15,7 @@ import overPlayMenuMainSlice from "./redux/slice/admin/sidebar/overPlayMenu.jsx"
 import { actionAdminSlice } from "./redux/slice/admin/action/actionAdmin.jsx";
 import { getAllCategoryMenus } from "./redux/slice/product/productCategory.jsx";
 import Home from "./pages/home/Home.jsx";
-import { getScreenThem } from "./utils/commonUtils.jsx";
+import {  getScreenThemBG } from "./utils/commonUtils.jsx";
 import NotificationModal from "./components/composite/modal/NotificationModal.jsx";
 import { useScreenMode } from "./hook/auth/useScreenMode.jsx";
 
@@ -37,7 +37,7 @@ function App() {
     return (
         <Suspense fallback={<LoadingPage />}>
             <ErrorBoundary fallback={<ErrorSystem />} >
-                <div className={`${getScreenThem(screenMode)}`}>
+                <div className={`${getScreenThemBG(screenMode)}`}>
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<Home />} />

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { useField, useFormikContext } from 'formik';
 import { debounce } from '../../../utils/commonUtils';
 import { validation } from '../../../utils/validation';
@@ -23,4 +23,4 @@ const CustomField = ({ ...props }) => {
     );
 };
 
-export default CustomField;
+export default memo(CustomField);

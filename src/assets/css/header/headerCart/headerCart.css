@@ -14,14 +14,13 @@
     position: absolute;
     width: auto;
     height: auto;
-    top: -15px;
-    left: 63px;
-    font-size: 0.9em;
+    padding: 4px;
+    left: 68%;
+    bottom: 30%;
+    font-size: 0.9rem;
     font-weight: 500;
     background-color: #EA5455;
-    padding: 0px 3px;
     border-radius: 50%;
-    color: white;
     border: 1px solid white;
 }
 
@@ -143,10 +142,10 @@
     }
 
     .header-cart .header-cart-numbers {
-        font-size: 0.6em;
-        padding: 0 2px;
-        top: -5px;
-        left: 6vw;
+        font-size: 0.6rem;
+        padding: 2px;
+        left: 80%;
+        bottom: 40%;
     }
 
     .header-cart .header-cart-modal {
@@ -174,20 +173,14 @@
     }
 
     .header-cart .header-cart-numbers {
-        font-size: 0.9em;
-        left: 33px;
-        top: -12px;
-        padding: 0 3px;
+        font-size: 0.7rem;
+        padding: 3px;
     }
     .header-cart .fa-cart-shopping {
         font-size: 2em;
     }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1280px){
-    .header-cart .header-cart-numbers {
-        left: 42px;
-        top: -10px;
-    }
     .header-cart .header-cart-modal {
         top: 52px;
         right: -10px;

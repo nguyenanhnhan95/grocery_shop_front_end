@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import { optionActions, statusAccount } from "./initialConfig"
 import { convertDate } from "../../../../utils/commonUtils"
 import TDImageTable from "../../../composite/table/TDImageTable"
+import { EAccountStatus } from "../../../../utils/commonConstants"
 function TBodyTable({ list, url }) {
     const { queryParameter } = useSelector(state => state.queryParameter)
     return (
@@ -18,7 +19,7 @@ function TBodyTable({ list, url }) {
                     </td>
                     <td>{each.email}</td>
                     <td >
-                        <div className={`${statusAccount[each.accountStatus]}`}>{each.accountStatus}</div>
+                        <div className={`${statusAccount[each.accountStatus]}`}>{EAccountStatus[each.accountStatus]}</div>
                     </td>
                     <td>{convertDate(each.createDate)}</td>
                     <td className="table-action">

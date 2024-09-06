@@ -9,6 +9,7 @@ import RouteVariationOption from "../productManage/variationOption/RouteVariatio
 import { memo } from "react";
 import RouteRoles from "../system/roles/RouteRoles";
 import RouteEmployee from "../system/employee/RouteEmployee";
+import BackToTopScroll from "../../layout/BackToTopScroll";
 function ContentAdmin() {
   return (
     <div className="main-content">
@@ -23,6 +24,7 @@ function ContentAdmin() {
         <Route path="/employee/*" element={<RouteEmployee/>} />
         <Route path="/role/*" element={<RouteRoles/>} />
       </Routes>
+      <BackToTopScroll/>
     </div>
   )
 }

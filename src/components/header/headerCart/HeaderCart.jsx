@@ -31,7 +31,7 @@ function HeaderCart() {
     return (
             <li className="nav-item  header-cart " ref={cartHeaderRef}>
                 <i className="fa-solid fa-cart-shopping " onClick={handleCartHeaderClick} />
-                <div className="header-cart-numbers">15</div>
+                <div className="header-cart-numbers  translate-middle badge rounded-circle">15</div>
                 <div className="header-cart-modal" style={{ display: isModalCartVisible ? 'block' : 'none' }} ref={cartHeaderModalRef}>
                     <div className="row header-cart-modal-head">
                         <div className="col-4">Sản phẩm</div>

@@ -87,6 +87,9 @@
     display: flex;
     align-items: center;
 }
+.container-header-main .main-content-header-right .header-notification .header-notification-numbers{
+    left: 85%;
+}
 .container-header-main .main-content-header-right .header-notification .header-notification-modal{
     top: 53px;
     right: -1vw;
@@ -95,10 +98,7 @@
     top: 58px;
     right: -20px;
 }
-.main-content .container-header-main .header-notification .header-notification-numbers {
-    top: -8px;
-    left: 16px;
-}
+
 @media only screen and (max-width: 768px) {
     .main-content .header-main{
         width: 100vw;
@@ -122,10 +122,7 @@
     .container-header-main .header-user .header-user-item {
         font-size: 1.2em;
     }
-    .main-content .container-header-main .header-notification .header-notification-numbers {
-        top: 0px;
-        left: 11px;
-    }
+ 
 
     .container-header-main .main-content-header-right .header-notification {
         margin-right: 5px;
@@ -187,10 +184,7 @@
     .container-header-main .main-content-header-right .header-notification .header-notification-modal {
         top: 47px;
     }
-    .main-content .container-header-main .header-notification .header-notification-numbers {
-        top: -5px;
-        left: 14px;
-    }
+ 
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1280px) {

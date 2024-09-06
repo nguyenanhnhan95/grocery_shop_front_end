@@ -1,0 +1,19 @@
+.back-to-top-scroll {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    z-index: 100;
+    color: var(--bg-trade);
+    border-color: var(--bg-trade);
+    background-color: var(--bg-input-dark);
+    /* padding: 10px; */
+}
+
+.dark .back-to-top-scroll {
+    background-color: var(--font-color-dark);
+}
+
+.back-to-top-scroll:focus {
+    outline: none;
+    box-shadow: none;
+}

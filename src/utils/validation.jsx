@@ -79,6 +79,9 @@ export const validation = {
     checkFunction: function (func) {
         return typeof func === 'function';
     },
+    checkStringNotEmpty: function (str) {
+        return typeof str === 'string' && str instanceof String && str.length>0
+    },
     isNumberKey: function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode
         if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -106,7 +109,7 @@ export const regex = {
     phone: /^[0-9\-\+]{9,11}$/,
     cccd: /^[1-9]{12}$/,
     wordVi: /[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơưĂĐĨŨƠƯẠỹ ]+/,
-    fullName: /^([\p{Lu}][\p{Ll}]{1,8})(\s([\p{Lu}]|[\p{Lu}][\p{Ll}]{1,10})){0,5}$/,
+    fullName: /^([\p{Lu}][\p{Ll}]{1,8})(\s([\p{Lu}]|[\p{Lu}][\p{Ll}]{1,10})){0,5}$/u,
     characterNormal: /[a-z0-9]+$/,
     address: /[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơưĂĐĨŨƠƯẠỹ -,/]/
 }   

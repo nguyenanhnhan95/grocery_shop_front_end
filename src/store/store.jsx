@@ -4,10 +4,12 @@ import { actionReducerStore } from "../utils/commonConstants";
 import { profileSlice } from "../redux/slice/person/profile";
 import { notificationModalSlice } from "../redux/slice/modal/notificationModal";
 import { queryParameterSlice } from "../redux/slice/common/queryParameter";
+import { loadingBarTopSlice } from "../redux/slice/layout/loadingBarTop";
 export const staticReducers = {
     profile: profileSlice.reducer,
     notificationModal:notificationModalSlice.reducer,
     queryParameter:queryParameterSlice.reducer,
+    loadingBarTop:loadingBarTopSlice.reducer
 }
 export function createReducerManager() {
     // Create an object which maps keys to reducers

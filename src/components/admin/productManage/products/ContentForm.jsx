@@ -6,7 +6,6 @@ import "../../../../assets/css/admin/skeletonLoading/contentForm.css"
 import { createActionURL } from "../../../../utils/commonUtils";
 import { LOADING_CONTENT_FORM, REQUEST_PARAM_ID, THIS_FIELD_CANNOT_EMPTY, THIS_FIELD_CODE_NUMBER_NOT_FORMAT, THIS_FILE_NOT_FORMAT, THIS_FILE_SIZE_TOO_LARGE, THIS_FILED_ENTER_LARGE, THIS_FILED_ENTER_SMALL, THIS_FILED_GREATER_THAN_THOUSAND, THIS_FILED_MONEY_TOO_LARGE, THIS_FILED_MUST_POSITIVE, THIS_FILED_SELECT_ITEM_CANNOT_EMPTY, THIS_UPLOAD_FILE_ITEM_CANNOT_EMPTY, TYPE_INPUT_TEXT, UNDER_STROKE, VND } from "../../../../utils/commonConstants";
 import { CKEditorField } from "../../../composite/formik/CKEditorField";
-import { SelectField } from "../../../composite/formik/SelectedField";
 import { regex, validation } from "../../../../utils/validation";
 import { useFetchGet } from "../../../../hook/fetch/authenticated/useFetchGet";
 import "../../../../assets/css/admin/skeletonLoading/contentForm.css"
@@ -19,6 +18,7 @@ import { onClickSaveAction } from "../../../../redux/slice/admin/action/actionAd
 import { useFetchByFiled } from "../../../../hook/fetch/authenticated/useFetchByFiled";
 import { useFetchPost } from "../../../../hook/fetch/authenticated/useFetchPost";
 import { toastSuccess } from "../../../../config/toast";
+import SelectField from "../../../composite/formik/SelectField";
 
 function ContentForm(props) {
     const dispatch = useDispatch();

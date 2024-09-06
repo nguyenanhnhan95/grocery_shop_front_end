@@ -16,7 +16,7 @@ export const CheckBoxPermisson = ({ field, options, permisson, ...props }) => {
     }
     return (
         <>
-            <input {...props} onClick={() => hanldeCheked(permisson)} checked={(Array.isArray(field?.value) && field?.value.includes(permisson)) } />
+            <input {...props} onChange={() => hanldeCheked(permisson)} checked={(Array.isArray(field?.value) && field?.value.includes(permisson)) } />
         </>
     )
 }

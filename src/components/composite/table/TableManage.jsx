@@ -4,7 +4,7 @@ import { memo } from "react";
 import PageManage from "../paging/PageManage";
 import { createActionURL } from "../../../utils/commonUtils";
 import { useFetchSearch } from "../../../hook/fetch/authenticated/useFetchSearch";
-import { LOADING_LIST_TABLE } from "../../../utils/commonConstants";
+
 function TableManage(props) {
   const { url, TBodyTable,nameColumn } = props;
   const { data: list, isPending: isPendingList } = useFetchSearch({ url: createActionURL(url).instant(), initialData: { result: [], total: 0 } });
@@ -12,7 +12,7 @@ function TableManage(props) {
   return (
     <div className="main-content-data pb-3">
       <div className="container-fluid container-content-data  ">
-        <table className={`table table-hover tscrolls ${isPendingList && LOADING_LIST_TABLE}`}>
+        <table className="table table-hover tscrolls">
           <thead className="table-thead sticky-header">
             <tr >
               {nameColumn.map((each, index) => (

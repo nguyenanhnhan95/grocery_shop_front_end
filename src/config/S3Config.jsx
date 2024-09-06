@@ -3,7 +3,6 @@ import {
     GetObjectCommand,
 } from "@aws-sdk/client-s3";
 import { FILE_IMAGE, connectAWSParams } from "../utils/commonConstants";
-import { getNameFile } from "../utils/commonUtils";
 const s3Client = new S3Client({
     region: connectAWSParams.region,
     credentials: {
@@ -39,11 +38,11 @@ export const getObjectAsFile = async (keyName) => {
         const response = await s3Client.send(new GetObjectCommand({
             Bucket: connectAWSParams.bucketName,
             Key: keyName,
-        }));       
+        }));
+        const typeFile =  typeFileFromKeyName(keyName); 
         const str = await response.Body?.transformToByteArray();
-        const blob = new Blob([str], { type: response.ContentType });
-        const fileName = getNameFile(keyName); // Lấy tên từ key
-        const file = new File([blob], fileName, { type: response.ContentType });
+        const blob = new Blob([str], { type: typeFile|| response.ContentType});
+        const file = new File([blob], keyName, { type: typeFile || response.ContentType });
         return file;
 }
 export const putObject = async (keyName, body) => {
@@ -58,4 +57,12 @@ export const putObject = async (keyName, body) => {
         console.error(error);// Ném lỗi ra ngoài nếu cần xử lý thêm
     }
 };
-
+const typeFileFromKeyName = (keyName) => {
+    const typeKeyname = keyName.substring(keyName.lastIndexOf(".") + 1,keyName.length);
+    const type = {
+        "png": "image/png",
+        "jpeg": "image/jpeg",
+        "jpg": "image/jpeg"  // Thêm 'jpg' nếu cần
+    };
+    return type[typeKeyname];
+}

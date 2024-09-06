@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from "react";
 import { useAuthenticateTokenException } from "../../handler/useAuthenticateTokenException";
 
 export const useFetchGet = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
   const [code, setCode] = useState(null);

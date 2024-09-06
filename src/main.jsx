@@ -5,10 +5,13 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { ToastContainer } from 'react-toastify';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import LoadingBarTop from './components/layout/LoadingBarTop';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <LoadingBarTop/>
       <App />
     </Provider>
     <ToastContainer

@@ -62,7 +62,6 @@ function UploadImg({ ...props }) {
     }, [files])
 
 
-
     return (
         <div className="card-upload-images">
             <div className="col-12 card-upload-tile">

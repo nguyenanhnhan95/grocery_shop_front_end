@@ -79,7 +79,7 @@ export const optionSearch = {
         {
             title:"Chọn vai trò",
             callApi:true,
-            httpApi:"role/alias",
+            httpApi:"role",
             search:{roleId:null},
             component:typeSearchAdvanced.SelectModelSearch
         },
@@ -94,20 +94,20 @@ export const optionSearch = {
 }
 export const initialForm =
     {
-        avatar: undefined,
-        name:undefined,
-        nameLogin: undefined,
-        password: undefined,
-        confirmPassword:undefined,
+        avatar: null,
+        name:null,
+        nameLogin: null,
+        password: null,
+        confirmPassword:null,
         provinces: '48',
-        districts: undefined,
-        wards: undefined,
-        accountStatus:undefined,
-        phone:undefined,
+        districts: null,
+        wards: null,
+        accountStatus:null,
+        phone:null,
         roles: [],
-        address:undefined,
-        birthOfDate:undefined,
-        idIdentification:undefined
+        address:null,
+        birthOfDate:null,
+        idCard:null
     }
 export const optionActions = [
     {
@@ -132,7 +132,7 @@ export const queryParameterInitial = {
     }
 }
 export const statusAccount={
-    "Đã kích hoạt":"badge rounded-pill badge-light-success",
-    "Chưa kích hoạt":"badge rounded-pill badge-light-warning",
-    "Đã khóa":"badge rounded-pill  badge-light-danger"
+    "ACTIVATED":"badge rounded-pill badge-light-success",
+    "INACTIVE":"badge rounded-pill badge-light-warning",
+    "LOCK":"badge rounded-pill  badge-light-danger"
 }

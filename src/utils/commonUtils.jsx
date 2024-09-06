@@ -118,14 +118,7 @@ export function convertFileToImg(files) {
     return images;
 }
 
-export function getNameFile(keyName){
-    try{
-        return keyName.substring(keyName.lastIndexOf("/") + 1, keyName.lastIndexOf("."));
-    }catch(error){
-        console.error(keyName)
-        return "";
-    }
-}
+
 /**
 * HANDLE Redirect 
 */
@@ -197,6 +190,9 @@ export const changeScreenTheme = (theme) => {
 }
 export const getScreenThem = (screen) => {
     return screen === SCREEN_THEME_MODE.SCREEN_DARK.alias ? SCREEN_DARK : SCREEN_LIGHT;
+}
+export const getScreenThemBG = (screen) => {
+    return screen === SCREEN_THEME_MODE.SCREEN_DARK.alias ? 'dark-bg dark' : 'light-bg light';
 }
 /**
 * HANDLE STRING 

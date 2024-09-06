@@ -53,8 +53,9 @@ export const optionSearch = {
 }
 export const initialForm =
 {
-    name: "",
-    description: "",
+    name: null,
+    alias:null,
+    description: null,
     permissions:[]
 }
 export const optionActions = [

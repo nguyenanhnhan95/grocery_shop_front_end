@@ -74,16 +74,8 @@ function LoginForm() {
                                 onChange={() => handleKeepLogin(keepLogin)} />
                             <label className="form-check-label" htmlFor="exampleCheck1">{KEEP_LOGIN}</label>
                         </div>
-                        <button type={isPending ? 'button' : 'submit'} className="form-submit mb-3" role="status">
-                            {isPending ?
-                                <div className="d-flex justify-content-center ">
-                                    <div className="spinner-border " role="status">
-                                        <span className="visually-hidden"></span>
-                                    </div><span>{LOGIN_LOADING}</span>
-                                </div>
-                            :
-                            LOGIN }
-
+                        <button disabled={isPending} type="submit" className="form-submit mb-3" role="status">
+                            {LOGIN} 
                         </button>
                     </div>
                 </Form>
